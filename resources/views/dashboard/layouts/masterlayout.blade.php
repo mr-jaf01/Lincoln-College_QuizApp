@@ -26,48 +26,48 @@
     <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>         
+    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
 </head>
-    <body class="vertical  light  ">
+    <body class="vertical  light" style="font-family:Roboto">
         <div class="wrapper">
-          <nav class="topnav navbar navbar-light">
-            <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-              <i class="fe fe-menu navbar-toggler-icon"></i>
-            </button>
-            <form class="form-inline mr-auto searchform text-muted">
-              <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
-            </form>
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
-                  <i class="fe fe-sun fe-16"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-                  <span class="fe fe-grid fe-16"></span>
-                </a>
-              </li>
-              <li class="nav-item nav-notif">
-                <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-                  <span class="fe fe-bell fe-16"></span>
-                  <span class="dot dot-md bg-success"></span>
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="avatar avatar-sm mt-2">
-                    <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-                  </span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
-                  <a class="dropdown-item" href="#">Activities</a>
-                </div>
-              </li>
-            </ul>
-          </nav>
+            <nav class="topnav navbar navbar-light">
+                <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+                <i class="fe fe-menu navbar-toggler-icon"></i>
+                </button>
+                <form class="form-inline mr-auto searchform text-muted">
+                <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
+                </form>
+                <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
+                    <i class="fe fe-sun fe-16"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-shortcut">
+                    <span class="fe fe-grid fe-16"></span>
+                    </a>
+                </li>
+                <li class="nav-item nav-notif">
+                    <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-notif">
+                    <span class="fe fe-bell fe-16"></span>
+                    <span class="dot dot-md bg-success"></span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="avatar avatar-sm mt-2">
+                        <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Activities</a>
+                    </div>
+                </li>
+                </ul>
+            </nav>
           <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
             <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
               <i class="fe fe-x"><span class="sr-only"></span></i>
@@ -75,7 +75,7 @@
             <nav class="vertnav navbar navbar-light">
               <!-- nav bar -->
               <div class="w-100 mb-4 d-flex">
-                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/dashboard">
                   <img src="{{ asset('linlogo.png')}}"  />
                 </a>
               </div>
@@ -89,9 +89,9 @@
                     <span class="ml-3 item-text">Questions</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                    <a class="nav-link pl-3" href="./contacts-list.html"><span class="ml-1">Contact List</span></a>
-                    <a class="nav-link pl-3" href="./contacts-grid.html"><span class="ml-1">Contact Grid</span></a>
-                    <a class="nav-link pl-3" href="./contacts-new.html"><span class="ml-1">New Contact</span></a>
+                      @foreach (getsubject() as $item)
+                      <a class="nav-link pl-3" href="/dashboard/q/{{$item->subjectname}}"><span class="ml-1">{{$item->subjectname}}</span></a>
+                      @endforeach
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -100,10 +100,8 @@
                     <span class="ml-3 item-text">Profile</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                    <a class="nav-link pl-3" href="./profile.html"><span class="ml-1">Overview</span></a>
-                    <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Settings</span></a>
-                    <a class="nav-link pl-3" href="./profile-security.html"><span class="ml-1">Security</span></a>
-                    <a class="nav-link pl-3" href="./profile-notification.html"><span class="ml-1">Notifications</span></a>
+                    <a class="nav-link pl-3" href="/dashboard/profile"><span class="ml-1">Overview</span></a>
+                    <a class="nav-link pl-3" href="/dashboard/profile/settings"><span class="ml-1">Settings</span></a>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -114,14 +112,14 @@
                 </li>
               </ul>
               <div class="btn-box w-100 mt-4 mb-1">
-                <a href="{{ route('auth.logout')}}" class="hover:bg-red-700 text-white btn mb-2 bg-red-600 btn-lg btn-block">
+                <a href="{{ route('auth.logout')}}" class="btn-danger text-center btn-sm btn-block">
                   <i class="fe fe-log-out fe-12 mx-2"></i><span class="small">Logout</span>
                 </a>
               </div>
             </nav>
           </aside>
           <main role="main" class="main-content">
-           @yield('content');
+           @yield('content')
           </main> <!-- main -->
         </div> <!-- .wrapper -->
         <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -197,7 +195,7 @@
           }
           var start = moment().subtract(29, 'days');
           var end = moment();
-    
+
           function cb(start, end)
           {
             $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -364,7 +362,7 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
-    
+
           function gtag()
           {
             dataLayer.push(arguments);

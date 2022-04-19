@@ -5,9 +5,7 @@
    <script>window.location.href="{{route('auth.login')}}"</script>
 @endif
 <div>
-    @if (Session::get('studentid'))
-    <h1>Hello world {{Session::get('studentid')}}</h1>
-    @endif
+    <h1>Hello all subject here, {{ getsubject() }}</h1>
 </div>
 
 
