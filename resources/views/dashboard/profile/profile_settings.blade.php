@@ -4,6 +4,13 @@
 @if (!Session::get('studentid'))
    <script>window.location.href="{{route('auth.login')}}"</script>
 @endif
+<style>
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color : rgb(243, 40, 40);
+        width:130px;
+        border-bottom: 2px solid rgb(243, 40, 40);
+    }
+</style>
 <div class="conatiner-fluid">
     <form action="{{route('dashboard.profile.settings.update')}}" method="POST">
     @csrf
@@ -106,7 +113,7 @@
                                                 <input id="cpassword" name="cpassword" type="password"   class="appearance-none relative  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm New Password">
                                             </div>
                                             <div class="mt-2">
-                                                <button class="btn btn-primary">Save Changes</button>
+                                                <button class="btn btn-danger">Save Changes</button>
                                             </div>
                                     </div>
                               </div>

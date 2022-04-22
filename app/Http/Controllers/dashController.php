@@ -11,6 +11,9 @@ class dashController extends Controller
 {
    // index dashboad view
    public function dashboard(){
+       if(!Session::get('studentid')){
+            return redirect('/auth/login');
+       }
        return view('dashboard.dashboard');
    }
 

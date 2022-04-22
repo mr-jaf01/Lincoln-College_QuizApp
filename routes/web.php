@@ -32,10 +32,11 @@ Route::get('/dashboard',[Dashboard::class, 'dashboard'])->name('dashboard');
 Route::get('/dashboard/profile', [Dashboard::class, 'profile'])->name('dashboard.profile');
 Route::get('/dashboard/profile/settings',[Dashboard::class, 'profile_settings'])->name('dashboard.profile.settings');
 Route::post('/dashboard/profile/settings/update',[Dashboard::class, 'update'])->name('dashboard.profile.settings.update');
-
+//api get panel page
+Route::get('/dashboard/question',[Subject::class, 'qdetails'])->name('dashbaord.question');
 
 //question paper route
 foreach(getsubject() as $key=>$value){
-    Route::get('/dashboard/q/'.$value['subjectname'], [Subject::class,'subject'])->name($value['subjectname']);
+    Route::get('/dashboard/quiz/'.$value['subjectname'], [Subject::class,'subject'])->name($value['subjectname']);
 }
 

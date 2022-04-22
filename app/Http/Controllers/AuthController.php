@@ -15,12 +15,18 @@ class AuthController extends Controller
     //get login page
     public function login()
     {
+        if(Session::get('studentid')){
+            return redirect('/dashboard');
+        }
         return view('auth.login');
     }
 
     //get register page
     public function register()
     {
+        if(Session::get('studentid')){
+            return redirect('/dashboard');
+        }
         return view('auth.register');
     }
 
@@ -31,7 +37,7 @@ class AuthController extends Controller
            return back()->with('fail','Invalid Login Credentials');
        }else{
            if(Hash::check($request->password, $studentinfo->password)){
-             $request->session()->put('studentid',$studentinfo->id); 
+             $request->session()->put('studentid',$studentinfo->id);
              return redirect('dashboard');
            }else{
             return back()->with('fail', 'Invalid Login Credentials');

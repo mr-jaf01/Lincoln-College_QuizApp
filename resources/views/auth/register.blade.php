@@ -1,9 +1,6 @@
 @extends('auth.layouts.masterview')
 @section('tittle', 'Register')
 @section('content')
-@if (Session::get('studentid'))
-    <script>window.location.href="{{ route('dashboard')}}"</script>
-@endif
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>

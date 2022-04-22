@@ -5,7 +5,7 @@
    <script>window.location.href="{{route('auth.login')}}"</script>
 @endif
 <div>
-    <h1>Hello all subject here, {{ getsubject() }}</h1>
+    <h1>Hello all subject here, </h1>
 </div>
 
 

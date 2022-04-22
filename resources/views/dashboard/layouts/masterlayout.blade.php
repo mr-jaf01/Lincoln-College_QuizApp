@@ -21,12 +21,14 @@
     <link rel="stylesheet" href="{{asset('css/quill.snow.css')}}">
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+
 </head>
     <body class="vertical  light" style="font-family:Roboto">
         <div class="wrapper">
@@ -86,11 +88,11 @@
                 <li class="nav-item dropdown">
                   <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-book fe-16"></i>
-                    <span class="ml-3 item-text">Questions</span>
+                    <span class="ml-3 item-text">Questions Bank</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                       @foreach (getsubject() as $item)
-                      <a class="nav-link pl-3" href="/dashboard/q/{{$item->subjectname}}"><span class="ml-1">{{$item->subjectname}}</span></a>
+                      <a class="nav-link pl-3" href="/dashboard/quiz/{{$item->subjectname}}"><span class="ml-1">{{$item->subjectname}}</span></a>
                       @endforeach
                   </ul>
                 </li>
@@ -370,5 +372,6 @@
           gtag('js', new Date());
           gtag('config', 'UA-56159088-1');
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </body>
 </html>

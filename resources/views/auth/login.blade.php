@@ -1,16 +1,13 @@
 @extends('auth.layouts.masterview')
 @section('tittle', 'Login')
 @section('content')
-@if (Session::get('studentid'))
-    <script>window.location.href="{{ route('dashboard')}}"</script>
-@endif
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
         <img class="mx-auto h-12 w-auto" src="{{ asset('linlogo.png') }}" alt="linlogo">
         <h2 class="mt-2 text-center text-2xl text-red-600">Quiz App</h2>
         <p class="mt-1 text-center text-2xl  text-gray-900">
-           Login 
+           Login
         </p>
       </div>
       <div>
@@ -42,9 +39,9 @@
             <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
             <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
           </div>
-  
+
           <div class="text-sm">
-            
+
           </div>
         </div>
         <div>
@@ -56,7 +53,7 @@
 
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-         
+
         </div>
 
         <div class="text-sm">
