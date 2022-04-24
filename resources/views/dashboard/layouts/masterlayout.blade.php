@@ -22,6 +22,7 @@
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>

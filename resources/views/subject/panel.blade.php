@@ -31,6 +31,11 @@
        <div class="col-md-4"></div>
    </div>
    <hr class="my-1" />
+   <div class="d-flex justify-content-center">
+        @if (Session::get('alert'))
+            <p class="alert alert-success d-flex flex-column align-items-center"><i class="bi bi-info-circle" style="font-size: 40px;"></i> <span>{{ Session::get('alert') }}</span></p>
+        @endif
+   </div>
    <div id="respone"></div>
 
 </div>

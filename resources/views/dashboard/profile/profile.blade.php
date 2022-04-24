@@ -12,7 +12,7 @@
                     <span class="text-red-400"><a href="/dashboard">Dashboard</a><i class="fe fe-arrow-right"></i>Profile</span>
                 </div>
                 <div class="card-body">
-                 <div class="row">
+                 <div class="row animate__animated animate__fadeInUp">
                      <div class="col-md-6 d-flex justify-content-center mb-2" style="height: 150px">
                          <img src="{{ asset('assets/avatars/default.jpg')}}" width="150" class="rounded" />
                      </div>

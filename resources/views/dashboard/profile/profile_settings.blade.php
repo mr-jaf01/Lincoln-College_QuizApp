@@ -16,11 +16,11 @@
     @csrf
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card animate__animated animate__fadeInUp">
                 <div class="card-header d-flex flex-row justify-content-between">
                     <span class="text-red-400"><a href="{{ route('dashboard')}}">Dashboard</a><i class="fe fe-arrow-right"></i><a href="{{route('dashboard.profile')}}">Profile</a><i class="fe fe-arrow-right"></i>Settings</span>
                 </div>
-                <div class="card-body">
+                <div class="card-body animate__animated animate__fadeInUp">
                     <center>
                         @if(Session::get('success'))
                             <span class="alert alert-success">{{Session::get('success')}}</span>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController as Auth;
 use App\Http\Controllers\dashController as Dashboard;
 use App\Http\Controllers\subjectController as Subject;
+use App\Http\Controllers\quizController as QuizContro;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,8 @@ foreach(getsubject() as $key=>$value){
     Route::get('/dashboard/quiz/'.$value['subjectname'], [Subject::class,'subject'])->name($value['subjectname']);
 }
 
+
+//dashboard start quiz route
+Route::get('/dashboard/quiz/{subject}/{year}',[QuizContro::class, 'start'])->name('dashboard.quiz');
+Route::get('/check_answer',[QuizContro::class, 'check_answer'])->name('check_answer');
+Route::get('save_answer',[QuizContro::class, 'save_answer'])->name('save_answer');
