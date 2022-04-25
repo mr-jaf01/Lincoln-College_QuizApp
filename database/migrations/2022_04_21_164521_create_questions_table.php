@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->String('qtions');
+            $table->text('qtions');
             $table->String('opt1');
             $table->String('opt2');
             $table->String('opt3');
@@ -24,6 +24,8 @@ class CreateQuestionsTable extends Migration
             $table->String('correct_opt');
             $table->String('subject_id');
             $table->String('year');
+            $table->text('instruction');
+            $table->String('qmode');
             $table->timestamps();
         });
     }

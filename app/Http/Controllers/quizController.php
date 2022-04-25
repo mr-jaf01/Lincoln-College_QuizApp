@@ -36,6 +36,8 @@ class quizController extends Controller
         $save->qtion_id = $request->qtion;
         $save->qtion_ans = $request->option;
         $save->answer_by = $request->answer_by;
+        $save->subject_id = $request->subject;
+        $save->year = $request->year;
         $save->save();
         $request->session()->put('selectedoption',$request->option);
         return back()->with('pagination','Answer Recorded')->with('button',$request->button);

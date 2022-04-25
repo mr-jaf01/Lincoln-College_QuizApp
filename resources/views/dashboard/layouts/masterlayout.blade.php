@@ -1,3 +1,6 @@
+@if (!Session::get('studentid'))
+   <script>window.location.href="{{route('auth.login')}}"</script>
+@endif
 <!DOCTYPE html>
 <html lang="en">
   <head>

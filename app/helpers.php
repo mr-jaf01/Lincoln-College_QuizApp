@@ -1,6 +1,6 @@
 <?php
 use App\Models\student;
-use App\Models\subject;
+use App\Models\subjects;
 use App\Models\questions;
 use App\Models\answers;
 
@@ -17,7 +17,7 @@ function getstudent($studentid){
 
 //get all subject function
 function getsubject(){
-    return subject::all();
+    return subjects::all();
 }
 //get single subject ID
 function getsubjectID($subjectname){

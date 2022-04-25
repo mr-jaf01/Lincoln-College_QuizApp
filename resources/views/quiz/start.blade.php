@@ -7,7 +7,11 @@
             <div class="card p-4">
             <form action="{{ route('save_answer')}}" method="GET">
                 @foreach ($all_question as $question)
-                <h5 class="card-header alert alert-info">{{ $question->subject_id }} - <small>{{ $question->year }}</small></h5>
+                <h5 class="card-header"></small>
+                    @if (isset($_GET['page']))
+                    <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
+                    @endif
+                </h5>
                 <div class="card-body animate__animated animate__fadeInRight">
                     <h5 class="card-title">
                     {{$question->qtions}}
@@ -50,6 +54,8 @@
                 </div>
                 <input type="hidden" name="qtion" value="{{$question->qtions}}" />
                 <input type="hidden" name="answer_by" value="{{Session::get('studentid')}}" />
+                <input type="hidden" name="subject" value="{{$question->subject_id}}" />
+                <input type="hidden" name="year" value="{{$question->year}}" />
                 <div id="respone"></div>
                 @endforeach
                 @if (Session::get('button'))
@@ -71,7 +77,7 @@
             </form>
                 <div class="d-flex flex-row justify-content-between">
                     <p></p>
-                    <a href="#" class="btn btn-danger animate__animated animate__fadeInLeft" style="border-radius:40%;"><i class="bi bi-chat-dots"></i></a>
+                    <a href="#" class="btn btn-success text-white animate__animated animate__fadeInLeft" style="border-radius:40%;"><i class="bi bi-chat-dots"></i></a>
                 </div>
             </div>
         </div>
