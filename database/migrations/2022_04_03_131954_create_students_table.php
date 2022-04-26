@@ -22,10 +22,10 @@ class CreateStudentsTable extends Migration
             $table->string('gender');
             $table->string('program');
             $table->string('password');
-            $table->string('flink');
-            $table->string('instalink');
-            $table->string('parentemail');
-            $table->string('parentphone');
+            $table->string('flink')->nullable();
+            $table->string('instalink')->nullable();
+            $table->string('parentemail')->nullable();
+            $table->string('parentphone')->nullable();
             $table->timestamps();
         });
     }

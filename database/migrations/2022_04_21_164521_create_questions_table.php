@@ -24,7 +24,8 @@ class CreateQuestionsTable extends Migration
             $table->String('correct_opt');
             $table->String('subject_id');
             $table->String('year');
-            $table->text('instruction');
+            $table->text('instruction')->nullable();
+            $table->String('qimage')->nullable();
             $table->String('qmode');
             $table->timestamps();
         });

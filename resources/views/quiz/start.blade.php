@@ -16,6 +16,20 @@
                     <h5 class="card-title">
                     {{$question->qtions}}
                     </h5>
+                    <div class="row">
+                        <div class="col-md-6 d-flex flex-row justify-content-center">
+                            <img src="{{$question->qimage ? asset($question->qimage) : ''}}"/>
+                        </div>
+                        @if ($question->instruction)
+                        <div class="col-md-6 alert alert-danger">
+                            <span>Instruction:</span>
+                            <hr class="my-1" />
+                            <p class="">
+                                {{$question->instruction}}
+                            </p>
+                        </div>
+                        @endif
+                    </div>
                   <div class="form-check" >
                     <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid')) == $question->opt1 ? 'checked':''}}  hx-trigger="click" class="form-check-input" value="{{$question->opt1}}" type="radio" name="option" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
