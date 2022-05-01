@@ -15083,7 +15083,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   margin: 0.0625rem 0;
 }
 .menu-vertical .menu-inner > .menu-item .menu-link {
-  margin: 0rem 1rem;
+  margin: 0rem;
 }
 .menu-vertical .menu-item .menu-link,
 .menu-vertical .menu-block {

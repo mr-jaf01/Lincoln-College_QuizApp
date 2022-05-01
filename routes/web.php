@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController as Auth;
 use App\Http\Controllers\dashController as Dashboard;
 use App\Http\Controllers\subjectController as Subject;
 use App\Http\Controllers\quizController as QuizContro;
+use App\Http\Controllers\admin\AuthController as AdminAuth;
+use App\Http\Controllers\admin\SubjectController as SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +54,14 @@ Route::get('save_answer',[QuizContro::class, 'save_answer'])->name('save_answer'
 // All Administration Routes
 Route::get('admin/auth/login', function(){
     return view('admin.auth.login');
-});
-
-Route::get('admin/dashboard', function(){
+})->name('admin.auth.login');
+Route::post('/admin/auth/login',[AdminAuth::class, 'login'])->name('admin.auth.login');
+Route::get('/admin/dashboard', function(){
     return view('admin.dashboard.dashboard');
-});
+})->name('admin.dashboard');
+Route::get('/admin/dashboard/logout', [AdminAuth::class, 'logout'])->name('admin.dashboard.logout');
+
+//Admin Subject Route
+Route::get('admin/dashboard/subject/createSubject',[SubjectController::class,'subject'])->name('admin.dashboard.subject.createSubject');
+Route::get('admin/dashboard/subject/viewSubject',[SubjectController::class, 'showSubject'])->name('admin.dashboard.subject.viewSubject');
+Route::post('admin/dashboard/subject/createSubject',[SubjectController::class, 'saveSubject'])->name('admin.dashboard.subject.createSubject');

@@ -12,7 +12,7 @@
         <meta name="description" content="" />
 
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="{{ asset('admin/assets/img/favicon/favicon.ico')}} " />
+        <link rel="icon" type="image/x-icon" href="{{ asset('linlogo.png')}}" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,6 +43,11 @@
         <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <script src="{{ asset('admin/assets/js/config.js') }}"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+        <script src="https://cdn.tiny.cloud/1/3g0hv2wo1p6g1mtqmu9it6o4ya7rbbiv4z8nqqf6x8w1rmm8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
 <body style="font-family: Verdana, sans-serif">
 

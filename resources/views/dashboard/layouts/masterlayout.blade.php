@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="{{ asset('linlogo.png')}}">
     <title>Quiz App - @yield('tittle')</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{asset('client/css/simplebar.css')}}">

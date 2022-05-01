@@ -1,9 +1,9 @@
 @extends('admin.dashboard.layouts.masterlayout')
-@section('tittle', 'Dashboard')
+@section('tittle', 'Create Subject')
 @section('content')
 
 <div class="container mt-2">
-    {{Session::get('adminID')}}
+    <h4>Create Subject</h4>
 </div>
 
 @endsection
