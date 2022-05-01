@@ -35,14 +35,11 @@ function numberofquestions($subject,$year){
     return $query->count();
 }
 
-//get total number of unanswered questions
-function number_of_unanswered_questions($subject,$year,$answered_by){
-    return 30;
-}
-
 //get total number of answered questions
 function number_of_answered_questions($subject,$year,$answered_by){
-    return 10;
+    $getcount = DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$answered_by)->get();
+    $totalnum = $getcount->count();
+    return $totalnum;
 }
 
 // get selected user option for a particular question

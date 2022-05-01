@@ -80,9 +80,13 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center">
         </div>
-        <div class="text-sm">
-          <a href="{{route('auth.login')}}" class="text-indigo-600 hover:text-indigo-500"> Already Have an Account? Login </a>
-        </div>
+
+        <p class="text-center">
+            <span>Already Have an Account?</span>
+            <a href="{{route('auth.login')}}" class="text-red-400">
+              <span>Login Instead</span>
+            </a>
+          </p>
       </div>
 
     </div>

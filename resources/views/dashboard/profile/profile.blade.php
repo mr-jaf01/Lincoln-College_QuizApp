@@ -22,12 +22,12 @@
                                  <span class="font-weight-bold text-red-400">Personal Info</span>
                              </div>
                              <hr class="my-1"/>
-                            <p class="d-flex flex-row justify-content-between mb-2"><span class="font-italic font-weight-bold">Name :</span> <span> {{ $student->studentname}} </span></p>
-                            <p class="d-flex flex-row justify-content-between mb-2"><span class="font-italic font-weight-bold">Email:</span> <span> {{ $student->email}} </span></p>
-                            <p class="d-flex flex-row justify-content-between mb-2"><span class="font-italic font-weight-bold">Phone:</span> <span>{{ $student->phone}} </span></p>
-                            <p class="d-flex flex-row justify-content-between mb-2"><span class="font-italic font-weight-bold">Adddress:</span> <span> {{ $student->address}} </span></p>
-                            <p class="d-flex flex-row justify-content-between mb-2"><span class="font-italic font-weight-bold">Gender: </span><span> {{ $student->gender}} </span></p>
-                            <p class="d-flex flex-row justify-content-between mb-2"><span class="font-italic font-weight-bold">Program After SPM: </span> <span> {{ $student->program}} </span></p>
+                            <p class="d-flex flex-row justify-content-between mb-2"><span class=" font-weight-bold">Name :</span> <span> {{ $student->studentname}} </span></p>
+                            <p class="d-flex flex-row justify-content-between mb-2"><span class=" font-weight-bold">Email:</span> <span> {{ $student->email}} </span></p>
+                            <p class="d-flex flex-row justify-content-between mb-2"><span class=" font-weight-bold">Phone:</span> <span>{{ $student->phone}} </span></p>
+                            <p class="d-flex flex-row justify-content-between mb-2"><span class=" font-weight-bold">Adddress:</span> <span> {{ $student->address}} </span></p>
+                            <p class="d-flex flex-row justify-content-between mb-2"><span class=" font-weight-bold">Gender: </span><span> {{ $student->gender}} </span></p>
+                            <p class="d-flex flex-row justify-content-between mb-2"><span class=" font-weight-bold">Program After SPM: </span> <span> {{ $student->program}} </span></p>
                          </div>
                          <hr class="my-1"/>
 
@@ -66,10 +66,7 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/moment.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/simplebar.min.js')}}"></script>
-<script src='{{asset('js/daterangepicker.js')}}'></script>
-<script src='{{asset('js/jquery.stickOnScroll.js')}}'></script>
 <script src="{{asset('js/tinycolor-min.js')}}"></script>
 <script src="{{asset('js/config.js')}}"></script>
 <script src="{{asset('js/apps.js')}}"></script>

@@ -56,9 +56,12 @@
 
         </div>
 
-        <div class="text-sm">
-          <a href="{{route('auth.register')}}" class="text-indigo-600 hover:text-indigo-500"> Don't Have an Account? Register  </a>
-        </div>
+        <p class="text-center">
+            <span>New on our platform?</span>
+            <a href="{{route('auth.register')}}">
+              <span class="text-red-400">Create an account</span>
+            </a>
+          </p>
       </div>
     </div>
   </div>

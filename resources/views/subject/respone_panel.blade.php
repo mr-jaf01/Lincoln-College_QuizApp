@@ -25,7 +25,7 @@
                  </div>
                  <div class="tab-pane fade" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
                      <div class="row">
-                         <div class="col-md-3 mb-2">
+                         <div class="col-md-2 mb-2">
                              <div class="card">
                                  <div class="card-header alert alert-info">
                                    Subject
@@ -35,9 +35,9 @@
                                  </div>
                                </div>
                          </div>
-                         <div class="col-md-9">
+                         <div class="col-md-10">
                              <div class="row justify-content-center d-flex mb-2">
-                                 <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="--value:{{ $totalnumber_answer }}"></div>
+                                 <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="--value:{{ $totalnumber_unanswered == 0 ? 100 : $totalnumber_answer }}"></div>
                              </div>
                              <div class="row">
                                  <div class="col-md-4 alert alert-secondary"><p><i class="bi bi-question-circle"></i> Total Number of Questions : <span class="">{{ $totalnumberofquestion }}</span></p></div>

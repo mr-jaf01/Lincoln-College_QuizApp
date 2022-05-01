@@ -59,7 +59,7 @@ class subjectController extends Controller
         $year = $request->year;
         $all_question = getallquestion($subject, $year);
         $totalnumberofquestion = numberofquestions($subject,$year);
-        $totalnumber_unanswered = number_of_unanswered_questions($subject,$year,Session::get('studentid'));
+        $totalnumber_unanswered = (numberofquestions($subject,$year) - number_of_answered_questions($subject,$year,Session::get('studentid')));
         $totalnumber_answer = number_of_answered_questions($subject,$year,Session::get('studentid'));
         return view('subject.respone_panel', compact('subject','year','totalnumberofquestion','totalnumber_unanswered','totalnumber_answer'));;
     }

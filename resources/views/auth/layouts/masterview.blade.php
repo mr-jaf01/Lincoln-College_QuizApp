@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>         
+    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
 
 </head>
-<body>
+<body style="font-family: Verdana, sans-serif;">
     @yield('content')
-    
+
 </body>
 </html>

@@ -11,37 +11,40 @@
     <link rel="icon" href="favicon.ico">
     <title>Quiz App - @yield('tittle')</title>
     <!-- Simple bar CSS -->
-    <link rel="stylesheet" href="{{asset('css/simplebar.css')}}">
-    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="{{asset('client/css/simplebar.css')}}">
+    <!-- Fonts CSS
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    -->
     <!-- Icons CSS -->
-    <link rel="stylesheet" href="{{asset('css/feather.css')}}">
-    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
-    <link rel="stylesheet" href="{{asset('css/uppy.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/jquery.steps.css')}}">
-    <link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('css/quill.snow.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/feather.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/select2.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/dropzone.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/uppy.min.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/jquery.steps.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/jquery.timepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/quill.snow.css')}}">
     <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/daterangepicker.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- App CSS -->
-    <link rel="stylesheet" href="{{asset('css/app-light.css')}}" id="lightTheme">
-    <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>
+    <link rel="stylesheet" href="{{asset('client/css/app-light.css')}}" id="lightTheme">
+    <link rel="stylesheet" href="{{asset('client/css/app-dark.css')}}" id="darkTheme" disabled>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.tiny.cloud/1/3g0hv2wo1p6g1mtqmu9it6o4ya7rbbiv4z8nqqf6x8w1rmm8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 </head>
-    <body class="vertical  light" style="font-family:Roboto">
+    <body class="vertical  light" style="font-family: Verdana, sans-serif;">
         <div class="wrapper">
             <nav class="topnav navbar navbar-light">
                 <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
                 <i class="fe fe-menu navbar-toggler-icon"></i>
                 </button>
                 <form class="form-inline mr-auto searchform text-muted">
-                <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Type something..." aria-label="Search">
+                <input class="form-control mr-sm-2 bg-transparent border-3  pl-4 text-muted" type="search" placeholder="Search..." aria-label="Search">
                 </form>
                 <ul class="nav">
                 <li class="nav-item">
@@ -49,27 +52,16 @@
                     <i class="fe fe-sun fe-16"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-shortcut">
-                    <span class="fe fe-grid fe-16"></span>
-                    </a>
-                </li>
-                <li class="nav-item nav-notif">
-                    <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-notif">
-                    <span class="fe fe-bell fe-16"></span>
-                    <span class="dot dot-md bg-success"></span>
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link  text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="avatar avatar-sm mt-2">
-                        <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{ asset('client/assets/avatars/default.jpg')}}" alt="..." class="avatar-img rounded-circle">
                     </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activities</a>
+                    <a class="dropdown-item" href="{{route('dashboard.profile')}}">Profile</a>
+                    <a class="dropdown-item" href="{{route('dashboard.profile.settings')}}">Settings</a>
+                    <a class="dropdown-item text-red-400" href="{{route('auth.logout')}}">Logout</a>
                     </div>
                 </li>
                 </ul>
@@ -128,38 +120,38 @@
            @yield('content')
           </main> <!-- main -->
         </div> <!-- .wrapper -->
-        <script src="{{asset('js/jquery.min.js')}}"></script>
-        <script src="{{asset('js/popper.min.js')}}"></script>
-        <script src="{{asset('js/moment.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/simplebar.min.js')}}"></script>
-        <script src="{{asset('js/daterangepicker.js')}}"></script>
-        <script src='{{asset('js/jquery.stickOnScroll.js')}}'></script>
-        <script src="{{asset('js/tinycolor-min.js')}}"></script>
-        <script src="{{asset('js/config.js')}}"></script>
-        <script src="{{asset('js/d3.min.js')}}"></script>
-        <script src="{{asset('js/topojson.min.js')}}"></script>
-        <script src="{{asset('js/datamaps.all.min.js')}}"></script>
-        <script src="{{asset('js/datamaps-zoomto.js')}}"></script>
-        <script src="{{asset('js/datamaps.custom.js')}}"></script>
-        <script src="{{asset('js/Chart.min.js')}}"></script>
+        <script src="{{asset('client/js/jquery.min.js')}}"></script>
+        <script src="{{asset('client/js/popper.min.js')}}"></script>
+        <script src="{{asset('client/js/moment.min.js')}}"></script>
+        <script src="{{asset('client/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('client/js/simplebar.min.js')}}"></script>
+        <script src="{{asset('client/js/daterangepicker.js')}}"></script>
+        <script src='{{asset('client/js/jquery.stickOnScroll.js')}}'></script>
+        <script src="{{asset('client/js/tinycolor-min.js')}}"></script>
+        <script src="{{asset('client/js/config.js')}}"></script>
+        <script src="{{asset('client/js/d3.min.js')}}"></script>
+        <script src="{{asset('client/js/topojson.min.js')}}"></script>
+        <script src="{{asset('client/js/datamaps.all.min.js')}}"></script>
+        <script src="{{asset('client/js/datamaps-zoomto.js')}}"></script>
+        <script src="{{asset('client/js/datamaps.custom.js')}}"></script>
+        <script src="{{asset('client/js/Chart.min.js')}}"></script>
         <script>
           /* defind global options */
           Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
           Chart.defaults.global.defaultFontColor = colors.mutedColor;
         </script>
-        <script src="{{asset('js/gauge.min.js')}}"></script>
-        <script src="{{asset('js/jquery.sparkline.min.js')}}"></script>
-        <script src="{{asset('js/apexcharts.min.js')}}"></script>
-        <script src="{{asset('js/apexcharts.custom.js')}}"></script>
-        <script src="{{asset('js/jquery.mask.min.js')}}"></script>
-        <script src="{{asset('js/select2.min.js')}}"></script>
-        <script src='{{asset("js/jquery.steps.min.js")}}'></script>
-        <script src='{{asset("js/jquery.validate.min.js")}}'></script>
-        <script src='{{asset("js/jquery.timepicker.js")}}'></script>
-        <script src='{{asset("js/dropzone.min.js")}}'></script>
-        <script src='{{asset("js/uppy.min.js")}}'></script>
-        <script src='{{asset("js/quill.min.js")}}'></script>
+        <script src="{{asset('client/js/gauge.min.js')}}"></script>
+        <script src="{{asset('client/js/jquery.sparkline.min.js')}}"></script>
+        <script src="{{asset('client/js/apexcharts.min.js')}}"></script>
+        <script src="{{asset('client/js/apexcharts.custom.js')}}"></script>
+        <script src="{{asset('client/js/jquery.mask.min.js')}}"></script>
+        <script src="{{asset('client/js/select2.min.js')}}"></script>
+        <script src='{{asset("client/js/jquery.steps.min.js")}}'></script>
+        <script src='{{asset("client/js/jquery.validate.min.js")}}'></script>
+        <script src='{{asset("client/js/jquery.timepicker.js")}}'></script>
+        <script src='{{asset("client/js/dropzone.min.js")}}'></script>
+        <script src='{{asset("client/js/uppy.min.js")}}'></script>
+        <script src='{{asset("client/js/quill.min.js")}}'></script>
         <script>
           $('.select2').select2(
           {
