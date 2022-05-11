@@ -7,8 +7,8 @@
 <div class="conatiner-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header d-flex flex-row justify-content-between">
+            <div class="card" style="border-radius: 19px;">
+                <div class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
                     <span class="text-red-400"><a href="/dashboard">Dashboard</a><i class="fe fe-arrow-right"></i>Profile</span>
                 </div>
                 <div class="card-body">
@@ -54,7 +54,7 @@
                  <hr class="my-1"/>
                  <div class="d-flex flex-row justify-content-between">
                      <p></p>
-                     <a href="{{route('dashboard.profile.settings')}}" class=" mt-3 btn btn-sm btn-primary">Edit & Update</a>
+                     <a style="border-radius: 19px;" href="{{route('dashboard.profile.settings')}}" class=" mt-3 btn btn-sm btn-primary">Edit & Update</a>
                  </div>
                 </div>
               </div>

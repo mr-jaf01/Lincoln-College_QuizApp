@@ -34,6 +34,7 @@
         <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
         <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css"/>
 
         <!-- Page CSS -->
 
@@ -48,6 +49,9 @@
         <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
         <script src="https://cdn.tiny.cloud/1/3g0hv2wo1p6g1mtqmu9it6o4ya7rbbiv4z8nqqf6x8w1rmm8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     </head>
 <body style="font-family: Verdana, sans-serif">
 
@@ -71,7 +75,7 @@
 
         <ul class="menu-inner">
           <!-- Dashboard -->
-          <li class="menu-item">
+          <li class="menu-item mt-3">
             <a href="index.html" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
@@ -80,7 +84,11 @@
 
           <!-- Layouts -->
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="javascript:void(0);" class="menu-link menu-toggle"  data-bs-toggle="tooltip"
+            data-bs-offset="0,4"
+            data-bs-placement="right"
+            data-bs-html="true"
+            title="<span>This Section allow you to Create, update and edit All Subjects</span>">
                 <i class='menu-icon bx bxs-book'></i>
               <div data-i18n="Layouts">Subject</div>
             </a>
@@ -99,25 +107,33 @@
             </ul>
           </li>
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="javascript:void(0);" class="menu-link menu-toggle"  data-bs-toggle="tooltip"
+            data-bs-offset="0,4"
+            data-bs-placement="right"
+            data-bs-html="true"
+            title="<span>This Section allow you to Create, update and edit All Questions</span>">
                 <i class='menu-icon bx bx-question-mark'></i>
               <div data-i18n="Account Settings">Question</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="pages-account-settings-account.html" class="menu-link">
+                <a href="{{ route('admin.dashboard.question.createQuestion')}}" class="menu-link">
                   <div data-i18n="Account">Create Question</div>
                 </a>
               </li>
               <li class="menu-item">
-                <a href="pages-account-settings-notifications.html" class="menu-link">
+                <a href="{{ route('admin.dashboard.question.viewQuestion')}}" class="menu-link">
                   <div data-i18n="Notifications">View Questions</div>
                 </a>
               </li>
             </ul>
           </li>
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="javascript:void(0);" class="menu-link menu-toggle" data-bs-toggle="tooltip"
+            data-bs-offset="0,4"
+            data-bs-placement="right"
+            data-bs-html="true"
+            title="<span>This Section allows you to View, update and edit Students Record</span>">
                 <i class='menu-icon bx bxs-user-circle'></i>
               <div data-i18n="Authentications">Student</div>
             </a>
@@ -378,9 +394,6 @@
       >Upgrade to Pro</a
     >
   </div>
-
-
-    <script src="{{ asset('admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/js/bootstrap.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
@@ -394,5 +407,10 @@
     <script src="{{ asset('admin/assets/js/dashboards-analytics.js') }}"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 </html>

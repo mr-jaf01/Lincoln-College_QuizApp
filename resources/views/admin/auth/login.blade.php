@@ -114,7 +114,7 @@
 
                   <div class="mt-3">
                     <div class="input-group">
-                        <label class="input-group-text bg-red-600 text-white" for="inputGroupSelect01">Role</label>
+                        <label class="input-group-text bg-red-500 text-white" for="inputGroupSelect01">Role</label>
                         <select name="role" class="form-select" id="inputGroupSelect01">
                           <option value="admin">Admin</option>
                           <option value="developer">Developer</option>
@@ -126,7 +126,7 @@
 
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <button style="border-radius: 19px;" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Sign in
                     </button>
                 </div>

@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center d-flex">
         <div class="col-md-12">
-            <div class="card p-4">
+            <div class="card p-4" style="border-radius:19px;">
             @foreach ($all_question as $question)
 
             <!----
@@ -12,14 +12,14 @@
             -->
             @if ($question->qmode == "mcq")
             <form action="{{ route('save_answer')}}" method="GET">
-                <h5 class="card-header"></small>
+                <h5 class="card-header" style="border-radius:19px;"></small>
                     @if (isset($_GET['page']))
                     <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
                     @endif
                 </h5>
                 <div class="card-body animate__animated animate__fadeInRight">
                     <h5 class="card-title">
-                    {{$question->qtions}}
+                    {!! $question->qtions !!}
                     </h5>
                     <div class="row">
                         <div class="col-md-6 d-flex flex-row justify-content-center">
@@ -30,7 +30,7 @@
                             <span>Instruction:</span>
                             <hr class="my-1" />
                             <p class="">
-                                {{$question->instruction}}
+                                {!! $question->instruction !!}
                             </p>
                         </div>
                         @endif
@@ -93,7 +93,7 @@
                 </h5>
                 <div class="card-body animate__animated animate__fadeInRight">
                     <h5 class="card-title">
-                    {{$question->qtions}}
+                    {!! $question->qtions !!}
                     </h5>
                     <div class="row">
                         <div class="col-md-6 d-flex flex-row justify-content-center">
@@ -104,7 +104,7 @@
                             <span>Instruction:</span>
                             <hr class="my-1" />
                             <p class="">
-                                {{$question->instruction}}
+                                {!! $question->instruction !!}
                             </p>
                         </div>
                         @endif
@@ -112,7 +112,7 @@
                     <hr class="my-1" />
                         @if (getoption($question->qtions, Session::get('studentid')) == '')
                         <h4 class="alert alert-info">Write Your Answer Below</h4>
-                            <textarea name="option"></textarea>
+                            <textarea name="option" id="editor"></textarea>
                             <div>
                                 <a hx-get="{{ route('check_answer')}}" hx-target="#respone" hx-trigger="click" class="btn btn-success rounded text-white">Submit Answer</a>
                             </div>
@@ -298,7 +298,7 @@
     <script src="{{asset('client/js/tinycolor-min.js')}}"></script>
     <script src="{{asset('client/js/config.js')}}"></script>
     <script src="{{asset('client/js/apps.js')}}"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <!--<script>tinymce.init({ selector:'textarea' });</script>-->
     <script>
         ClassicEditor
             .create( document.querySelector( '#editor' ) )

@@ -77,8 +77,8 @@ class AuthController extends Controller
         }
     }
     // user logout function
-    public function logout(){
-        Session::flush();
+    public function logout(Request $request){
+        $request->session()->forget('studentid');
         return redirect('/auth/login');
     }
 

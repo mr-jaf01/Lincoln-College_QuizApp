@@ -7,6 +7,7 @@ use App\Http\Controllers\subjectController as Subject;
 use App\Http\Controllers\quizController as QuizContro;
 use App\Http\Controllers\admin\AuthController as AdminAuth;
 use App\Http\Controllers\admin\SubjectController as SubjectController;
+use App\Http\Controllers\admin\QuestionController as QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,9 @@ Route::get('save_answer',[QuizContro::class, 'save_answer'])->name('save_answer'
 
 // All Administration Routes
 Route::get('admin/auth/login', function(){
+    if(Session::get('adminID')){
+        return redirect('/admin/dashboard');
+    }
     return view('admin.auth.login');
 })->name('admin.auth.login');
 Route::post('/admin/auth/login',[AdminAuth::class, 'login'])->name('admin.auth.login');
@@ -64,4 +68,17 @@ Route::get('/admin/dashboard/logout', [AdminAuth::class, 'logout'])->name('admin
 //Admin Subject Route
 Route::get('admin/dashboard/subject/createSubject',[SubjectController::class,'subject'])->name('admin.dashboard.subject.createSubject');
 Route::get('admin/dashboard/subject/viewSubject',[SubjectController::class, 'showSubject'])->name('admin.dashboard.subject.viewSubject');
-Route::post('admin/dashboard/subject/createSubject',[SubjectController::class, 'saveSubject'])->name('admin.dashboard.subject.createSubject');
+Route::post('admin/dashboard/subject/save',[SubjectController::class, 'saveSubject'])->name('admin.dashboard.subject.save');
+Route::post('admin/dashboard/subject/update',[SubjectController::class, 'updateSubject'])->name('admin.dashboard.subject.update');
+Route::get('admin/dashboard/subject/delete/{id}',[SubjectController::class, 'deleteSubject'])->name('admin.dashboard.subject.delete');
+
+// Admin Questions Route
+Route::get('admin/dashboard/question/createQuestion',[QuestionController::class,'question'])->name('admin.dashboard.question.createQuestion');
+Route::get('admin/dashboard/question/viewQuestion',[QuestionController::class, 'showQuestion'])->name('admin.dashboard.question.viewQuestion');
+Route::post('admin/dashboard/question/save',[QuestionController::class, 'saveQuestion'])->name('admin.dashboard.question.createsave');
+Route::get('admin/dashboard/question/questionmode',[QuestionController::class,'questionmode'])->name('admin.dashboard.question.questionmode');
+Route::post('admin/dashboard/question/questionmodecheck',[QuestionController::class,'questionmodecheck'])->name('admin.dashboard.question.questionmodecheck');
+Route::get('admin/dashboard/question/view/{id}', [QuestionController::class,'getquestionByID']);
+Route::get('admin/dashboard/question/', [QuestionController::class,'getquestionByID']);
+Route::post('admin/dashboard/question/update', [QuestionController::class,'Update'])->name('admin.dashboard.question.update');
+Route::get('admin/dashboard/question/delete/{id}',[QuestionController::class, 'delete'])->name('admin.dashboard.question.delete');

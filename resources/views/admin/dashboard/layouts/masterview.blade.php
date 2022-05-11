@@ -1,5 +1,5 @@
-@if (!Session::get('studentid'))
-   <script>window.location.href="{{route('auth.login')}}"</script>
+@if (!Session::get('adminID'))
+   <script>window.location.href="{{route('admin.auth.login')}}"</script>
 @endif
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('linlogo.png')}}">
-    <title>Quiz App - @yield('tittle')</title>
+    <title>Lincoln Quiz App - Admin @yield('tittle')</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{asset('client/css/simplebar.css')}}">
     <!-- Fonts CSS
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     -->
+
+
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{{asset('client/css/feather.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/select2.css')}}">
@@ -30,12 +32,14 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('client/css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('client/css/app-dark.css')}}" id="darkTheme" disabled>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
     <script src="https://cdn.tiny.cloud/1/3g0hv2wo1p6g1mtqmu9it6o4ya7rbbiv4z8nqqf6x8w1rmm8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </head>
     <body class="vertical  light" style="font-family: Verdana, sans-serif;">
         <div class="wrapper">
@@ -45,7 +49,7 @@
                 </button>
                 <!--<form class="form-inline mr-auto searchform text-muted">
                 <input class="form-control mr-sm-2 bg-transparent border-3  pl-4 text-muted" type="search" placeholder="Search..." aria-label="Search">
-                </form>-->
+                </form> -->
                 <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
@@ -58,10 +62,10 @@
                         <img src="{{ asset('client/assets/avatars/default.jpg')}}" alt="..." class="avatar-img rounded-circle">
                     </span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" style="border-radius: 19px;"  aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{route('dashboard.profile')}}">Profile</a>
-                    <a class="dropdown-item" href="{{route('dashboard.profile.settings')}}">Settings</a>
-                    <a class="dropdown-item text-red-400" href="{{route('auth.logout')}}">Logout</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="border-radius: 19px;">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item text-red-400" href="{{route('admin.dashboard.logout')}}">Logout</a>
                     </div>
                 </li>
                 </ul>
@@ -73,7 +77,7 @@
             <nav class="vertnav navbar navbar-light">
               <!-- nav bar -->
               <div class="w-100 mb-4 d-flex">
-                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/dashboard">
+                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{route('admin.dashboard')}}">
                   <img src="{{ asset('linlogo.png')}}"  />
                 </a>
               </div>
@@ -82,26 +86,55 @@
               </p>
               <ul class="navbar-nav flex-fill w-100 mb-2">
                 <li class="nav-item dropdown">
-                  <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-book fe-16"></i>
+                  <a href="#question" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="bi bi-question-square"></i>
                     <span class="ml-3 item-text">Questions Bank</span>
                   </a>
-                  <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                      @foreach (getsubject() as $item)
-                      <a class="nav-link pl-3" href="/dashboard/quiz/{{$item->subjectname}}"><span class="ml-1">{{$item->subjectname}}</span></a>
-                      @endforeach
+                  <ul class="collapse list-unstyled pl-4 w-100" id="question">
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.question.questionmode')}}"><span class="ml-1">Create Question</span></a>
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.question.viewQuestion')}}"><span class="ml-1">View Questions</span></a>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-user fe-16"></i>
-                    <span class="ml-3 item-text">Profile</span>
+                  <a href="#subject" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="bi bi-book"></i>
+                    <span class="ml-3 item-text">Subject</span>
                   </a>
-                  <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                    <a class="nav-link pl-3" href="/dashboard/profile"><span class="ml-1">Overview</span></a>
-                    <a class="nav-link pl-3" href="/dashboard/profile/settings"><span class="ml-1">Settings</span></a>
+                  <ul class="collapse list-unstyled pl-4 w-100" id="subject">
+                    <a class="nav-link pl-3" href="{{route('admin.dashboard.subject.createSubject')}}?hide"><span class="ml-1">Create Subject</span></a>
+                    <a class="nav-link pl-3" href="{{route('admin.dashboard.subject.viewSubject')}}"><span class="ml-1">View Subject</span></a>
                   </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                      <i class="bi bi-person"></i>
+                      <span class="ml-3 item-text">Users</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="user">
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">Create Users</span></a>
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">View Users</span></a>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a href="#student" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="bi bi-people"></i>
+                      <span class="ml-3 item-text">Student</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="student">
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">Create Student</span></a>
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">View Student</span></a>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="bi bi-person"></i>
+                      <span class="ml-3 item-text">Profile</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="profile">
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">Overview</span></a>
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">Settings</span></a>
+                    </ul>
+                  </li>
                 <li class="nav-item dropdown">
                   <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-compass fe-16"></i>
@@ -109,18 +142,12 @@
                   </a>
                 </li>
               </ul>
-              <div class="btn-box w-100 mt-4 mb-1">
-                <a href="{{ route('auth.logout')}}" class="btn-danger text-center btn-sm btn-block">
-                  <i class="fe fe-log-out fe-12 mx-2"></i><span class="small">Logout</span>
-                </a>
-              </div>
             </nav>
           </aside>
           <main role="main" class="main-content">
            @yield('content')
           </main> <!-- main -->
         </div> <!-- .wrapper -->
-        <script src="{{asset('client/js/jquery.min.js')}}"></script>
         <script src="{{asset('client/js/popper.min.js')}}"></script>
         <script src="{{asset('client/js/moment.min.js')}}"></script>
         <script src="{{asset('client/js/bootstrap.min.js')}}"></script>

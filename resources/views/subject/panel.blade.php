@@ -4,7 +4,7 @@
 @if (!Session::get('studentid'))
    <script>window.location.href="{{route('auth.login')}}"</script>
 @endif
-<div class="container-fluid">
+<div class="container-fluid mt-3">
    <div class="row">
        <div class="col-md-4">
         <form hx-get="/dashboard/question" hx-trigger='click' hx-target="#respone">

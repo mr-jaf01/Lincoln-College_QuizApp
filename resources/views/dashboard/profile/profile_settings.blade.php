@@ -16,8 +16,8 @@
     @csrf
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card animate__animated animate__fadeInUp">
-                <div class="card-header d-flex flex-row justify-content-between">
+            <div class="card animate__animated animate__fadeInUp" style="border-radius: 19px;">
+                <div class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
                     <span class="text-red-400"><a href="{{ route('dashboard')}}">Dashboard</a><i class="fe fe-arrow-right"></i><a href="{{route('dashboard.profile')}}">Profile</a><i class="fe fe-arrow-right"></i>Settings</span>
                 </div>
                 <div class="card-body animate__animated animate__fadeInUp">
@@ -31,7 +31,7 @@
                         @endif
                     </center>
                     <div class="card">
-                        <div class="card-header d-flex flex-row justify-content-between">
+                        <div class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                   <a  class="nav-link active font-weight-normal" id="personal-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="true">Personal Info</a>
@@ -113,7 +113,7 @@
                                                 <input id="cpassword" name="cpassword" type="password"   class="appearance-none relative  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm New Password">
                                             </div>
                                             <div class="mt-2">
-                                                <button class="btn btn-danger">Save Changes</button>
+                                                <button style="border-radius: 19px;" class="btn btn-danger">Save Changes</button>
                                             </div>
                                     </div>
                               </div>

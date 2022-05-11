@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
-     <div class="card rounded">
-         <div class="card-header">
+     <div class="card" style="border-radius: 19px;">
+         <div class="card-header" style="border-radius: 19px;">
              <style>
                  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
                      color : rgb(243, 40, 40);
@@ -45,7 +45,7 @@
                                  <div class="col-md-4 alert alert-success"><p><i class="bi bi-check-circle"></i> Answered Questions : <span class="font-weight-bold text-green-600">{{ $totalnumber_answer }}</span></p></div>
                              </div>
                              <div class="row justify-content-around d-flex mt-3 mb-3">
-                                 <a href="/dashboard/quiz/{{$subject}}/{{$year}}" class="group relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                 <a style="border-radius:19px;" href="/dashboard/quiz/{{$subject}}/{{$year}}" class="group relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                      Start Quiz
                                  </a>
                              </div>
