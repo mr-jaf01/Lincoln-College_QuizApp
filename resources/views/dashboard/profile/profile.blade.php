@@ -14,7 +14,7 @@
                 <div class="card-body">
                  <div class="row animate__animated animate__fadeInUp">
                      <div class="col-md-6 d-flex justify-content-center mb-2" style="height: 150px">
-                         <img src="{{ asset('assets/avatars/default.jpg')}}" width="150" class="rounded" />
+                         <img src="{{ asset('client/assets/avatars/default.jpg')}}" width="150" class="rounded" />
                      </div>
                      <div class="col-md-6">
                          <div class="personal-info">

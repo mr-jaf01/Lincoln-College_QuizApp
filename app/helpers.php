@@ -3,6 +3,7 @@ use App\Models\student;
 use App\Models\subjects;
 use App\Models\questions;
 use App\Models\answers;
+use App\Models\User;
 
 
 
@@ -142,4 +143,27 @@ function number_of_all_questions(){
  */
 function number_Qtion_by_subject($subject){
     return questions::where('subject_id',$subject)->count();
+}
+
+/**
+ * It returns a single user from the database based on the id passed to it
+ *
+ * @param id The id of the user you want to get.
+ *
+ * @return The user with the id of
+ */
+function getsingleUser($id){
+    return User::find($id);
+}
+
+function numberofsubject(){
+    return subjects::all()->count();
+}
+
+function numberofstudents(){
+    return student::all()->count();
+}
+
+function numberofusers(){
+    return User::all()->count();
 }

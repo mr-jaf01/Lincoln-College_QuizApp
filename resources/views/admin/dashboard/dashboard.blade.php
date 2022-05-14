@@ -30,7 +30,7 @@
                     <i class="bi bi-book text-red-500"></i>
                 </h5>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title">Total Number Of Subjects : <span class="font-weight-bold text-red-500">{{floor(number_format(numberofsubject(), 2))}}</span></h5>
                 <div class="d-flex flex-row justify-content-between">
                     <span></span>
                     <a href="{{route('admin.dashboard.subject.viewSubject')}}" style="border-radius:19px;" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700">See all Subjects <i class="bi bi-arrow-right-circle"></i></a>
@@ -48,7 +48,7 @@
                     <i class="bi bi-people text-red-500"></i>
                 </h5>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title">Total Number Of Students : <span class="font-weight-bold text-red-500">{{floor(number_format(numberofstudents(), 2))}}</span></h5>
                 <div class="d-flex flex-row justify-content-between">
                     <span></span>
                     <a href="{{route('admin.dashboard.question.viewQuestion')}}" style="border-radius:19px;" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700">See all Students <i class="bi bi-arrow-right-circle"></i></a>
@@ -59,14 +59,14 @@
         <div class="col-md-6">
             <div class="card" style="border-radius: 19px;">
                 <h5 class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
-                    USERS
+                    TEACHERS MODULE
                     <i class="bi bi-person text-red-500"></i>
                 </h5>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title">Total Number Of Teachers : <span class="font-weight-bold text-red-500">{{floor(number_format(numberofusers(), 2))}}</span></h5>
                 <div class="d-flex flex-row justify-content-between">
                     <span></span>
-                    <a href="{{route('admin.dashboard.question.viewQuestion')}}" style="border-radius:19px;" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700">See all Users <i class="bi bi-arrow-right-circle"></i></a>
+                    <a href="{{route('admin.dashboard.users')}}" style="border-radius:19px;" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700">See all Users <i class="bi bi-arrow-right-circle"></i></a>
                 </div>
                 </div>
               </div>

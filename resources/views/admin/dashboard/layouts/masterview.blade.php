@@ -108,11 +108,11 @@
                 <li class="nav-item dropdown">
                     <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                       <i class="bi bi-person"></i>
-                      <span class="ml-3 item-text">Users</span>
+                      <span class="ml-3 item-text">Teacher</span>
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="user">
-                      <a class="nav-link pl-3" href="#"><span class="ml-1">Create Users</span></a>
-                      <a class="nav-link pl-3" href="#"><span class="ml-1">View Users</span></a>
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.users.create')}}?new"><span class="ml-1">Create Teacher</span></a>
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.users')}}"><span class="ml-1">View Teachers</span></a>
                     </ul>
                   </li>
                   <li class="nav-item dropdown">
@@ -122,7 +122,7 @@
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="student">
                       <a class="nav-link pl-3" href="#"><span class="ml-1">Create Student</span></a>
-                      <a class="nav-link pl-3" href="#"><span class="ml-1">View Student</span></a>
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.students')}}"><span class="ml-1">View Student</span></a>
                     </ul>
                   </li>
                   <li class="nav-item dropdown">

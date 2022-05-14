@@ -8,6 +8,8 @@ use App\Http\Controllers\quizController as QuizContro;
 use App\Http\Controllers\admin\AuthController as AdminAuth;
 use App\Http\Controllers\admin\SubjectController as SubjectController;
 use App\Http\Controllers\admin\QuestionController as QuestionController;
+use App\Http\Controllers\admin\UserController as UserController;
+use App\Http\Controllers\admin\StudentController as StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +84,15 @@ Route::get('admin/dashboard/question/view/{id}', [QuestionController::class,'get
 Route::get('admin/dashboard/question/', [QuestionController::class,'getquestionByID']);
 Route::post('admin/dashboard/question/update', [QuestionController::class,'Update'])->name('admin.dashboard.question.update');
 Route::get('admin/dashboard/question/delete/{id}',[QuestionController::class, 'delete'])->name('admin.dashboard.question.delete');
+
+
+//Admin Users Route
+Route::get('admin/dashboard/users',[UserController::class, 'Users'])->name('admin.dashboard.users');
+Route::get('admin/dashboard/users/create',[UserController::class, 'CreateUser'])->name('admin.dashboard.users.create');
+Route::post('admin/dashboard/users/save',[UserController::class, 'SaveUser'])->name('admin.dashboard.users.save');
+Route::post('admin/dashboard/users/update',[UserController::class, 'update'])->name('admin.dashboard.users.update');
+Route::get('admin/dashboard/users/delete/{id}',[UserController::class, 'deleteUser'])->name('admin.dashboard.users.delete');
+
+
+//admin Student Route
+Route::get('admin/dashboard/students',[StudentController::class, 'allStudent'])->name('admin.dashboard.students');

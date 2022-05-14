@@ -11,19 +11,19 @@
              </style>
              <ul class="d-flex flex-row justify-content-around nav nav-tabs" id="myTab" role="tablist">
                  <li class="nav-item" role="presentation">
-                     <a class="nav-link active link-danger d-flex flex-column align-items-center" id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="true"><i class="bi bi-collection-play"></i>Video </a>
-                 </li>
-                 <li class="nav-item" role="presentation">
                      <a class="nav-link link-danger d-flex flex-column align-items-center" id="quiz-tab" data-toggle="tab" href="#quiz" role="tab" aria-controls="quiz" aria-selected="false"><i class="bi bi-question-circle"></i>Quiz</a>
                  </li>
+                 <li class="nav-item" role="presentation">
+                    <a class="nav-link active link-danger d-flex flex-column align-items-center" id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="true"><i class="bi bi-collection-play"></i>Video </a>
+                </li>
              </ul>
          </div>
          <div class="card-body">
              <div class="tab-content" id="myTabContent">
-                 <div class="tab-pane fade show active" id="video" role="tabpanel" aria-labelledby="video-tab">
-                     <center><span class="alert alert-success text-center">No Content Yet!! - Check back later</span></center>
-                 </div>
-                 <div class="tab-pane fade" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
+                <div class="tab-pane fade show active " id="video" role="tabpanel" aria-labelledby="video-tab">
+                    <center><span class="alert alert-success text-center">No Content Yet!! - Check back later</span></center>
+                </div>
+                 <div class="tab-pane fade " id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
                      <div class="row">
                          <div class="col-md-2 mb-2">
                              <div class="card">

@@ -84,7 +84,7 @@
               <form id="formAuthentication" class="mb-3" action="{{route('admin.auth.login')}}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label"></label>
                   <input
                     type="text"
                     class="form-control"
@@ -96,7 +96,7 @@
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label" for="password"></label>
                     <a href="auth-forgot-password-basic.html">
                       <small class="text-red-400">Forgot Password?</small>
                     </a>
@@ -107,7 +107,7 @@
                       id="password"
                       class="form-control focus:outline-none focus:border-red-500"
                       name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      placeholder="Enter your Password"
                       aria-describedby="password"
                     />
                   </div>
@@ -117,6 +117,7 @@
                         <label class="input-group-text bg-red-500 text-white" for="inputGroupSelect01">Role</label>
                         <select name="role" class="form-select" id="inputGroupSelect01">
                           <option value="admin">Admin</option>
+                          <option value="teacher">Teacher</option>
                           <option value="developer">Developer</option>
                         </select>
                       </div>
