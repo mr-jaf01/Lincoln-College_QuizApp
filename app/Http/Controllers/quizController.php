@@ -9,7 +9,7 @@ use Session;
 
 class quizController extends Controller
 {
-    //quiz start function.
+
     public function start($subject, $year){
         $all_question = getallquestion($subject, $year);
         if(count($all_question) <= 0){
@@ -41,5 +41,9 @@ class quizController extends Controller
         $save->save();
         $request->session()->put('selectedoption',$request->option);
         return back()->with('pagination','Answer Recorded')->with('button',$request->button);
+    }
+
+    public function quizDone(){
+        return view('quiz.quiz_done');
     }
 }

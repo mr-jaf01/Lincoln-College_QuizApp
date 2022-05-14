@@ -121,9 +121,6 @@ function getoption($qtion,$user){
 
 
 //Admin helper functions below
-
-
-
 /**
  * It returns the number of all questions in the database.
  *
@@ -156,14 +153,31 @@ function getsingleUser($id){
     return User::find($id);
 }
 
+/**
+ * It returns the number of subjects in the database.
+ *
+ * @return The number of subjects in the database.
+ */
 function numberofsubject(){
     return subjects::all()->count();
 }
 
+/**
+ * It returns the number of students in the database
+ *
+ * @return The number of students in the database.
+ */
 function numberofstudents(){
     return student::all()->count();
 }
 
+/**
+ * It returns the number of users in the database
+ *
+ * @return The number of users in the database.
+ */
 function numberofusers(){
     return User::all()->count();
 }
+
+

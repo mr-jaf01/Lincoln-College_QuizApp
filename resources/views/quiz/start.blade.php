@@ -148,7 +148,14 @@
                 <span class="d-flex flex-row justify-content-around animate__animated animate__fadeInUp mt-3">{{ $all_question->links() }}</span>
                 <div class="d-flex flex-row justify-content-between">
                     <p></p>
-                    <a href="#" class="btn btn-success text-white animate__animated animate__fadeInLeft" style="border-radius:40%;"><i class="bi bi-chat-dots"></i></a>
+                    <p>
+                        <a href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"> Ask for Help</i></a>
+                    @if(isset($_GET['page']))
+                        @if(numberofquestions($question->subject_id, $question->year) == $_GET['page'])
+                            <a href="/quizDone" class="btn btn-primary" style="border-radius:19px;">Quiz Done</a>
+                        @endif
+                    @endif
+                    </p>
                 </div>
             </div>
         </div>
