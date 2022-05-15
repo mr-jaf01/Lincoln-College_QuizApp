@@ -109,11 +109,13 @@
                   </a>
                 </li>
               </ul>
+              <!--
               <div class="btn-box w-100 mt-4 mb-1">
                 <a href="{{ route('auth.logout')}}" class="btn-danger text-center btn-sm btn-block">
                   <i class="fe fe-log-out fe-12 mx-2"></i><span class="small">Logout</span>
                 </a>
               </div>
+            -->
             </nav>
           </aside>
           <main role="main" class="main-content">

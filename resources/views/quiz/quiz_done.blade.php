@@ -5,7 +5,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            Quiz Done.
+            @foreach (AnswerByuser($_GET['subject'],$_GET['year'],$_GET['answerBy']) as $all_ans)
+                {{$all_ans->qtion_id}}
+                {{$all_ans->qtion_ans}}
+                {{$all_ans->subject_id}}
+                {{$all_ans->year}}
+                <hr class="my-1" />
+            @endforeach
         </div>
     </div>
 </div>

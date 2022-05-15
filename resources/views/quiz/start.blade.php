@@ -149,10 +149,10 @@
                 <div class="d-flex flex-row justify-content-between">
                     <p></p>
                     <p>
-                        <a href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"> Ask for Help</i></a>
+                        <a href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"></i> Ask for Help</a>
                     @if(isset($_GET['page']))
                         @if(numberofquestions($question->subject_id, $question->year) == $_GET['page'])
-                            <a href="/quizDone" class="btn btn-primary" style="border-radius:19px;">Quiz Done</a>
+                            <a href="/quizDone?subject={{$question->subject_id}}&year={{$question->year}}&answerBy={{Session::get('studentid')}}" class="btn btn-primary" style="border-radius:19px;">Quiz Done</a>
                         @endif
                     @endif
                     </p>

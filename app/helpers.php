@@ -111,6 +111,17 @@ function getoption($qtion,$user){
     return DB::table('answers')->select('qtion_ans')->where('qtion_id',$qtion)->where('answer_by',$user)->pluck('qtion_ans')->first();
 }
 
+/**
+ * It returns all the answers for a given subject, year and user
+ *
+ * @param subject The subject ID
+ * @param year the year of the exam
+ * @param user the user id
+ */
+function AnswerByuser($subject,$year,$user){
+    return answers::where('subject_id',$subject)->where('year',$year)->where('answer_by',$user)->get();
+}
+
 
 
 
