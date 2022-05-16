@@ -54,7 +54,7 @@
                  <hr class="my-1"/>
                  <div class="d-flex flex-row justify-content-between">
                      <p></p>
-                     <a style="border-radius: 19px;" href="{{route('dashboard.profile.settings')}}" class=" mt-3 btn btn-sm btn-primary">Edit & Update</a>
+                     <a style="border-radius: 19px;" href="{{route('dashboard.profile.settings')}}" class="mt-3 btn btn-sm btn-primary">Edit & Update</a>
                  </div>
                 </div>
               </div>
