@@ -16,7 +16,7 @@
                 @if (Session::get('fail'))
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="alert alert-success">{{Session::get('fail')}}</p>
+                            <p class="alert alert-danger">{{Session::get('fail')}}</p>
                         </div>
                     </div>
                 @endif
@@ -29,8 +29,8 @@
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-red-400 text-white" for="inputGroupSelect01">Question type</label>
                         </div>
-                        <select name="questiontype" class="custom-select  shadow-none" id="inputGroupSelect01" >
-                          <option selected>Choose...</option>
+                        <select name="questiontype"class="custom-select  shadow-none" id="inputGroupSelect01" required>
+                          <option value="Choose">Choose</option>
                           <option value="mcq">MCQ (Multiple Choice Question)</option>
                           <option value="essay">ESSAY (Essay Question)</option>
                         </select>
@@ -40,8 +40,8 @@
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-red-400 text-white" for="inputGroupSelect01">Subject</label>
                         </div>
-                        <select name="subject" class="custom-select  shadow-none" id="inputGroupSelect01" >
-                          <option selected>Choose...</option>
+                        <select name="subject" class="custom-select  shadow-none" id="inputGroupSelect01" required>
+                          <option value="Choose">Choose</option>
                           @foreach (getsubject() as $item)
                           <option value="{{$item->subjectname}}"> {{$item->subjectname}}</option>
                           @endforeach
@@ -53,8 +53,8 @@
                         <div class="input-group-prepend">
                           <label class="input-group-text bg-red-400 text-white" for="inputGroupSelect01">Year</label>
                         </div>
-                        <select name="year" class="custom-select  shadow-none" id="inputGroupSelect01" >
-                            <option selected>Choose...</option>
+                        <select name="year" class="custom-select  shadow-none" id="inputGroupSelect01" required>
+                            <option value="Choose">Choose</option>
                             <option value="2015">2015</option>
                             <option value="2016">2016</option>
                             <option value="2017">2017</option>

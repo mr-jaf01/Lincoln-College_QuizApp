@@ -122,6 +122,19 @@ function AnswerByuser($subject,$year,$user){
     return answers::where('subject_id',$subject)->where('year',$year)->where('answer_by',$user)->get();
 }
 
+/**
+ * It returns the correct answer for a question, given the question ID, subject and year
+ *
+ * @param qtionID The question ID
+ * @param subject The subject ID
+ * @param year The year of the exam
+ *
+ * @return The correct answer for the question.
+ */
+function getCorrectAns($qtionID,$subject,$year){
+    return DB::table('questions')->select('correct_opt')->where('qtions',$qtionID)->where('subject_id',$subject)->where('year',$year)->pluck('correct_opt')->first();
+}
+
 
 
 

@@ -11,7 +11,7 @@
         border-bottom: 2px solid rgb(243, 40, 40);
     }
 </style>
-<div class="conatiner-fluid">
+<div class="conatiner-fluid mt-3">
     <form action="{{route('dashboard.profile.settings.update')}}" method="POST">
     @csrf
     <div class="row justify-content-center">
@@ -125,12 +125,12 @@
     </div>
 </div>
 </form>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/moment.min.js')}}"></script>
-<script src="{{asset('js/simplebar.min.js')}}"></script>
-<script src="{{asset('js/tinycolor-min.js')}}"></script>
-<script src="{{asset('js/config.js')}}"></script>
-<script src="{{asset('js/apps.js')}}"></script>
+<script src="{{asset('client/js/jquery.min.js')}}"></script>
+<script src="{{asset('client/js/popper.min.js')}}"></script>
+<script src="{{asset('client/js/moment.min.js')}}"></script>
+<script src="{{asset('client/js/simplebar.min.js')}}"></script>
+<script src="{{asset('client/js/tinycolor-min.js')}}"></script>
+<script src="{{asset('client/js/config.js')}}"></script>
+<script src="{{asset('client/js/apps.js')}}"></script>
 @endsection
 

@@ -1,10 +1,10 @@
 @extends('dashboard.layouts.masterlayout')
 @section('tittle', 'Quiz start')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid mt-3">
     <div class="row justify-content-center d-flex">
         <div class="col-md-12">
-            <div class="card p-4" style="border-radius:19px;">
+            <div class="card p-2" style="border-radius:19px;">
             @foreach ($all_question as $question)
 
             <!----
@@ -26,7 +26,7 @@
                             <img src="{{$question->qimage ? asset($question->qimage) : ''}}" id="myImg" class="img-fluid" style=""/>
                         </div>
                         @if ($question->instruction)
-                        <div class="col-md-6 alert alert-danger">
+                        <div class="col-md-6 alert alert-danger mt-lg-4" style="margin-top: 30px;">
                             <span>Instruction:</span>
                             <hr class="my-1" />
                             <p class="">
@@ -96,7 +96,7 @@
                     {!! $question->qtions !!}
                     </h5>
                     <div class="row">
-                        <div class="col-md-6 d-flex flex-row justify-content-center">
+                        <div class="col-md-6 justify-content-center">
                             <img src="{{$question->qimage ? asset($question->qimage) : ''}}" id="myImg" class="img-fluid" style=""/>
                         </div>
                         @if ($question->instruction)
@@ -146,7 +146,7 @@
                 </div>
             @endif
                 <span class="d-flex flex-row justify-content-around animate__animated animate__fadeInUp mt-3">{{ $all_question->links() }}</span>
-                <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-row justify-content-between mt-4">
                     <p></p>
                     <p>
                         <a href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"></i> Ask for Help</a>

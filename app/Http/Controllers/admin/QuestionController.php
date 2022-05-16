@@ -25,26 +25,47 @@ class QuestionController extends Controller
     * @return The return value is the value of the last expression evaluated.
     */
     public function saveQuestion(Request $request){
-        $qtionimage_name = $request->file('image')->getClientOriginalName();
-        $request->file('image')->move('question_image/',$qtionimage_name);
-        $new_question = new questions();
-        $new_question->qtions = $request->question;
-        $new_question->opt1 = $request->option1;
-        $new_question->opt2 = $request->option2;
-        $new_question->opt3 = $request->option3;
-        $new_question->opt4 = $request->option4;
-        $new_question->opt5 = $request->option5;
-        $new_question->correct_opt = $request->correct_answer;
-        $new_question->subject_id = $request->subject;
-        $new_question->year = $request->year;
-        $new_question->instruction = $request->instruction;
-        $new_question->qimage = 'question_image/'.$qtionimage_name;
-        $new_question->qmode = $request->qtiontype;
-        $status = $new_question->save();
-        if($status){
-            return redirect('/admin/dashboard/question/questionmode')->with('success','Question Created Successfully');
+        if($request->has('image')){
+            $qtionimage_name = $request->file('image')->getClientOriginalName();
+            $request->file('image')->move('question_image/',$qtionimage_name);
+            $new_question = new questions();
+            $new_question->qtions = $request->question;
+            $new_question->opt1 = $request->option1;
+            $new_question->opt2 = $request->option2;
+            $new_question->opt3 = $request->option3;
+            $new_question->opt4 = $request->option4;
+            $new_question->opt5 = $request->option5;
+            $new_question->correct_opt = $request->correct_answer;
+            $new_question->subject_id = $request->subject;
+            $new_question->year = $request->year;
+            $new_question->instruction = $request->instruction;
+            $new_question->qimage = 'question_image/'.$qtionimage_name;
+            $new_question->qmode = $request->qtiontype;
+            $status = $new_question->save();
+            if($status){
+                return redirect('/admin/dashboard/question/questionmode')->with('success','Question Created Successfully');
+            }else{
+                return redirect('/admin/dashboard/question/questionmode')->with('fail','Unable to create Question');
+            }
         }else{
-            return redirect('/admin/dashboard/question/questionmode')->with('fail','Unable to create Question');
+            $new_question = new questions();
+            $new_question->qtions = $request->question;
+            $new_question->opt1 = $request->option1;
+            $new_question->opt2 = $request->option2;
+            $new_question->opt3 = $request->option3;
+            $new_question->opt4 = $request->option4;
+            $new_question->opt5 = $request->option5;
+            $new_question->correct_opt = $request->correct_answer;
+            $new_question->subject_id = $request->subject;
+            $new_question->year = $request->year;
+            $new_question->instruction = $request->instruction;
+            $new_question->qmode = $request->qtiontype;
+            $status = $new_question->save();
+            if($status){
+                return redirect('/admin/dashboard/question/questionmode')->with('success','Question Created Successfully');
+            }else{
+                return redirect('/admin/dashboard/question/questionmode')->with('fail','Unable to create Question');
+            }
         }
 
     }
@@ -62,10 +83,15 @@ class QuestionController extends Controller
     * @param Request request The request object.
     */
     public function questionmodecheck(Request $request){
-        $qtiontype = $request->questiontype;
-        $subject = $request->subject;
-        $year = $request->year;
-        return view('admin.dashboard.question.createQtion', compact('qtiontype','subject','year'));
+        if($request->questiontype == "Choose" || $request->subject == "Choose" || $request->year == "Choose" ){
+            return back()->with('fail','All Field are to be select...');
+        }else{
+            $qtiontype = $request->questiontype;
+            $subject = $request->subject;
+            $year = $request->year;
+            return view('admin.dashboard.question.createQtion', compact('qtiontype','subject','year'));
+        }
+
     }
 
     /**

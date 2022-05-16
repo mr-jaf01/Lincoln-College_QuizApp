@@ -11,10 +11,10 @@
                     <h5 class="card-header">CREATING NEW QUESTION <br><small class="text-muted">Please Fill all the require field</small></h5>
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 What is your Question ?
                             </div>
-                            <div class="col-md-6 d-flex flex-column">
+                            <div class="col-md-8 d-flex flex-column">
                                 <small class="text-muted">Write Question Below</small>
                                 <textarea name="question" id="editor"></textarea>
                             </div>
@@ -23,8 +23,8 @@
                     @if ($qtiontype == 'mcq')
                     <div class="option-hide-or-show">
                         <div class="row mb-3">
-                            <div class="col-md-6">Option 1</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">Option 1</div>
+                            <div class="col-md-8">
                                 <small class="text-muted">Write Option 1 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -36,7 +36,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault1">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1" value="" type="radio" name="correct_answer" id="flexRadioDefault1">
+                                        <input class="form-check-input ml-1" value="option1" type="radio" name="correct_answer" id="flexRadioDefault1">
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
 
                         <hr class="my-1" />
                         <div class="row mb-3">
-                            <div class="col-md-6">Option 2</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">Option 2</div>
+                            <div class="col-md-8">
                                 <small class="text-muted">Write Option 2 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -57,7 +57,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault2">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1" value="" type="radio" name="correct_answer" id="flexRadioDefault2">
+                                        <input class="form-check-input ml-1" value="option2" type="radio" name="correct_answer" id="flexRadioDefault2">
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +65,8 @@
 
                         <hr class="my-1" />
                         <div class="row mb-3">
-                            <div class="col-md-6">Option 3</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">Option 3</div>
+                            <div class="col-md-8">
                                 <small class="text-muted">Write Option 3 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -78,7 +78,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault3">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1" value="" type="radio" name="correct_answer" id="flexRadioDefault3">
+                                        <input class="form-check-input ml-1" value="option3" type="radio" name="correct_answer" id="flexRadioDefault3">
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +86,8 @@
 
                         <hr class="my-1" />
                         <div class="row mb-3">
-                            <div class="col-md-6">Option 4</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">Option 4</div>
+                            <div class="col-md-8">
                                 <small class="text-muted">Write Option 4 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -99,7 +99,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault4">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1" value="" type="radio" name="correct_answer" id="flexRadioDefault4">
+                                        <input class="form-check-input ml-1" value="option4" type="radio" name="correct_answer" id="flexRadioDefault4">
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +107,8 @@
 
                         <hr class="my-1" />
                         <div class="row mb-3">
-                            <div class="col-md-6">Option 5</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">Option 5</div>
+                            <div class="col-md-8">
                                 <small class="text-muted">Write Option 5 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -120,7 +120,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault5">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1" value="" type="radio" name="correct_answer" id="flexRadioDefault5">
+                                        <input class="form-check-input ml-1" value="option5" type="radio" name="correct_answer" id="flexRadioDefault5">
                                     </div>
                                 </div>
                             </div>
@@ -129,20 +129,20 @@
                     @endif
                         <hr class="my-1"/>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 Question Instruction (Optional)
                             </div>
-                            <div class="col-md-6 d-flex flex-column">
+                            <div class="col-md-8 d-flex flex-column">
                                 <small class="text-muted">Write your Instruction Below</small>
                                 <textarea name="instruction" class="editor"></textarea>
                             </div>
                         </div>
                         <hr class="my-1"/>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 Question Image (Optional)
                             </div>
-                            <div class="col-md-6 d-flex flex-column">
+                            <div class="col-md-8 d-flex flex-column">
                                 <div class="card shadow mb-4">
                                     <div class="card-body">
 
@@ -194,7 +194,7 @@
             </div>
         </div>
         <input type="hidden" name="qtiontype" value="{{$qtiontype}}">
-        <input type="hidden" name="subject" value="{{$subject}}">
+        <input type="hidden" name="subject" value="{{$subject}}" >
         <input type="hidden" name="year" value="{{$year}}">
     </form>
 </div>
