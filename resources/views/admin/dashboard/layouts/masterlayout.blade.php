@@ -44,7 +44,7 @@
         <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <script src="{{ asset('admin/assets/js/config.js') }}"></script>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
         <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>

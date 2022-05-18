@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('linlogo.png')}}" />
     <title>Quiz App - @yield('tittle')</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
 

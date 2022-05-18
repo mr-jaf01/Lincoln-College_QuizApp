@@ -4,6 +4,8 @@ use App\Models\subjects;
 use App\Models\questions;
 use App\Models\answers;
 use App\Models\User;
+use App\Models\performance;
+
 
 
 
@@ -107,8 +109,8 @@ function number_of_answered_questions($subject,$year,$answered_by){
  * @param qtion The question ID
  * @param user The user id of the user who answered the question
  */
-function getoption($qtion,$user){
-    return DB::table('answers')->select('qtion_ans')->where('qtion_id',$qtion)->where('answer_by',$user)->pluck('qtion_ans')->first();
+function getoption($qtion,$user,$subject,$year){
+    return DB::table('answers')->select('qtion_ans')->where('qtion_id',$qtion)->where('answer_by',$user)->where('subject_id',$subject)->where('year',$year)->pluck('qtion_ans')->first();
 }
 
 /**
@@ -135,6 +137,29 @@ function getCorrectAns($qtionID,$subject,$year){
     return DB::table('questions')->select('correct_opt')->where('qtions',$qtionID)->where('subject_id',$subject)->where('year',$year)->pluck('correct_opt')->first();
 }
 
+function performance_update($userid,$qtion,$subject,$year,$score){
+    $check_student = performance::where('user_id',$userid)->where('qtion_id',$qtion)->where('subject_id',$subject)->where('year',$year)->first();
+    $check = $check_student->count();
+    if($check > 0){
+        $check_student->increment('percentage',$score);
+    }else{
+        $new_performance = new performance();
+        $new_performance->user_id = $userid;
+        $new_performance->qtion_id = $qtion;
+        $new_performance->subject_id = $subject;
+        $new_performance->year = $year;
+        $new_performance->save();
+    }
+
+}
+
+
+
+//{{Session::get('score')}}
+//{{Session::get('student_p')}}
+//{{
+//getCorrectAns($question->qtions,$question->subject_id,$question->year) == Session::get('selectedoption')? performance_update(Session::get('studentid'),$question->subject_id,$question->year):''
+//}}
 
 
 

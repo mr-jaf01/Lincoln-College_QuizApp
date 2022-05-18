@@ -47,21 +47,48 @@ class quizController extends Controller
     *
     * @return the view of the page.
     */
+   /**
+    * It checks if the user has answered the question before, if yes, it updates the answer, if no, it
+    * saves the answer
+    *
+    * @param Request request This is the request object that contains all the information about the
+    * request.
+    *
+    * @return the view of the page.
+    */
+   /**
+    * It checks if the answer is correct, if it is, it updates the score to 1, if not, it updates the
+    * score to 0
+    *
+    * @param Request request The request object.
+    *
+    * @return A function is being returned.
+    */
     public function save_answer(Request $request){
-       $check_option = answers::where('qtion_id',$request->qtion)->where('answer_by',$request->answer_by)->update(['qtion_ans'=> $request->option]);
+        if(getCorrectAns($request->qtion,$request->subject,$request->year) == $request->option){
+            $check_option = answers::where('qtion_id',$request->qtion)->where('answer_by',$request->answer_by)->update(['qtion_ans'=> $request->option,'score'=>1]);
+        }else{
+            $check_option = answers::where('qtion_id',$request->qtion)->where('answer_by',$request->answer_by)->update(['qtion_ans'=> $request->option,'score'=>0]);
+        }
        if($check_option){
            $request->session()->put('selectedoption',$request->option);
            return back()->with('pagination','Record Updated')->with('button',$request->button);
+        }else{
+            $save = new answers();
+            $save->qtion_id = $request->qtion;
+            $save->qtion_ans = $request->option;
+            $save->answer_by = $request->answer_by;
+            $save->subject_id = $request->subject;
+            if(getCorrectAns($request->qtion,$request->subject,$request->year) == $request->option){
+                $save->score = 1;
+            }else{
+                $save->score = 0;
+            }
+            $save->year = $request->year;
+            $save->save();
+            $request->session()->put('selectedoption',$request->option);
+            return back()->with('pagination','Answer Recorded')->with('button',$request->button);
         }
-        $save = new answers();
-        $save->qtion_id = $request->qtion;
-        $save->qtion_ans = $request->option;
-        $save->answer_by = $request->answer_by;
-        $save->subject_id = $request->subject;
-        $save->year = $request->year;
-        $save->save();
-        $request->session()->put('selectedoption',$request->option);
-        return back()->with('pagination','Answer Recorded')->with('button',$request->button);
     }
 
     /**

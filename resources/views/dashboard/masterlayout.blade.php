@@ -30,7 +30,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('client/css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('client/css/app-dark.css')}}" id="darkTheme" disabled>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
