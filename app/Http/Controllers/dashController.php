@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\student;
+use App\Models\answers;
+use App\Models\performance;
+use App\Models\history;
 use Session;
 
 class dashController extends Controller
 {
-   // index dashboad view
+
+  /**
+   * It checks if the user is logged in, if not it redirects to the login page.
+   *
+   * @return A view called dashboard.dashboard
+   */
    public function dashboard(){
        if(!Session::get('studentid')){
             return redirect('/auth/login');
@@ -17,19 +25,37 @@ class dashController extends Controller
        return view('dashboard.dashboard');
    }
 
-   //profile function
+
+   /**
+    * It returns a view of the profile page, and passes the student object to the view
+    *
+    * @return A view called profile.blade.php
+    */
    public function profile(){
         $student = getstudent(Session::get('studentid'));
         return view('dashboard.profile.profile', compact('student'));
    }
 
-   //profile settings function
+
+  /**
+   * It returns a view called profile_settings, and passes the variable  to the view
+   *
+   * @return A view of the profile settings page.
+   */
    public function profile_settings(){
         $student = getstudent(Session::get('studentid'));
         return view('dashboard.profile.profile_settings', compact('student'));
    }
 
-   //update profile function
+
+
+  /**
+   * If the password field is not empty, then check if the password and confirm password fields match.
+   * If they do, then update the student's details. If they don't, then return an error message. If the
+   * password field is empty, then update the student's details
+   *
+   * @param Request request The request object.
+   */
    public function update(Request $request){
 
     if(!empty($request->password)){
@@ -67,5 +93,10 @@ class dashController extends Controller
         $updatestudent->save();
         return back()->with('success','Updated Successfully');
     }
+   }
+
+   function remove_history(Request $request){
+        history::where('user_id',$request->userid)->where('subject_id',$request->subject)->where('year',$request->year)->delete();
+        return back()->with('success','Quiz Remove Successfully');
    }
 }

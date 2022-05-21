@@ -5,6 +5,7 @@ use App\Models\questions;
 use App\Models\answers;
 use App\Models\User;
 use App\Models\performance;
+use App\Models\history;
 
 
 
@@ -137,30 +138,128 @@ function getCorrectAns($qtionID,$subject,$year){
     return DB::table('questions')->select('correct_opt')->where('qtions',$qtionID)->where('subject_id',$subject)->where('year',$year)->pluck('correct_opt')->first();
 }
 
-function performance_update($userid,$qtion,$subject,$year,$score){
-    $check_student = performance::where('user_id',$userid)->where('qtion_id',$qtion)->where('subject_id',$subject)->where('year',$year)->first();
-    $check = $check_student->count();
-    if($check > 0){
-        $check_student->increment('percentage',$score);
+/**
+ * It checks if the user has taken the quiz before, if not, it saves the quiz history.
+ *
+ * @param user_id The user's ID
+ * @param subject_id The id of the subject you want to get the questions from.
+ * @param year the year of the quiz
+ */
+function quiz_history($user_id,$subject_id,$year){
+    $check_update = history::where('user_id',$user_id)->where('subject_id',$subject_id)->where('year',$year)->count();
+    if($check_update > 0){
+
     }else{
-        $new_performance = new performance();
-        $new_performance->user_id = $userid;
-        $new_performance->qtion_id = $qtion;
-        $new_performance->subject_id = $subject;
-        $new_performance->year = $year;
-        $new_performance->save();
+        $save_quiz = new history();
+        $save_quiz->user_id = $user_id;
+        $save_quiz->subject_id = $subject_id;
+        $save_quiz->year = $year;
+        $save_quiz->save();
     }
+}
+
+/**
+ * It returns all the history objects where the user_id is equal to the user_id passed to the function.
+ *
+ * @param user_id The user's id
+ *
+ * @return An array of history objects
+ */
+function get_quiz_history($user_id){
+    return DB::table('histories')->where('user_id',$user_id)->orderBy('id','desc')->get();
 
 }
 
 
 
-//{{Session::get('score')}}
-//{{Session::get('student_p')}}
-//{{
-//getCorrectAns($question->qtions,$question->subject_id,$question->year) == Session::get('selectedoption')? performance_update(Session::get('studentid'),$question->subject_id,$question->year):''
-//}}
+/**
+ * It returns the sum of the score column in the answers table where the subject_id is equal to the
+ *  variable, the year is equal to the  variable, and the answer_by column is equal to the
+ *  variable
+ *
+ * @param subject the subject id
+ * @param year the year of the exam
+ * @param userid the user id of the user who answered the question
+ *
+ * @return The sum of the score column in the answers table where the subject_id is equal to the
+ *  variable, the year is equal to the  variable, and the answer_by is equal to the
+ *  variable.
+ */
+function get_sum($subject, $year, $userid){
+    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->sum('score');
+}
 
+
+
+function Number_of_failAnswer($subject,$year,$userid){
+    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->where('score',0)->count();
+}
+
+/**
+ * <code>returns the number of correct answers for a given subject, year and userid</code>
+ *
+ * @param subject the subject id
+ * @param year the year of the exam
+ * @param userid The user id of the user who answered the question
+ *
+ * @return The number of correct answers for a particular subject, year and userid.
+ */
+function Number_of_correctAnswer($subject,$year,$userid){
+    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->where('score',1)->count();
+}
+
+
+/**
+ * It checks if a record exists in the database, if it does, it updates it, if it doesn't, it creates
+ * it.
+ *
+ * @param userid The user's id
+ * @param subject The subject ID
+ * @param year The year of the exam
+ * @param per percentage
+ * @param status 1 = Pass, 2 = Fail, 3 = Absent
+ */
+function performance($userid,$subject,$year,$per,$status){
+    $check_exit = performance::where('user_id',$userid)->where('subject_id',$subject)->where('year',$year)->update(['percentage'=>$per,'status'=>$status]);
+    if($check_exit){
+    }else{
+        $save_performance = new performance();
+        $save_performance->user_id = $userid;
+        $save_performance->subject_id = $subject;
+        $save_performance->year = $year;
+        $save_performance->percentage = $per;
+        $save_performance->status = $status;
+        $save_performance->save();
+    }
+}
+
+
+/**
+ * It returns the performance of a student in a particular subject in a particular year.
+ *
+ * @param userid The id of the user
+ * @param subject the subject id
+ * @param year the year of the performance
+ *
+ * @return A single row from the performance table.
+ */
+function get_performance($userid,$subject,$year){
+    return performance::where('user_id',$userid)->where('subject_id',$subject)->where('year',$year)->first();
+}
+
+
+/**
+ * It takes the number of correct answers and the total number of questions and returns the percentage
+ * of correct answers.
+ *
+ * @param QAns The number of questions answered correctly
+ * @param numberOfQ The total number of questions in the quiz.
+ *
+ * @return The percentage of correct answers.
+ */
+function get_percentage($QAns, $numberOfQ){
+   return round((($QAns / $numberOfQ) * 100),2);
+}
 
 
 

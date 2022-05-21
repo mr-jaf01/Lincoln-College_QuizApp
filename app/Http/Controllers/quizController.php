@@ -16,11 +16,13 @@ class quizController extends Controller
      * @param subject The subject you want to take the quiz on.
      * @param year The year of the question paper
      */
+   /**/
     public function start($subject, $year){
         $all_question = getallquestion($subject, $year);
         if(count($all_question) <= 0){
             return back()->with('alert','No Available Questions, Please Select other Subject or Select diffrent Year');
         }else{
+            quiz_history(Session::get('studentid'),$subject,$year);
             return view('quiz.start',compact('all_question'));
         }
 

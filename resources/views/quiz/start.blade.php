@@ -110,14 +110,14 @@
                         @endif
                     </div>
                     <hr class="my-1" />
-                        @if (getoption($question->qtions, Session::get('studentid')) == '')
+                        @if (getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == '')
                         <h4 class="alert alert-info">Write Your Answer Below</h4>
                             <textarea name="option" id="editor"></textarea>
                             <div>
                                 <a hx-get="{{ route('check_answer')}}" hx-target="#respone" hx-trigger="click" class="btn btn-success rounded text-white">Submit Answer</a>
                             </div>
                         @endif
-                        @if (getoption($question->qtions, Session::get('studentid')) != '')
+                        @if (getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) != '')
                         <p class="alert alert-dark"> Answer Submitted</p>
                         @endif
                     <hr class="my-1" />
