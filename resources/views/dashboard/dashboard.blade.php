@@ -34,10 +34,9 @@
                                 </p>
                             </div>
                             <div class="col-md-6">
-                                <p>
-                                <span>Percentage : </span>
-                                <span class="text-red-500">{{get_performance(Session::get('studentid'), $quiz->subject_id, $quiz->year)->percentage}} %</span>
-                                </p>
+                                <div class="row justify-content-end d-flex mb-2">
+                                    <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="--value:{{(int)(get_performance(Session::get('studentid'), $quiz->subject_id, $quiz->year)->percentage)}}"></div>
+                                </div>
                             </div>
                         </div>
                         @endif
@@ -76,3 +75,40 @@
     <script src="{{asset('client/js/config.js')}}"></script>
     <script src="{{asset('client/js/apps.js')}}"></script>
 @endsection
+<style>
+    @keyframes growProgressBar {
+      0%, 33% { --pgPercentage: 0; }
+      100% { --pgPercentage: var(--value); }
+    }
+
+    @property --pgPercentage {
+      syntax: '<number>';
+      inherits: false;
+      initial-value: 0;
+    }
+
+    div[role="progressbar"] {
+      --size: 8rem;
+      --fg:   rgb(200, 24, 24);
+      --bg: #def;
+      --pgPercentage: var(--value);
+      animation: growProgressBar 3s 1 forwards;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
+        conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0)
+        ;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: calc(var(--size) / 5);
+      color: var(--fg);
+    }
+
+    div[role="progressbar"]::before {
+      counter-reset: percentage var(--value);
+      content: counter(percentage) '%';
+    }
+</style>

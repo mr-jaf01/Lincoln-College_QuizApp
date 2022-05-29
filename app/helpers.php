@@ -329,3 +329,8 @@ function numberofusers(){
 }
 
 
+
+//Send Email function
+function sendEmail($recipient,$from,$subject,$body){
+
+}

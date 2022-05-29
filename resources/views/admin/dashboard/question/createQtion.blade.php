@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-md-8 d-flex flex-column">
                                 <small class="text-muted">Write Question Below</small>
-                                <textarea name="question" id="editor"></textarea>
+                                <textarea name="question" id="qeditor"></textarea>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -28,7 +28,7 @@
                                 <small class="text-muted">Write Option 1 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input name="option1" id="option1" class="form-control form-control-lg" type="text">
+                                        <input type="text" name="option1" id="option1"  class="optioneditor form-control form-control-lg">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -36,7 +36,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault1">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1"  onclick="clickoption()" type="radio" name="correct_answer" id="flexRadioDefault1">
+                                        <input class="form-check-input ml-1"  onclick="clickoption1()" type="radio" name="correct_answer" id="flexRadioDefault1">
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 <small class="text-muted">Write Option 2 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input name="option2" id="option2" class="form-control form-control-lg" type="text">
+                                        <input name="option2" id="option2" class="optioneditor form-control form-control-lg" type="text">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -57,7 +57,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault2">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1"  onclick="clickoption()" type="radio" name="correct_answer" id="flexRadioDefault2">
+                                        <input class="form-check-input ml-1"  onclick="clickoption2()" type="radio" name="correct_answer" id="flexRadioDefault2">
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                 <small class="text-muted">Write Option 3 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input name="option3" id="option3" class="form-control form-control-lg" type="text">
+                                        <input name="option3" id="option3" class="optioneditor form-control form-control-lg" type="text">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -78,7 +78,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault3">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1"  onclick="clickoption()" type="radio" name="correct_answer" id="flexRadioDefault3">
+                                        <input class="form-check-input ml-1"  onclick="clickoption3()" type="radio" name="correct_answer" id="flexRadioDefault3">
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                                 <small class="text-muted">Write Option 4 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input name="option4" id="option4" class="form-control form-control-lg" type="text">
+                                        <input name="option4" id="option4" class="optioneditor form-control form-control-lg" type="text">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -99,7 +99,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault4">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1"  onclick="clickoption()" type="radio" name="correct_answer" id="flexRadioDefault4">
+                                        <input class="form-check-input ml-1"  onclick="clickoption4()" type="radio" name="correct_answer" id="flexRadioDefault4">
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                                 <small class="text-muted">Write Option 5 Below</small>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input name="option5" id="option5" class="form-control form-control-lg" type="text">
+                                        <input name="option5" id="option5" class="optioneditor form-control form-control-lg" type="text">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -120,7 +120,7 @@
                                         <label class="form-check-label text-muted" for="flexRadioDefault5">
                                             <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                         </label>
-                                        <input class="form-check-input ml-1"  onclick="clickoption()" type="radio" name="correct_answer" id="flexRadioDefault5">
+                                        <input class="form-check-input ml-1"  onclick="clickoption5()" type="radio" name="correct_answer" id="flexRadioDefault5">
                                     </div>
                                 </div>
                             </div>
@@ -200,32 +200,6 @@
 </div>
 
 
-
-
-
-
-
-
-    <script>
-         function clickoption(){
-            const inputval1 = document.getElementById('option1').value;
-            const option1 = document.getElementById('flexRadioDefault1').value= inputval1;
-
-
-            const inputval2 = document.getElementById('option2').value;
-            const option2 = document.getElementById('flexRadioDefault2').value= inputval2;
-
-
-            const inputval3 = document.getElementById('option3').value;
-            const option3 = document.getElementById('flexRadioDefault3').value= inputval3;
-
-            const inputva4 = document.getElementById('option4').value;
-            const option4 = document.getElementById('flexRadioDefault4').value= inputval4;
-
-            const inputval5 = document.getElementById('option5').value;
-            const option5 = document.getElementById('flexRadioDefault5').value= inputval5;
-        }
-    </script>
     <script src="{{asset('client/js/jquery.min.js')}}"></script>
     <script src="{{asset('client/js/popper.min.js')}}"></script>
     <script src="{{asset('client/js/moment.min.js')}}"></script>
@@ -233,19 +207,42 @@
     <script src="{{asset('client/js/tinycolor-min.js')}}"></script>
     <script src="{{asset('client/js/config.js')}}"></script>
     <script src="{{asset('client/js/apps.js')}}"></script>
-    <!--<script>tinymce.init({ selector:'textarea' });</script>-->
     <script>
-        ClassicEditor
-            .create( document.querySelector( '.editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+        //var editor = new FroalaEditor('#qeditor');
+        tinymce.init({ selector:'.optioneditor',menubar : false,
+            toolbar: [
+            "superscript subscript bold italic underline",
+            ],
+            height : "140"
+        });
+
+        tinymce.init({selector:'textarea'})
     </script>
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+     <script>
+        function clickoption1(){
+          const inputval1 = tinymce.get("option1").getContent();
+          const option1 = document.getElementById('flexRadioDefault1').value= inputval1;
+          alert(option1)
+       }
+       function clickoption2(){
+          const inputval2 = tinymce.get("option2").getContent();
+          const option2 = document.getElementById('flexRadioDefault2').value= inputval2;
+          alert(option2)
+       }
+       function clickoption3(){
+           const inputval3 = tinymce.get("option3").getContent();
+           const option3 = document.getElementById('flexRadioDefault3').value= inputval3;
+           alert(option3)
+       }
+       function clickoption4(){
+           const inputval4 = tinymce.get("option4").getContent();
+           const option4 = document.getElementById('flexRadioDefault4').value= inputval4;
+           alert(option4)
+       }
+       function clickoption5(){
+           const inputval5 = tinymce.get("option5").getContent();
+           const option5 = document.getElementById('flexRadioDefault5').value= inputval5;
+           alert(option5)
+       }
+   </script>
 @endsection

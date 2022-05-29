@@ -44,7 +44,7 @@
                                 Option 1
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{{$qtion->opt1}}<p>
+                                <p>{!! $qtion->opt1 !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -55,7 +55,7 @@
                                 Option 2
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{{$qtion->opt2}}<p>
+                                <p>{!! $qtion->opt2 !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -65,7 +65,7 @@
                                 Option 3
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{{$qtion->opt3}}<p>
+                                <p>{!! $qtion->opt3 !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -75,7 +75,7 @@
                                 Option 4
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{{$qtion->opt4}}<p>
+                                <p>{!! $qtion->opt4 !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -85,7 +85,7 @@
                                 Option 5
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{{$qtion->opt5}}<p>
+                                <p>{!! $qtion->opt5 !!}<p>
                             </div>
                         </div>
                     </div>
@@ -211,24 +211,24 @@
                         </div>
                         <hr class="my-1" />
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 What is your Question ?
                             </div>
-                            <div class="col-md-6 d-flex flex-column">
+                            <div class="col-md-8 d-flex flex-column">
                                 <small class="text-muted">Write Question Below</small>
-                                <textarea name="question" id="editor">{{ $qtion->qtions }}</textarea>
+                                <textarea name="question">{{ $qtion->qtions }}</textarea>
                             </div>
                         </div>
                         @if ($qtion->qmode == 'mcq')
                         <hr class="my-1" />
                         <div class="option-hide-or-show">
                             <div class="row mb-3">
-                                <div class="col-md-6">Option 1</div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">Option 1</div>
+                                <div class="col-md-8">
                                     <small class="text-muted">Write Option 1 Below</small>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input name="option1" class="form-control form-control-lg" type="text" value="{{$qtion->opt1}}">
+                                            <input name="option1" class="optioneditor form-control form-control-lg" type="text" value="{{$qtion->opt1}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -244,12 +244,12 @@
 
                             <hr class="my-1" />
                             <div class="row mb-3">
-                                <div class="col-md-6">Option 2</div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">Option 2</div>
+                                <div class="col-md-8">
                                     <small class="text-muted">Write Option 2 Below</small>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input name="option2" class="form-control form-control-lg" type="text" value="{{$qtion->opt2}}">
+                                            <input name="option2" class="optioneditor form-control form-control-lg" type="text" value="{{$qtion->opt2}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -265,12 +265,12 @@
 
                             <hr class="my-1" />
                             <div class="row mb-3">
-                                <div class="col-md-6">Option 3</div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">Option 3</div>
+                                <div class="col-md-8">
                                     <small class="text-muted">Write Option 3 Below</small>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input name="option3" class="form-control form-control-lg" type="text" value="{{$qtion->opt3}}">
+                                            <input name="option3" class="optioneditor form-control form-control-lg" type="text" value="{{$qtion->opt3}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -286,12 +286,12 @@
 
                             <hr class="my-1" />
                             <div class="row mb-3">
-                                <div class="col-md-6">Option 4</div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">Option 4</div>
+                                <div class="col-md-8">
                                     <small class="text-muted">Write Option 4 Below</small>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input name="option4" class="form-control form-control-lg" type="text" value="{{$qtion->opt4}}">
+                                            <input name="option4" class="optioneditor form-control form-control-lg" type="text" value="{{$qtion->opt4}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -307,12 +307,12 @@
 
                             <hr class="my-1" />
                             <div class="row mb-3">
-                                <div class="col-md-6">Option 5</div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">Option 5</div>
+                                <div class="col-md-8">
                                     <small class="text-muted">Write Option 5 Below</small>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input name="option5" class="form-control form-control-lg" type="text" value="{{$qtion->opt5}}">
+                                            <input name="option5" class="optioneditor form-control form-control-lg" type="text" value="{{$qtion->opt5}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -329,20 +329,20 @@
                         @endif
                         <hr class="my-1"/>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 Question Instruction (Optional)
                             </div>
-                            <div class="col-md-6 d-flex flex-column">
+                            <div class="col-md-8 d-flex flex-column">
                                 <small class="text-muted">Write your Instruction Below</small>
-                                <textarea name="instruction" class="editor">{{$qtion->instruction}}</textarea>
+                                <textarea name="instruction">{{$qtion->instruction}}</textarea>
                             </div>
                         </div>
                         <hr class="my-1"/>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 Question Image (Optional)
                             </div>
-                            <div class="col-md-6 d-flex flex-column">
+                            <div class="col-md-8 d-flex flex-column">
                                 <div class="card shadow mb-4">
                                     <div class="card-body">
 
@@ -407,12 +407,19 @@
 <script src="{{asset('client/js/config.js')}}"></script>
 <script src="{{asset('client/js/apps.js')}}"></script>
 <script>
-    ClassicEditor
-        .create( document.querySelector( '.editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+     tinymce.init({ selector:'.optioneditor',menubar : false,
+            toolbar: [
+            "superscript subscript bold italic underline",
+            ],
+            height : "140"
+        });
+
+        tinymce.init({selector:'textarea'})
 </script>
+
+
+
+<!--
 <script>
     ClassicEditor
         .create( document.querySelector( '#editor' ) )
@@ -420,5 +427,6 @@
             console.error( error );
         } );
 </script>
+-->
 @endsection
 

@@ -38,35 +38,35 @@
                     <div class="form-check">
                       <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt1 ? 'checked':''}}  hx-trigger="click" class="form-check-input" value="{{$question->opt1}}" type="radio" name="option" id="flexRadioDefault1">
                       <label class="form-check-label" for="flexRadioDefault1">
-                        {{$question->opt1}}
+                        {!! $question->opt1 !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
                       <input hx-get="{{ route('check_answer')}}" hx-target="#respone"  {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt2 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt2}}"  type="radio" name="option" id="flexRadioDefault2">
                       <label class="form-check-label" for="flexRadioDefault2">
-                          {{$question->opt2}}
+                          {!! $question->opt2 !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
                       <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt3 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt3}}" type="radio" name="option" id="flexRadioDefault3">
                       <label class="form-check-label" for="flexRadioDefault3">
-                          {{$question->opt3}}
+                          {!! $question->opt3 !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
                       <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt4 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt4}}" type="radio" name="option" id="flexRadioDefault4">
                       <label class="form-check-label" for="flexRadioDefault4">
-                          {{$question->opt4}}
+                          {!! $question->opt4 !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
                       <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt5 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt5}}" type="radio" name="option" id="flexRadioDefault5">
                       <label class="form-check-label" for="flexRadioDefault5">
-                          {{$question->opt5}}
+                          {!! $question->opt5 !!}
                       </label>
                     </div>
                     <hr class="my-1" />

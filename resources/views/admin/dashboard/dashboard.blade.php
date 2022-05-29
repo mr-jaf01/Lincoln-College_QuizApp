@@ -6,7 +6,7 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <div class="card" style="border-radius: 19px;">
-                <h5 class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
+                <h5 class="card-header d-flex flex-row justify-content-between font-weight-bold" style="border-radius: 19px;">
                     QUESTIONS BANK
                     <i class="bi bi-question-square text-red-500"></i>
                 </h5>
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-6">
             <div class="card" style="border-radius: 19px;">
-                <h5 class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
+                <h5 class="card-header d-flex flex-row justify-content-between font-weight-bold" style="border-radius: 19px;">
                     SUBJECTS MODULE
                     <i class="bi bi-book text-red-500"></i>
                 </h5>
@@ -43,7 +43,7 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <div class="card" style="border-radius: 19px;">
-                <h5 class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
+                <h5 class="card-header d-flex flex-row justify-content-between font-weight-bold" style="border-radius: 19px;">
                     STUDENTS MODULE
                     <i class="bi bi-people text-red-500"></i>
                 </h5>
@@ -51,14 +51,14 @@
                   <h5 class="card-title">Total Number Of Students : <span class="font-weight-bold text-red-500">{{floor(number_format(numberofstudents(), 2))}}</span></h5>
                 <div class="d-flex flex-row justify-content-between">
                     <span></span>
-                    <a href="{{route('admin.dashboard.question.viewQuestion')}}" style="border-radius:19px;" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700">See all Students <i class="bi bi-arrow-right-circle"></i></a>
+                    <a href="{{route('admin.dashboard.students')}}" style="border-radius:19px;" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700">See all Students <i class="bi bi-arrow-right-circle"></i></a>
                 </div>
                 </div>
               </div>
         </div>
         <div class="col-md-6">
             <div class="card" style="border-radius: 19px;">
-                <h5 class="card-header d-flex flex-row justify-content-between" style="border-radius: 19px;">
+                <h5 class="card-header d-flex flex-row justify-content-between font-weight-bold" style="border-radius: 19px;">
                     TEACHERS MODULE
                     <i class="bi bi-person text-red-500"></i>
                 </h5>
