@@ -222,27 +222,27 @@
         function clickoption1(){
           const inputval1 = tinymce.get("option1").getContent();
           const option1 = document.getElementById('flexRadioDefault1').value= inputval1;
-          alert(option1)
+
        }
        function clickoption2(){
           const inputval2 = tinymce.get("option2").getContent();
           const option2 = document.getElementById('flexRadioDefault2').value= inputval2;
-          alert(option2)
+
        }
        function clickoption3(){
            const inputval3 = tinymce.get("option3").getContent();
            const option3 = document.getElementById('flexRadioDefault3').value= inputval3;
-           alert(option3)
+
        }
        function clickoption4(){
            const inputval4 = tinymce.get("option4").getContent();
            const option4 = document.getElementById('flexRadioDefault4').value= inputval4;
-           alert(option4)
+
        }
        function clickoption5(){
            const inputval5 = tinymce.get("option5").getContent();
            const option5 = document.getElementById('flexRadioDefault5').value= inputval5;
-           alert(option5)
+
        }
    </script>
 @endsection

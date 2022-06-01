@@ -7,6 +7,10 @@ use App\Models\User;
 use App\Models\performance;
 use App\Models\history;
 
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
+
 
 
 
@@ -328,9 +332,41 @@ function numberofusers(){
     return User::all()->count();
 }
 
+/**
+ * It returns the parent's email address of a student.
+ *
+ * @param user_id The user_id of the student
+ *
+ * @return the student object.
+ */
+function getparentEmail($user_id){
+   return student::find($user_id);
+}
 
 
-//Send Email function
-function sendEmail($recipient,$from,$subject,$body){
+/**
+ * It sends an email to the user with the score and percentage.
+ *
+ * @param to The email address of the person you're sending the email to.
+ * @param subject The subject of the email
+ * @param year The year of the quiz
+ * @param score The score of the quiz
+ * @param percentage The percentage of the quiz that the user got correct.
+ */
+function sendEmail($to,$subject,$year,$score,$percentage){
+    $transport = Transport::fromDsn('smtp://mrjaf01@busy-bassi.31-187-72-1.plesk.page:1994_Xujaf@busy-bassi.31-187-72-1.plesk.page:465');
+    $mailer = new Mailer($transport);
+
+    $email = (new Email())
+        ->from('mrjaf01@busy-bassi.31-187-72-1.plesk.page')
+        ->to($to)
+        //->cc('cc@example.com')
+        //->bcc('bcc@example.com')
+        //->replyTo('fabien@example.com')
+        //->priority(Email::PRIORITY_HIGH)
+        ->subject('Lincoln Quiz App Score For '.$subject.'-'.$year)
+        ->text('<p>The Score for '.$subject.' - '.$year.' Quiz is '.$score.' and The Percentage is '.$percentage.'</p>');
+
+    $mailer->send($email);
 
 }

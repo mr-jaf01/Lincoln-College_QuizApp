@@ -89,7 +89,7 @@
 
     div[role="progressbar"] {
       --size: 8rem;
-      --fg:   rgb(200, 24, 24);
+      --fg:rgb(200, 24, 24);
       --bg: #def;
       --pgPercentage: var(--value);
       animation: growProgressBar 3s 1 forwards;
