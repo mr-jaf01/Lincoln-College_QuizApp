@@ -23,6 +23,7 @@
     new google.translate.TranslateElement({
     pageLanguage: 'en',
     autoDisplay: 'true',
+    includedLanguages:'hi,en,bn,id,fr,ms,ml,ar,ta,es,sw,tr,zh-CN,zh-TW',
     layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
     }, 'google_translate_element');
  }

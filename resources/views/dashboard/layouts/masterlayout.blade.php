@@ -84,7 +84,7 @@
                 <li class="nav-item dropdown">
                   <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-book fe-16"></i>
-                    <span class="ml-3 item-text">Questions Bank</span>
+                    <span class="ml-3 item-text font-weight-bold">Questions Bank</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                       @foreach (getsubject() as $item)
@@ -95,7 +95,7 @@
                 <li class="nav-item dropdown">
                   <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-user fe-16"></i>
-                    <span class="ml-3 item-text">Profile</span>
+                    <span class="ml-3 item-text font-weight-bold">Profile</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="profile">
                     <a class="nav-link pl-3" href="/dashboard/profile"><span class="ml-1">Overview</span></a>
@@ -103,10 +103,22 @@
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-compass fe-16"></i>
-                    <span class="ml-3 item-text">Help Center</span>
-                  </a>
+                    <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="bi bi-info-square"></i>
+                    <span class="ml-3 item-text font-weight-bold">Support Center</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="support">
+                    <a class="nav-link pl-3" href="#"><span class="ml-1">Chat</span></a>
+                    <a class="nav-link pl-3" href="#"><span class="ml-1">FAQ</span></a>
+                    </ul>
+              </li>
+
+               <li class="nav-item dropdown">
+                <a href="#" class="nav-link">
+                <span class="ml-3 item-text font-weight-bold">
+                    <p id="google_translate_element"  class="w-full"></p>
+                </span>
+                </a>
                 </li>
               </ul>
               <!--
@@ -371,5 +383,46 @@
           gtag('config', 'UA-56159088-1');
         </script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+<script>
+   function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: 'true',
+    includedLanguages:'hi,en,bn,id,fr,ms,ml,ar,ta,es,sw,tr,zh-CN,zh-TW',
+    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+ }
+</script>
+<style type="text/css">
+    /*google translate Dropdown */
+    #google_translate_element select{
+    background:#f6edfd;
+    color:#ff0606;
+    border: none;
+    border-radius:3px;
+    padding:6px 8px
+    }
+
+    /*google translate link | logo */
+      .goog-logo-link{
+      display:none!important;
+      }
+    .goog-te-gadget{
+    color:transparent!important;
+    }
+
+    /* google translate banner-frame */
+
+    .goog-te-banner-frame{
+    display:none !important;
+    }
+
+    #goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+   .goog-text-highlight { background: none !important; box-shadow: none !important;}
+
+    body{top:0!important;}
+    </style>
       </body>
 </html>
