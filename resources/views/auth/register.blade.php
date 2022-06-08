@@ -4,16 +4,20 @@
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
+        <p>
+            Language<span id="google_translate_element"></span>
+        </p>
+        <hr class="my-1" />
         <img class="mx-auto h-12 w-auto" src="{{ asset('linlogo.png') }}" alt="linlogo">
-        <h2 class="mt-2 text-center text-2xl  text-red-600">Quiz App</h2>
-        <p class="mt-1 text-center text-2xl f text-gray-900">
+        <h2 class="mt-1 text-center  text-red-600">Quiz App</h2>
+        <p class="mt-1 text-center  text-gray-900">
            Registration
         </p>
       </div>
       <div id="respone" >
 
       </div>
-      <form class="mt-8 space-y-6" autocomplete="off" hx-post="{{route('auth.register')}}" hx-trigger='click' hx-target="#respone">
+      <form class="mt-2 space-y-6" autocomplete="off" hx-post="{{route('auth.register')}}" hx-trigger='click' hx-target="#respone">
         @csrf
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">

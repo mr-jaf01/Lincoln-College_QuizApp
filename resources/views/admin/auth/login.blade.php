@@ -57,12 +57,15 @@
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
           <!-- Register -->
-
           <div class="card">
             <div class="card-body">
+                <p>
+                    Language<span id="google_translate_element"></span>
+                </p>
+                <hr class="my-1" />
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
+                <a href="/admin/auth/login" class="app-brand-link gap-2">
                   <span><img src="{{ asset('linlogo.png')}}"/></span>
                   <span class="app-brand-text demo text-body fw-bolder"></span>
                 </a>
@@ -160,5 +163,44 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+<script>
+   function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: 'true',
+    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+ }
+</script>
+<style type="text/css">
+    /*google translate Dropdown */
+    #google_translate_element select{
+    background:#f6edfd;
+    color:#ff0606;
+    border: none;
+    border-radius:3px;
+    padding:6px 8px
+    }
+
+    /*google translate link | logo */
+      .goog-logo-link{
+      display:none!important;
+      }
+    .goog-te-gadget{
+    color:transparent!important;
+    }
+
+    /* google translate banner-frame */
+
+    .goog-te-banner-frame{
+    display:none !important;
+    }
+
+    #goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+   .goog-text-highlight { background: none !important; box-shadow: none !important;}
+
+    body{top:0!important;}
+    </style>
   </body>
 </html>

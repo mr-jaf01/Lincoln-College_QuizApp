@@ -90,7 +90,7 @@
                 <li class="nav-item dropdown">
                   <a href="#question" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="bi bi-question-square"></i>
-                    <span class="ml-3 item-text">Questions Bank</span>
+                    <span class="ml-3 item-text font-weight-bold">Questions Bank</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="question">
                       <a class="nav-link pl-3" href="{{route('admin.dashboard.question.questionmode')}}"><span class="ml-1">Create Question</span></a>
@@ -100,7 +100,7 @@
                 <li class="nav-item dropdown">
                   <a href="#subject" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="bi bi-book"></i>
-                    <span class="ml-3 item-text">Subject</span>
+                    <span class="ml-3 item-text font-weight-bold">Subject</span>
                   </a>
                   <ul class="collapse list-unstyled pl-4 w-100" id="subject">
                     <a class="nav-link pl-3" href="{{route('admin.dashboard.subject.createSubject')}}?hide"><span class="ml-1">Create Subject</span></a>
@@ -111,7 +111,7 @@
                 <li class="nav-item dropdown">
                     <a href="#spm" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                       <i class="bi bi-person"></i>
-                      <span class="ml-3 item-text">SPM Programs</span>
+                      <span class="ml-3 item-text font-weight-bold">SPM Programs</span>
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="spm">
                       <a class="nav-link pl-3" href="{{route('admin.dashboard.spm.create')}}?new"><span class="ml-1">Create SPM Program</span></a>
@@ -122,7 +122,7 @@
                 <li class="nav-item dropdown">
                     <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                       <i class="bi bi-person"></i>
-                      <span class="ml-3 item-text">Teacher</span>
+                      <span class="ml-3 item-text font-weight-bold">Teacher</span>
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="user">
                       <a class="nav-link pl-3" href="{{route('admin.dashboard.users.create')}}?new"><span class="ml-1">Create Teacher</span></a>
@@ -132,7 +132,7 @@
                   <li class="nav-item dropdown">
                     <a href="#student" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                         <i class="bi bi-people"></i>
-                      <span class="ml-3 item-text">Student</span>
+                      <span class="ml-3 item-text font-weight-bold">Student</span>
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="student">
                       <a class="nav-link pl-3" href="#"><span class="ml-1">Create Student</span></a>
@@ -142,19 +142,31 @@
                   <li class="nav-item dropdown">
                     <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                         <i class="bi bi-person"></i>
-                      <span class="ml-3 item-text">Profile</span>
+                      <span class="ml-3 item-text font-weight-bold">Profile</span>
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="profile">
                       <a class="nav-link pl-3" href="#"><span class="ml-1">Overview</span></a>
                       <a class="nav-link pl-3" href="#"><span class="ml-1">Settings</span></a>
                     </ul>
                   </li>
-                <li class="nav-item dropdown">
-                  <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-compass fe-16"></i>
-                    <span class="ml-3 item-text">Help Center</span>
-                  </a>
-                </li>
+                  <li class="nav-item dropdown">
+                        <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="bi bi-info-square"></i>
+                        <span class="ml-3 item-text font-weight-bold">Support Center</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="support">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1">Chat</span></a>
+                        <a class="nav-link pl-3" href="#"><span class="ml-1">FAQ</span></a>
+                        </ul>
+                  </li>
+
+                   <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                    <span class="ml-3 item-text font-weight-bold">
+                        <p id="google_translate_element"  class="w-full"></p>
+                    </span>
+                    </a>
+                    </li>
               </ul>
             </nav>
           </aside>
@@ -410,5 +422,47 @@
           gtag('config', 'UA-56159088-1');
         </script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-      </body>
+
+
+
+<script src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+<script>
+   function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: 'true',
+    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+ }
+</script>
+<style type="text/css">
+    /*google translate Dropdown */
+    #google_translate_element select{
+    background:#f6edfd;
+    color:#ff0606;
+    border: none;
+    border-radius:3px;
+    padding:6px 8px
+    }
+
+    /*google translate link | logo */
+      .goog-logo-link{
+      display:none!important;
+      }
+    .goog-te-gadget{
+    color:transparent!important;
+    }
+
+    /* google translate banner-frame */
+
+    .goog-te-banner-frame{
+    display:none !important;
+    }
+
+    #goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+   .goog-text-highlight { background: none !important; box-shadow: none !important;}
+
+    body{top:0!important;}
+    </style>
+    </body>
 </html>
