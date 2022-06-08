@@ -107,6 +107,18 @@
                     <a class="nav-link pl-3" href="{{route('admin.dashboard.subject.viewSubject')}}"><span class="ml-1">View Subject</span></a>
                   </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#spm" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                      <i class="bi bi-person"></i>
+                      <span class="ml-3 item-text">SPM Programs</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="spm">
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.spm.create')}}?new"><span class="ml-1">Create SPM Program</span></a>
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.spm.view')}}"><span class="ml-1">View SPM Programs</span></a>
+                    </ul>
+                  </li>
+
                 <li class="nav-item dropdown">
                     <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                       <i class="bi bi-person"></i>

@@ -209,14 +209,29 @@
     <script src="{{asset('client/js/apps.js')}}"></script>
     <script>
         //var editor = new FroalaEditor('#qeditor');
-        tinymce.init({ selector:'.optioneditor',menubar : false,
+        tinymce.init({
+            selector:'.optioneditor',
+            menubar : false,
+            plugins: ["paste"],
+            paste_preprocess: function (plugin, args) {
+                console.log(args.content);
+                args.content = '';
+            },
             toolbar: [
             "superscript subscript bold italic underline",
             ],
-            height : "140"
+            height : "140",
         });
 
-        tinymce.init({selector:'textarea'})
+        tinymce.init({selector:'textarea',
+            plugins: [
+                    "paste"
+                ],
+            paste_preprocess: function (plugin, args) {
+                console.log(args.content);
+                args.content = '';
+            },
+    })
     </script>
      <script>
         function clickoption1(){

@@ -6,6 +6,7 @@ use App\Models\answers;
 use App\Models\User;
 use App\Models\performance;
 use App\Models\history;
+use App\Models\spmprogram;
 
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mailer\Mailer;
@@ -343,30 +344,42 @@ function getparentEmail($user_id){
    return student::find($user_id);
 }
 
-
 /**
- * It sends an email to the user with the score and percentage.
+ * It sends an email to the address specified in the  variable.
  *
  * @param to The email address of the person you're sending the email to.
- * @param subject The subject of the email
- * @param year The year of the quiz
- * @param score The score of the quiz
- * @param percentage The percentage of the quiz that the user got correct.
+ * @param subject The subject of the email.
+ * @param year The year of the exam
+ * @param score The score of the user
+ * @param percentage The percentage of the year that has passed.
  */
 function sendEmail($to,$subject,$year,$score,$percentage){
     $transport = Transport::fromDsn('smtp://mrjaf01@busy-bassi.31-187-72-1.plesk.page:1994_Xujaf@busy-bassi.31-187-72-1.plesk.page:465');
+    //$mailer = new Mailer($transport);
+
+    //$transport = Transport::fromDsn('smtp://localhost');
     $mailer = new Mailer($transport);
 
     $email = (new Email())
         ->from('mrjaf01@busy-bassi.31-187-72-1.plesk.page')
-        ->to($to)
+        ->to('mrjafprogrammer@gmail.com')
         //->cc('cc@example.com')
         //->bcc('bcc@example.com')
         //->replyTo('fabien@example.com')
         //->priority(Email::PRIORITY_HIGH)
-        ->subject('Lincoln Quiz App Score For '.$subject.'-'.$year)
-        ->text('<p>The Score for '.$subject.' - '.$year.' Quiz is '.$score.' and The Percentage is '.$percentage.'</p>');
+        ->subject('Time for Symfony Mailer!')
+        ->text('Sending emails is fun again!')
+        ->html('<p>See Twig integration for better HTML integration!</p>');
 
     $mailer->send($email);
 
+}
+
+/**
+ * It returns all the rows from the spmprogram table
+ *
+ * @return All the data in the spmprogram table.
+ */
+function getspmprogram(){
+    return spmprogram::all();
 }

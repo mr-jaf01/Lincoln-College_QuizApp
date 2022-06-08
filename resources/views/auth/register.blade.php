@@ -43,10 +43,9 @@
             <label for="gender" class="sr-only">Intrested Program After SPM</label>
             <select id="program" name="program" type="text"   class="w-full px-3 py-2 focus:outline-none border rounded-b focus:border-indigo-500">
                 <option class="" value="program1">Intrested Program After SPM</option>
-                <option value="program1">Program 1</option>
-                <option value="program1">Program 2</option>
-                <option value="program1">Program 3</option>
-                <option value="program1">Program 4</option>
+                @foreach (getspmprogram() as $spm)
+                <option value="{{$spm->program_name}}">{{$spm->program_name}}</option>
+                @endforeach
             </select>
           </div>
           <div class="flex">

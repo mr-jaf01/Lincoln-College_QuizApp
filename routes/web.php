@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\SubjectController as SubjectController;
 use App\Http\Controllers\admin\QuestionController as QuestionController;
 use App\Http\Controllers\admin\UserController as UserController;
 use App\Http\Controllers\admin\StudentController as StudentController;
+use App\Http\Controllers\admin\SpmController as SpmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,3 +99,10 @@ Route::get('admin/dashboard/users/delete/{id}',[UserController::class, 'deleteUs
 
 //admin Student Route
 Route::get('admin/dashboard/students',[StudentController::class, 'allStudent'])->name('admin.dashboard.students');
+
+//admin SPM route
+Route::get('admin/dashboard/spm/view',[SpmController::class, 'viewspm'])->name('admin.dashboard.spm.view');
+Route::get('admin/dashboard/spm/create',[SpmController::class, 'spmcreate'])->name('admin.dashboard.spm.create');
+Route::post('admin/dashboard/spm/save', [SpmController::class, 'savespm'])->name('admin.dashboard.spm.save');
+Route::post('admin/dashboard/spm/update', [SpmController::class, 'update'])->name('admin.dashboard.spm.update');
+Route::get('admin/dashboard/spm/delete/{id}', [SpmController::class, 'delete'])->name('admin.dashboard.spm.delete');

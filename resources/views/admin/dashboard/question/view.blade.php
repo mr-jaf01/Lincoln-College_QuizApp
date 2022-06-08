@@ -32,7 +32,7 @@
                             Question
                         </div>
                         <div class="col-md-6 text-muted">
-                            <p>{!! $qtion->qtions !!}<p>
+                            <p>{!!  html_entity_decode($qtion->qtions, ENT_QUOTES, 'UTF-8') !!}<p>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                                 Option 1
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{!! $qtion->opt1 !!}<p>
+                                <p>{!! html_entity_decode($qtion->opt1, ENT_QUOTES, 'UTF-8') !!}  <p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -55,7 +55,7 @@
                                 Option 2
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{!! $qtion->opt2 !!}<p>
+                                <p>{!!  html_entity_decode($qtion->opt2, ENT_QUOTES, 'UTF-8')  !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -65,7 +65,7 @@
                                 Option 3
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{!! $qtion->opt3 !!}<p>
+                                <p>{!!  html_entity_decode($qtion->opt3, ENT_QUOTES, 'UTF-8')  !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -75,7 +75,7 @@
                                 Option 4
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{!! $qtion->opt4 !!}<p>
+                                <p>{!!  html_entity_decode($qtion->opt4, ENT_QUOTES, 'UTF-8')  !!}<p>
                             </div>
                         </div>
                         <hr class="my-1" />
@@ -85,7 +85,7 @@
                                 Option 5
                             </div>
                             <div class="col-md-6 text-muted">
-                                <p>{!! $qtion->opt5 !!}<p>
+                                <p>{!!  html_entity_decode($qtion->opt5, ENT_QUOTES, 'UTF-8')  !!}<p>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                         </div>
                         @if ($qtion->instruction != "")
                             <div class="col-md-6 alert alert-danger text-white">
-                                <p>{!! $qtion->instruction !!}<p>
+                                <p>{!!   html_entity_decode($qtion->instruction, ENT_QUOTES, 'UTF-8')  !!}<p>
                             </div>
                         @endif
 

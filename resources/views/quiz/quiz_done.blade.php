@@ -23,8 +23,7 @@
                  </div>
                  <hr class="my-1" />
 
-                 {{sendEmail(getparentEmail($_GET['answerBy'])->parentemail,$_GET['subject'], $_GET['year'],get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy']), get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) )}}
-
+                 {{sendEmail(getparentEmail($_GET['answerBy'])->parentemail, $_GET['subject'], $_GET['year'],get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy']), get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) )}}
                  @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) < 70 )
                  {{performance($_GET['answerBy'],$_GET['subject'], $_GET['year'], get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])), 'fail')}}
                  @endif
