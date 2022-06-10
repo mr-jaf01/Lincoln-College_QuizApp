@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\performance;
 use App\Models\history;
 use App\Models\spmprogram;
+use Illuminate\Support\Facades\DB;
 
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mailer\Mailer;
@@ -75,7 +76,7 @@ function getsubjectID($subjectname){
  * @return A collection of questions
  */
 function getallquestion($subject, $year){
-    return DB::table('questions')->where('subject_id',$subject)->where('year',$year)->simplePaginate(1);
+    return DB::table('questions')->where('subject_id',$subject)->where('year',$year)->where('qmode','mcq')->simplePaginate(1);
 }
 
 
@@ -354,14 +355,14 @@ function getparentEmail($user_id){
  * @param percentage The percentage of the year that has passed.
  */
 function sendEmail($to,$subject,$year,$score,$percentage){
-    $transport = Transport::fromDsn('smtp://mrjaf01@busy-bassi.31-187-72-1.plesk.page:1994_Xujaf@busy-bassi.31-187-72-1.plesk.page:465');
+    $transport = Transport::fromDsn('smtp://quizapp@silly-wilbur.31-187-72-1.plesk.page:1994_Xujaf@silly-wilbur.31-187-72-1.plesk.page:465');
     //$mailer = new Mailer($transport);
 
     //$transport = Transport::fromDsn('smtp://localhost');
     $mailer = new Mailer($transport);
 
     $email = (new Email())
-        ->from('mrjaf01@busy-bassi.31-187-72-1.plesk.page')
+        ->from('quizapp@silly-wilbur.31-187-72-1.plesk.page')
         ->to('mrjafprogrammer@gmail.com')
         //->cc('cc@example.com')
         //->bcc('bcc@example.com')

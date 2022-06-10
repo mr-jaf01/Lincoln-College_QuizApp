@@ -236,7 +236,7 @@
                                             <label class="form-check-label text-muted" for="flexRadioDefault1">
                                                 <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                             </label>
-                                            <input {{getCorrectAns($qtion->qtions,$qtion->subject_id,$qtion->year) == $qtion->opt1 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt1}}" type="radio" name="correct_answer" id="flexRadioDefault1">
+                                            <input {{getCorrectAns($qtion->id,$qtion->subject_id,$qtion->year) == $qtion->opt1 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt1}}" type="radio" name="correct_answer" id="flexRadioDefault1">
                                         </div>
                                     </div>
                                 </div>
@@ -257,7 +257,7 @@
                                             <label class="form-check-label text-muted" for="flexRadioDefault2">
                                                 <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                             </label>
-                                            <input {{getCorrectAns($qtion->qtions,$qtion->subject_id,$qtion->year) == $qtion->opt2 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt2}}" type="radio" name="correct_answer" id="flexRadioDefault2">
+                                            <input {{getCorrectAns($qtion->id,$qtion->subject_id,$qtion->year) == $qtion->opt2 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt2}}" type="radio" name="correct_answer" id="flexRadioDefault2">
                                         </div>
                                     </div>
                                 </div>
@@ -278,7 +278,7 @@
                                             <label class="form-check-label text-muted" for="flexRadioDefault3">
                                                 <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                             </label>
-                                            <input {{getCorrectAns($qtion->qtions,$qtion->subject_id,$qtion->year) == $qtion->opt3 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt3}}" type="radio" name="correct_answer" id="flexRadioDefault3">
+                                            <input {{getCorrectAns($qtion->id,$qtion->subject_id,$qtion->year) == $qtion->opt3 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt3}}" type="radio" name="correct_answer" id="flexRadioDefault3">
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                                             <label class="form-check-label text-muted" for="flexRadioDefault4">
                                                 <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                             </label>
-                                            <input {{getCorrectAns($qtion->qtions,$qtion->subject_id,$qtion->year) == $qtion->opt4 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt4}}" type="radio" name="correct_answer" id="flexRadioDefault4">
+                                            <input {{getCorrectAns($qtion->id,$qtion->subject_id,$qtion->year) == $qtion->opt4 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt4}}" type="radio" name="correct_answer" id="flexRadioDefault4">
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@
                                             <label class="form-check-label text-muted" for="flexRadioDefault5">
                                                 <i class="bi bi-check2-all"></i><small>Mark As Correct Answer</small>
                                             </label>
-                                            <input {{getCorrectAns($qtion->qtions,$qtion->subject_id,$qtion->year) == $qtion->opt5 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt5}}" type="radio" name="correct_answer" id="flexRadioDefault5">
+                                            <input {{getCorrectAns($qtion->id,$qtion->subject_id,$qtion->year) == $qtion->opt5 ? 'checked' : '' }} class="form-check-input ml-1" value="{{$qtion->opt5}}" type="radio" name="correct_answer" id="flexRadioDefault5">
                                         </div>
                                     </div>
                                 </div>
