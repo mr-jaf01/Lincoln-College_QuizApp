@@ -6,6 +6,7 @@ use App\Http\Controllers\dashController as Dashboard;
 use App\Http\Controllers\subjectController as Subject;
 use App\Http\Controllers\quizController as QuizContro;
 use App\Http\Controllers\admin\AuthController as AdminAuth;
+use App\Http\Controllers\admin\EssayController;
 use App\Http\Controllers\admin\SubjectController as SubjectController;
 use App\Http\Controllers\admin\QuestionController as QuestionController;
 use App\Http\Controllers\admin\UserController as UserController;
@@ -106,3 +107,7 @@ Route::get('admin/dashboard/spm/create',[SpmController::class, 'spmcreate'])->na
 Route::post('admin/dashboard/spm/save', [SpmController::class, 'savespm'])->name('admin.dashboard.spm.save');
 Route::post('admin/dashboard/spm/update', [SpmController::class, 'update'])->name('admin.dashboard.spm.update');
 Route::get('admin/dashboard/spm/delete/{id}', [SpmController::class, 'delete'])->name('admin.dashboard.spm.delete');
+
+//admin Essay Answer Route
+Route::get('admin/dashboard/answer/essay', [EssayController::class, 'getEssayAnswer'])->name('admin.dashboard.answer.essay');
+Route::get('admin/dashboard/answer/essay/answer/{id}',[EssayController::class, 'getsingleAnswer']);

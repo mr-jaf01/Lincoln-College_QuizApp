@@ -39,45 +39,46 @@
                         @endif
                     </div>
                     <div class="form-check">
-                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt1 ? 'checked':''}}  hx-trigger="click" class="form-check-input" value="{{$question->opt1}}" type="radio" name="option" id="flexRadioDefault1">
+                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt1 ? 'checked':''}}  hx-trigger="click" class="form-check-input" value="{{$question->opt1}}" type="radio" name="option" id="flexRadioDefault1">
                       <label class="form-check-label" for="flexRadioDefault1">
                         {!! html_entity_decode($question->opt1, ENT_QUOTES, 'UTF-8') !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
-                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone"  {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt2 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt2}}"  type="radio" name="option" id="flexRadioDefault2">
+                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone"  {{ getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt2 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt2}}"  type="radio" name="option" id="flexRadioDefault2">
                       <label class="form-check-label" for="flexRadioDefault2">
                           {!! html_entity_decode($question->opt2, ENT_QUOTES, 'UTF-8') !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
-                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt3 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt3}}" type="radio" name="option" id="flexRadioDefault3">
+                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt3 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt3}}" type="radio" name="option" id="flexRadioDefault3">
                       <label class="form-check-label" for="flexRadioDefault3">
                           {!! html_entity_decode($question->opt3, ENT_QUOTES, 'UTF-8') !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
-                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt4 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt4}}" type="radio" name="option" id="flexRadioDefault4">
+                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt4 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt4}}" type="radio" name="option" id="flexRadioDefault4">
                       <label class="form-check-label" for="flexRadioDefault4">
                           {!! html_entity_decode($question->opt4, ENT_QUOTES, 'UTF-8') !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                     <div class="form-check">
-                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt5 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt5}}" type="radio" name="option" id="flexRadioDefault5">
+                      <input hx-get="{{ route('check_answer')}}" hx-target="#respone" {{ getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) == $question->opt5 ? 'checked':''}} hx-trigger="click" class="form-check-input" value="{{$question->opt5}}" type="radio" name="option" id="flexRadioDefault5">
                       <label class="form-check-label" for="flexRadioDefault5">
                           {!! html_entity_decode($question->opt5, ENT_QUOTES, 'UTF-8') !!}
                       </label>
                     </div>
                     <hr class="my-1" />
                 </div>
-                <input type="hidden" name="qtion" value="{{$question->qtions}}" />
+                <input type="hidden" name="qtion" value="{{$question->id}}" />
                 <input type="hidden" name="answer_by" value="{{Session::get('studentid')}}" />
                 <input type="hidden" name="subject" value="{{$question->subject_id}}" />
                 <input type="hidden" name="year" value="{{$question->year}}" />
+                <input type="hidden" name="qmode" value="{{$question->qmode}}" />
                 <div id="respone"></div>
             </form>
             @endif
@@ -117,22 +118,63 @@
                         @endif
                     </div>
                     <hr class="my-1" />
-                        @if (getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) == '')
+                        @if (getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) == '')
                         <h4 class="alert alert-info">Write Your Answer Below</h4>
-                            <textarea name="option" id="editor"></textarea>
+                            <textarea name="option" class="editor"></textarea>
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 d-flex flex-column">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+
+                                        <div class="dropzone bg-light rounded-lg" id="tinydash-dropzone">
+                                            <div class="dz-message needsclick d-flex flex-column align-items-center">
+                                            <div class="circle circle-lg bg-red-600">
+                                                <i class="fe fe-upload  fe-24 text-white"></i>
+                                            </div>
+                                            <input type="file" name="image"/>
+                                            </div>
+                                        </div>
+                                        <!-- Preview -->
+                                        <!-- <div class="dropzone-previews mt-3" id="file-previews"></div> -->
+                                        <!-- file preview template -->
+                                        <div class="d-none" id="uploadPreviewTemplate">
+                                            <div class="card mt-1 mb-0 shadow-none border">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                                </div>
+                                                <div class="col pl-0">
+                                                    <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
+                                                    <p class="mb-0" data-dz-size></p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <!-- Button -->
+                                                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
+                                                    <i class="dripicons-cross"></i>
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div> <!-- .card-body -->
+                                    </div> <!-- .card -->
+                                </div>
+                            </div>
                             <div>
                                 <a hx-get="{{ route('check_answer')}}" hx-target="#respone" hx-trigger="click" class="btn btn-success rounded text-white">Submit Answer</a>
                             </div>
                         @endif
-                        @if (getoption($question->qtions, Session::get('studentid'), $question->subject_id, $question->year) != '')
+                        @if (getoption($question->id, Session::get('studentid'), $question->subject_id, $question->year) != '')
                         <p class="alert alert-dark"> Answer Submitted</p>
                         @endif
-                    <hr class="my-1" />
                 </div>
-                <input type="hidden" name="qtion" value="{{$question->qtions}}" />
+                <input type="hidden" name="qtion" value="{{$question->id}}" />
                 <input type="hidden" name="answer_by" value="{{Session::get('studentid')}}" />
                 <input type="hidden" name="subject" value="{{$question->subject_id}}" />
                 <input type="hidden" name="year" value="{{$question->year}}" />
+                <input type="hidden" name="qmode" value="{{$question->qmode}}" />
                 <div id="respone"></div>
             </form>
             @endif
@@ -294,11 +336,7 @@
     <script src="{{asset('client/js/apps.js')}}"></script>
     <!--<script>tinymce.init({ selector:'textarea' });</script>-->
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+        tinymce.init({selector:'.editor'})
     </script>
 
 

@@ -41,7 +41,6 @@
     <script src="https://cdn.tiny.cloud/1/3g0hv2wo1p6g1mtqmu9it6o4ya7rbbiv4z8nqqf6x8w1rmm8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/js/froala_editor.pkgd.min.js'></script>
 </head>
     <body class="vertical  light" style="font-family: Verdana, sans-serif;">
         <div class="wrapper">
@@ -95,6 +94,7 @@
                   <ul class="collapse list-unstyled pl-4 w-100" id="question">
                       <a class="nav-link pl-3" href="{{route('admin.dashboard.question.questionmode')}}"><span class="ml-1">Create Question</span></a>
                       <a class="nav-link pl-3" href="{{route('admin.dashboard.question.viewQuestion')}}"><span class="ml-1">View Questions</span></a>
+                      <a class="nav-link pl-3" href="{{route('admin.dashboard.answer.essay')}}"><span class="ml-1">Review Essay Answers</span></a>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">

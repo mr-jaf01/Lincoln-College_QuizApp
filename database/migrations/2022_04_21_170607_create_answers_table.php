@@ -17,10 +17,12 @@ class CreateAnswersTable extends Migration
             $table->id();
             $table->text('qtion_id');
             $table->text('qtion_ans');
+            $table->String('ans_image')->nullable();
             $table->String('answer_by');
             $table->String('subject_id');
+            $table->String('qmode');
             $table->String('year');
-            $table->String('score');
+            $table->String('score')->nullable();
             $table->timestamps();
         });
     }

@@ -140,7 +140,7 @@ function AnswerByuser($subject,$year,$user){
  * @return The correct answer for the question.
  */
 function getCorrectAns($qtionID,$subject,$year){
-    return DB::table('questions')->select('correct_opt')->where('qtions',$qtionID)->where('subject_id',$subject)->where('year',$year)->pluck('correct_opt')->first();
+    return DB::table('questions')->select('correct_opt')->where('id',$qtionID)->where('subject_id',$subject)->where('year',$year)->pluck('correct_opt')->first();
 }
 
 /**
@@ -382,4 +382,8 @@ function sendEmail($to,$subject,$year,$score,$percentage){
  */
 function getspmprogram(){
     return spmprogram::all();
+}
+
+function getQtion($qtion_id){
+    return questions::find($qtion_id);
 }

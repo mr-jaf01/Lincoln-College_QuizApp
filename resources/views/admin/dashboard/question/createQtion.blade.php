@@ -212,26 +212,13 @@
         tinymce.init({
             selector:'.optioneditor',
             menubar : false,
-            plugins: ["paste"],
-            paste_preprocess: function (plugin, args) {
-                console.log(args.content);
-                args.content = '';
-            },
             toolbar: [
             "superscript subscript bold italic underline",
             ],
             height : "140",
         });
 
-        tinymce.init({selector:'textarea',
-            plugins: [
-                    "paste"
-                ],
-            paste_preprocess: function (plugin, args) {
-                console.log(args.content);
-                args.content = '';
-            },
-    })
+        tinymce.init({selector:'textarea'})
     </script>
      <script>
         function clickoption1(){

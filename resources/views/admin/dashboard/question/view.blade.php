@@ -37,58 +37,58 @@
                     </div>
 
                     @if ($qtion->qmode == 'mcq')
-                    <hr class="my-1" />
-                    <div class="p-5">
-                        <div class="row mb-3">
-                            <div class="col-md-6 font-weight-bold">
-                                Option 1
-                            </div>
-                            <div class="col-md-6 text-muted">
-                                <p>{!! html_entity_decode($qtion->opt1, ENT_QUOTES, 'UTF-8') !!}  <p>
-                            </div>
-                        </div>
                         <hr class="my-1" />
-
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 font-weight-bold">
-                                Option 2
+                        <div class="p-5">
+                            <div class="row mb-3">
+                                <div class="col-md-6 font-weight-bold">
+                                    Option 1
+                                </div>
+                                <div class="col-md-6 text-muted">
+                                    <p>{!! html_entity_decode($qtion->opt1, ENT_QUOTES, 'UTF-8') !!}  <p>
+                                </div>
                             </div>
-                            <div class="col-md-6 text-muted">
-                                <p>{!!  html_entity_decode($qtion->opt2, ENT_QUOTES, 'UTF-8')  !!}<p>
+                            <hr class="my-1" />
+
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 font-weight-bold">
+                                    Option 2
+                                </div>
+                                <div class="col-md-6 text-muted">
+                                    <p>{!!  html_entity_decode($qtion->opt2, ENT_QUOTES, 'UTF-8')  !!}<p>
+                                </div>
+                            </div>
+                            <hr class="my-1" />
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 font-weight-bold">
+                                    Option 3
+                                </div>
+                                <div class="col-md-6 text-muted">
+                                    <p>{!!  html_entity_decode($qtion->opt3, ENT_QUOTES, 'UTF-8')  !!}<p>
+                                </div>
+                            </div>
+                            <hr class="my-1" />
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 font-weight-bold">
+                                    Option 4
+                                </div>
+                                <div class="col-md-6 text-muted">
+                                    <p>{!!  html_entity_decode($qtion->opt4, ENT_QUOTES, 'UTF-8')  !!}<p>
+                                </div>
+                            </div>
+                            <hr class="my-1" />
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 font-weight-bold">
+                                    Option 5
+                                </div>
+                                <div class="col-md-6 text-muted">
+                                    <p>{!!  html_entity_decode($qtion->opt5, ENT_QUOTES, 'UTF-8')  !!}<p>
+                                </div>
                             </div>
                         </div>
-                        <hr class="my-1" />
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 font-weight-bold">
-                                Option 3
-                            </div>
-                            <div class="col-md-6 text-muted">
-                                <p>{!!  html_entity_decode($qtion->opt3, ENT_QUOTES, 'UTF-8')  !!}<p>
-                            </div>
-                        </div>
-                        <hr class="my-1" />
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 font-weight-bold">
-                                Option 4
-                            </div>
-                            <div class="col-md-6 text-muted">
-                                <p>{!!  html_entity_decode($qtion->opt4, ENT_QUOTES, 'UTF-8')  !!}<p>
-                            </div>
-                        </div>
-                        <hr class="my-1" />
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 font-weight-bold">
-                                Option 5
-                            </div>
-                            <div class="col-md-6 text-muted">
-                                <p>{!!  html_entity_decode($qtion->opt5, ENT_QUOTES, 'UTF-8')  !!}<p>
-                            </div>
-                        </div>
-                    </div>
                     @endif
 
                     <hr class="my-1" />

@@ -81,6 +81,7 @@ class quizController extends Controller
             $save->qtion_ans = $request->option;
             $save->answer_by = $request->answer_by;
             $save->subject_id = $request->subject;
+            $save->qmode = $request->qmode;
             if(getCorrectAns($request->qtion,$request->subject,$request->year) == $request->option){
                 $save->score = 1;
             }else{
