@@ -9,11 +9,14 @@
             <p id="respone"></p>
             <div class="card">
                 @if (Session::get('fail'))
-                    <div class="row">
+                    <script>
+                        toastr.error("{!! Session::get('fail') !!}")
+                    </script>
+                    <!--<div class="row">
                         <div class="col-md-12">
-                            <p class="alert alert-success">{{Session::get('fail')}}</p>
+                            <p class="alert alert-success"></p>
                         </div>
-                    </div>
+                    </div>-->
                 @endif
                 <h5 class="card-header" style="border-radius: 19px;">CREATING NEW USER</h5>
                 <div class="card-body">

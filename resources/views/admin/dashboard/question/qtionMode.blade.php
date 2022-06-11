@@ -7,18 +7,24 @@
         <div class="col-md-6">
             <div class="card">
                 @if (Session::get('success'))
-                    <div class="row">
+                    <script>
+                        toastr.success("{!! Session::get('success') !!}")
+                    </script>
+                    <!--<div class="row">
                         <div class="col-md-12">
-                            <p class="alert alert-success">{{Session::get('success')}}</p>
+                            <p class="alert alert-success"></p>
                         </div>
-                    </div>
+                    </div>-->
                 @endif
                 @if (Session::get('fail'))
-                    <div class="row">
+                    <script>
+                        toastr.error("{!! Session::get('fail') !!}")
+                    </script>
+                    <!--<div class="row">
                         <div class="col-md-12">
-                            <p class="alert alert-danger">{{Session::get('fail')}}</p>
+                            <p class="alert alert-danger"></p>
                         </div>
-                    </div>
+                    </div>-->
                 @endif
                 <h5 class="card-header" style="border-radius: 19px;">CREATING NEW QUESTION</h5>
                 <div class="card-body">
