@@ -11,10 +11,11 @@
                 Answer panel for all MCQ questions.
             -->
             @if ($question->qmode == "mcq")
-            <form action="{{ route('save_answer')}}" method="GET">
+            <form action="{{ route('save_answer')}}" method="POST">
+                @csrf
                 <h5 class="card-header" style="border-radius:19px;"></small>
                     @if (isset($_GET['page']))
-                    <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
+                        <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
                     @endif
                 </h5>
                 <div class="card-body animate__animated animate__fadeInRight">
@@ -89,10 +90,11 @@
 
             --->
             @if ($question->qmode == "essay")
-            <form action="{{ route('save_answer')}}" method="GET">
+            <form action="{{ route('save_answer')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <h5 class="card-header"></small>
                     @if (isset($_GET['page']))
-                    <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
+                        <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
                     @endif
                 </h5>
                 <div class="card-body animate__animated animate__fadeInRight">
@@ -131,7 +133,7 @@
                                             <div class="circle circle-lg bg-red-600">
                                                 <i class="fe fe-upload  fe-24 text-white"></i>
                                             </div>
-                                            <input type="file" name="image"/>
+                                            <input type="file" name="filename[]" multiple='multiple'/>
                                             </div>
                                         </div>
                                         <!-- Preview -->
@@ -194,16 +196,27 @@
                     </div>
                 </div>
             @endif
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            @if (isset($_GET['page']))
+                                @for ($i = 1; $i <= numberofquestions($question->subject_id, $question->year); $i++)
+                                <a class="mt-2 {{$i == $_GET['page'] ? 'rounded btn btn-success text-white' : 'rounded btn btn-outline-success'}}" href="/dashboard/quiz/{{$question->subject_id}}/{{$question->year}}?page={{$i}}">{{$i}}</a>
+                                @endfor
+                            @endif
+                        </p>
+                    </div>
+                </div>
                 <span class="d-flex flex-row justify-content-around animate__animated animate__fadeInUp mt-3">{{ $all_question->links() }}</span>
                 <div class="d-flex flex-row justify-content-between mt-4">
                     <p></p>
                     <p>
                         <a href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"></i> Ask for Help</a>
-                    @if(isset($_GET['page']))
-                        @if(numberofquestions($question->subject_id, $question->year) == $_GET['page'])
-                            <a href="/quizDone?subject={{$question->subject_id}}&year={{$question->year}}&answerBy={{Session::get('studentid')}}" class="btn btn-primary" style="border-radius:19px;">Quiz Done</a>
+                        @if(isset($_GET['page']))
+                            @if(numberofquestions($question->subject_id, $question->year) == $_GET['page'])
+                                <a href="/quizDone?subject={{$question->subject_id}}&year={{$question->year}}&answerBy={{Session::get('studentid')}}" class="btn btn-primary" style="border-radius:19px;">Quiz Done</a>
+                            @endif
                         @endif
-                    @endif
                     </p>
                 </div>
             </div>

@@ -76,7 +76,7 @@ function getsubjectID($subjectname){
  * @return A collection of questions
  */
 function getallquestion($subject, $year){
-    return DB::table('questions')->where('subject_id',$subject)->where('year',$year)->where('qmode','mcq')->simplePaginate(1);
+    return DB::table('questions')->where('subject_id',$subject)->where('year',$year)->simplePaginate(1);
 }
 
 
@@ -274,6 +274,7 @@ function get_percentage($QAns, $numberOfQ){
 
 
 
+
 //Admin helper functions below
 /**
  * It returns the number of all questions in the database.
@@ -385,6 +386,13 @@ function getspmprogram(){
     return spmprogram::all();
 }
 
+/**
+ * It returns a question object from the database based on the question id.
+ *
+ * @param qtion_id The ID of the question you want to get.
+ *
+ * @return The question with the id of
+ */
 function getQtion($qtion_id){
     return questions::find($qtion_id);
 }

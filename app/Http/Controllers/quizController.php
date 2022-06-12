@@ -76,6 +76,32 @@ class quizController extends Controller
            $request->session()->put('selectedoption',$request->option);
            return back()->with('pagination','Record Updated')->with('button',$request->button);
         }else{
+            if($request->has('filename')){
+                $ansfiles = [];
+                foreach($request->file('filename') as $image){
+                    $filename = $image->getClientOriginalName();
+                    $image->move('answer_images/',$filename);
+                    $ansfiles[] = $filename;
+                }
+                $all_ans_files = json_encode($ansfiles);
+                $save = new answers();
+                $save->qtion_id = $request->qtion;
+                $save->qtion_ans = $request->option;
+                $save->answer_by = $request->answer_by;
+                $save->subject_id = $request->subject;
+                $save->qmode = $request->qmode;
+                $save->ans_image = $all_ans_files;
+                if(getCorrectAns($request->qtion,$request->subject,$request->year) == $request->option){
+                    $save->score = 1;
+                }else{
+                    $save->score = 0;
+                }
+                $save->year = $request->year;
+                $save->save();
+                $request->session()->put('selectedoption',$request->option);
+                return back()->with('pagination','Answer Recorded')->with('button',$request->button);
+
+            }
             $save = new answers();
             $save->qtion_id = $request->qtion;
             $save->qtion_ans = $request->option;
