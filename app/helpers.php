@@ -76,7 +76,7 @@ function getsubjectID($subjectname){
  * @return A collection of questions
  */
 function getallquestion($subject, $year){
-    return DB::table('questions')->where('subject_id',$subject)->where('year',$year)->simplePaginate(1);
+    return DB::table('questions')->inRandomOrder('id')->where('subject_id',$subject)->where('year',$year)->paginate(1);
 }
 
 

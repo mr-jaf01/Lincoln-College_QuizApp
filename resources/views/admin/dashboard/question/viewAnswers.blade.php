@@ -58,13 +58,22 @@
                     <hr class="my-1" />
                     <div class="row mb-3">
                         <div class="col-md-6 font-weight-bold">
-                           Answer Image
+                           Answer Images or Files
                         </div>
 
-                        <div class="col-md-6">
-                            {{getQtion($answer->qtion_id)->qimage}}
+                        <div class="col-md-6 d-flex flex-column">
+                          @foreach (json_decode($answer->ans_image) as $image)
+                                <a class="btn btn-info btn-sm rounded mb-1" style="width: 100px;" href="{{asset('answer_images/'.$image)}}">Solution {{ $loop->iteration }}</a>
+                          @endforeach
                         </div>
                     </div>
+                    <hr class="my-1" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            hello wolrd
+                        </div>
+                    </div>
+
                 </div>
               </div>
         </div>

@@ -128,4 +128,14 @@ class quizController extends Controller
     public function quizDone(){
         return view('quiz.quiz_done');
     }
+
+    public function uploadimage(Request $request){
+        $qimages = [];
+        foreach($request->file('filename') as $image){
+            $filename = $image->getClientOriginalName();
+            $image->move('question_image/',$filename);
+            $qimages[] = $filename;
+        }
+        return back()->with('images',json_encode($qimages));
+    }
 }

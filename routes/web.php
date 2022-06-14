@@ -55,6 +55,11 @@ Route::get('/check_answer',[QuizContro::class, 'check_answer'])->name('check_ans
 Route::post('/save_answer',[QuizContro::class, 'save_answer'])->name('save_answer');
 Route::get('/quizDone',[QuizContro::class,'quizDone'])->name('quizdone');
 
+Route::get('/upload', function(){
+    return view('upload');
+});
+Route::post('/upload',[QuizContro::class,'uploadimage']);
+
 
 
 

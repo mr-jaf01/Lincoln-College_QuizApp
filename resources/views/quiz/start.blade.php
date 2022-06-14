@@ -196,18 +196,8 @@
                     </div>
                 </div>
             @endif
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            @if (isset($_GET['page']))
-                                @for ($i = 1; $i <= numberofquestions($question->subject_id, $question->year); $i++)
-                                <a class="mt-2 {{$i == $_GET['page'] ? 'rounded btn btn-success text-white' : 'rounded btn btn-outline-success'}}" href="/dashboard/quiz/{{$question->subject_id}}/{{$question->year}}?page={{$i}}">{{$i}}</a>
-                                @endfor
-                            @endif
-                        </p>
-                    </div>
-                </div>
-                <span class="d-flex flex-row justify-content-around animate__animated animate__fadeInUp mt-3">{{ $all_question->links() }}</span>
+
+                <span class="animate__animated animate__fadeInUp mt-3" style="word-wrap:break-word">{{ $all_question->links() }}</span>
                 <div class="d-flex flex-row justify-content-between mt-4">
                     <p></p>
                     <p>
