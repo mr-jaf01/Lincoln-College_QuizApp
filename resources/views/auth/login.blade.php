@@ -6,9 +6,9 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-6" style="margin-top:-40px">
+    <div class="col-md-6 animate__animated animate__fadeInLeft" >
           <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div class=" w-full space-y-8">
+            <div class="max-w-md space-y-8">
               <div>
                 <p>Language<span id="google_translate_element"></span></p>
                 <!--<img class="mx-auto" src="{{ asset('linlogo.png') }}" width="250" height="250" alt="linlogo">-->
@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6"><img src=" {{asset('bannerranking.png')}}" /></div>
+    <div class="col-md-6 animate__animated animate__fadeInUp"><img src=" {{asset('bannerranking.png')}}" /></div>
   </div>
 
   <div class="row mt-1">

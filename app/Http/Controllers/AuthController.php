@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\student as student;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
 
 use Session;
 
@@ -52,8 +55,7 @@ class AuthController extends Controller
             $checkstudent = student::where('email', '=', $request->email)->get();
         $checkcount = $checkstudent->count();
         if ($checkcount > 0) {
-            $status = 2;
-            return view('auth.success', compact('status'));
+            return back()->with('exit', 'Student Already Registered');
         } else {
             $student = new student();
             $student->studentname = $request->name;
@@ -68,12 +70,32 @@ class AuthController extends Controller
             $student->parentemail = $request->pemail;
             $student->parentphone = $request->pphone;
             $student->save();
-            $status = 1;
-            return view('auth.success', compact('status'));
+            $transport = Transport::fromDsn('smtp://SPMSPS@1690.tk:1994_Xujaf@1690.tk:465');
+                //$mailer = new Mailer($transport);
+
+                //$transport = Transport::fromDsn('smtp://localhost');
+                $mailer = new Mailer($transport);
+
+                $email = (new Email())
+                    ->from('SPMSPS@1690.tk')
+                    ->to($request->email)
+                    //->cc('cc@example.com')
+                    //->bcc('bcc@example.com')
+                    //->replyTo('fabien@example.com')
+                    //->priority(Email::PRIORITY_HIGH)
+                    ->subject('SPM STUDENT PREPARATION SYSTEM')
+                    ->html('
+                        <center><img width="300" height="150" src="https://lincoln.edu.my/wp-content/uploads/2021/06/cropped-logoLincoln.png" /></center>
+                        <h2>Congratulations!</h2>
+                        <p>Welcome!</p>
+                        <p>You have successfully registered on the SPM SPS Platform.</p>
+                    ');
+
+                $mailer->send($email);
+            return redirect('/auth/login')->with('success','Registration Successfully');
         }
         }else{
-            $status = 3;
-            return view('auth.success', compact('status'));
+            return back()->with('fail','Password & Comfirm Password Mismatch');
         }
     }
     // user logout function

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('linlogo.png')}}">
-    <title>Quiz App - @yield('tittle')</title>
+    <title>SPM SPS - @yield('tittle')</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{asset('client/css/simplebar.css')}}">
     <!-- Fonts CSS

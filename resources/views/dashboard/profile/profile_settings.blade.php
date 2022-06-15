@@ -78,10 +78,9 @@
                                             <label for="gender" class="sr-only">Intrested Program After SPM</label>
                                             <select id="program" name="program" type="text"   class="w-full px-3 py-2 focus:outline-none border rounded-b focus:border-indigo-500">
                                                 <option class="" value="{{ $student->program}}">{{ $student->program}}</option>
-                                                <option value="program1">Program 1</option>
-                                                <option value="program1">Program 2</option>
-                                                <option value="program1">Program 3</option>
-                                                <option value="program1">Program 4</option>
+                                                @foreach (getspmprogram() as $spm)
+                                                    <option value="{{$spm->program_name}}">{{$spm->program_name}}</option>
+                                                @endforeach
                                             </select>
                                             </div>
                                         </div>
@@ -90,7 +89,7 @@
                                     <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
                                         <div class="flex flex-row">
                                             <label for="flink" class="sr-only">Facebook Link</label>
-                                            <input id="flink" value="{{ $student->flink}}" name="flink" type="text"  required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Facebook Link">
+                                            <input id="flink" value="{{ $student->flink}}" name="flink" type="text"  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Facebook Link">
                                             <label for="instalink" class="sr-only">Instagram link</label>
                                             <input id="instalink" value="{{$student->instalink}}" name="instalink" type="text"   class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Instagram link">
                                         </div>

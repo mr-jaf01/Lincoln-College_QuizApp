@@ -196,8 +196,14 @@
                     </div>
                 </div>
             @endif
-
-                <span class="animate__animated animate__fadeInUp mt-3" style="word-wrap:break-word">{{ $all_question->links() }}</span>
+            <div class="row">
+                <div class="col-md-12 text-truncate animate__animated animate__fadeInUp mt-3">
+                    <span  class="d-flex flex-row justify-content-around">
+                        {{ $all_question->links() }}
+                    </span>
+                    <p></p>
+                </div>
+            </div>
                 <div class="d-flex flex-row justify-content-between mt-4">
                     <p></p>
                     <p>

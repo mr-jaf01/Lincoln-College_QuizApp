@@ -356,22 +356,21 @@ function getparentEmail($user_id){
  * @param percentage The percentage of the year that has passed.
  */
 function sendEmail($to,$subject,$year,$score,$percentage){
-    $transport = Transport::fromDsn('smtp://quizapp@silly-wilbur.31-187-72-1.plesk.page:1994_Xujaf@silly-wilbur.31-187-72-1.plesk.page:465');
+    $transport = Transport::fromDsn('smtp://SPMSPS@1690.tk:1994_Xujaf@1690.tk:465');
     //$mailer = new Mailer($transport);
 
     //$transport = Transport::fromDsn('smtp://localhost');
     $mailer = new Mailer($transport);
 
     $email = (new Email())
-        ->from('quizapp@silly-wilbur.31-187-72-1.plesk.page')
-        ->to('mrjafprogrammer@gmail.com')
+        ->from('SPMSPS@1690.tk')
+        ->to($to)
         //->cc('cc@example.com')
         //->bcc('bcc@example.com')
         //->replyTo('fabien@example.com')
         //->priority(Email::PRIORITY_HIGH)
-        ->subject('Time for Symfony Mailer!')
-        ->text('Sending emails is fun again!')
-        ->html('<p>See Twig integration for better HTML integration!</p>');
+        ->subject('SPM STUDENT PREPARATION SYSTEM QUIZ SCORE')
+        ->html('<p>Your Score for '.$subject.' '.$year.' Quiz is '.$score.' '.' and the Percentage is '.$percentage.'%'.'</p>');
 
     $mailer->send($email);
 
