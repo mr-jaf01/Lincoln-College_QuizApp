@@ -313,7 +313,7 @@
     }
     }
     </style>
-    <script>
+<script>
     var modal = document.getElementById("myModal");
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
@@ -343,9 +343,9 @@
     <script src="{{asset('client/js/config.js')}}"></script>
     <script src="{{asset('client/js/apps.js')}}"></script>
     <!--<script>tinymce.init({ selector:'textarea' });</script>-->
-    <script>
+<script>
         tinymce.init({selector:'.editor'})
-    </script>
+</script>
 
 
 @endsection

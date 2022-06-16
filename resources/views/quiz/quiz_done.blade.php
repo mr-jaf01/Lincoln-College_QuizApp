@@ -45,7 +45,7 @@
                        @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) < 70)
                        <div class="row p-5">
                         You are Recommended to Retake the Quiz
-                        <a href="#" class="btn bg-red-500 p-2 text-white w-full" style="border-radius: 19px;">Retake Quiz</a>
+                        <a href="{{route('dashboard')}}" class="btn bg-red-500 p-2 text-white w-full" style="border-radius: 19px;">Retake Quiz</a>
                         </div>
                        @endif
                  <hr class="my-1" />
