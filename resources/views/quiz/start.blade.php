@@ -196,12 +196,11 @@
                     </div>
                 </div>
             @endif
-            <div class="row">
-                <div class="col-md-12 text-truncate animate__animated animate__fadeInUp mt-3">
-                    <span  class="d-flex flex-row justify-content-around">
+            <div class="animate__animated animate__fadeInUp mt-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
                         {{ $all_question->links() }}
-                    </span>
-                    <p></p>
+                    </div>
                 </div>
             </div>
                 <div class="d-flex flex-row justify-content-between mt-4">

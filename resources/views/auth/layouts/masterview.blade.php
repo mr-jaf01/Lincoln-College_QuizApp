@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{ asset('linlogo.png')}}" />
-    <title>Quiz App - @yield('tittle')</title>
+    <title>SPM SPS - @yield('tittle')</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
