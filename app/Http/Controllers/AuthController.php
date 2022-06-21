@@ -89,6 +89,11 @@ class AuthController extends Controller
                         <h2>Congratulations!</h2>
                         <p>Welcome!</p>
                         <p>You have successfully registered on the SPM SPS Platform.</p>
+                        <p>You can now login and start taking your test.</p>
+
+                        <p style="padding-top:10px;">All the best<p>
+
+                        <p style="padding-top:20px;">SSPS Support</p>
                     ');
 
                 $mailer->send($email);

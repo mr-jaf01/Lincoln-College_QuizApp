@@ -116,3 +116,4 @@ Route::get('admin/dashboard/spm/delete/{id}', [SpmController::class, 'delete'])-
 //admin Essay Answer Route
 Route::get('admin/dashboard/answer/essay', [EssayController::class, 'getEssayAnswer'])->name('admin.dashboard.answer.essay');
 Route::get('admin/dashboard/answer/essay/answer/{id}',[EssayController::class, 'getsingleAnswer']);
+Route::post('admin/dashboard/remark/save', [EssayController::class, 'saveRemark'])->name('save.remark');
