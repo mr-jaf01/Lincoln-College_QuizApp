@@ -21,10 +21,10 @@ class EssayController extends Controller
 
     public function saveRemark(Request $request){
         if($request->remark == 'pass'){
-            $save_remark = answers::where('qtion_id',$request->qtion_id)->where('answer_by', $request->answer)->update(['score'=>1]);
+            $save_remark = answers::where('qtion_id',$request->qtion_id)->where('answer_by', $request->answer_by)->update(['score'=>1]);
         }else{
-            $save_remark = answers::where('qtion_id',$request->qtion_id)->where('answer_by', $request->answer)->update(['score'=>0]);
+            $save_remark = answers::where('qtion_id',$request->qtion_id)->where('answer_by', $request->answer_by)->update(['score'=>0]);
         }
-        return back()->with('success', 'Remark Updated Success');
+        return redirect('/admin/dashboard/answer/essay')->with('success', 'Remark Updated Success');
     }
 }

@@ -6,18 +6,24 @@
             <div class="col-md-12">
                 <div class="card" style="border-radius: 19px;">
                     @if (Session::get('success'))
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="alert alert-success">{{Session::get('success')}}</p>
-                        </div>
+                <script>
+                    toastr.success("{!! Session::get('success') !!}")
+                </script>
+                <!--<div class="row">
+                    <div class="col-md-12">
+                        <p class="alert alert-success"></p>
                     </div>
+                </div>-->
                 @endif
                 @if (Session::get('fail'))
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="alert alert-danger">{{Session::get('fail')}}</p>
-                    </div>
-                </div>
+                    <script>
+                        toastr.error("{!! Session::get('fail') !!}")
+                    </script>
+                    <!--<div class="row">
+                        <div class="col-md-12">
+                            <p class="alert alert-success"></p>
+                        </div>
+                    </div>-->
                 @endif
                     <h5 class="card-header mb-2 d-flex flex-row justify-content-between" style="border-radius: 19px;">
                         <span>All ESSAY ANSWERS</span>
