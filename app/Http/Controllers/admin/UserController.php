@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
+
 
 class UserController extends Controller
 {
@@ -42,6 +46,37 @@ class UserController extends Controller
         $addUser->password = Hash::make($request->password);
         $status = $addUser->save();
         if($status){
+            $transport = Transport::fromDsn('smtp://SPMSPS@1690.tk:1994_Xujaf@1690.tk:465');
+                //$mailer = new Mailer($transport);
+
+                //$transport = Transport::fromDsn('smtp://localhost');
+                $mailer = new Mailer($transport);
+
+                $email = (new Email())
+                    ->from('SPMSPS@1690.tk')
+                    ->to($request->email)
+                    //->cc('cc@example.com')
+                    //->bcc('bcc@example.com')
+                    //->replyTo('fabien@example.com')
+                    //->priority(Email::PRIORITY_HIGH)
+                    ->subject('SPM STUDENT PREPARATION SYSTEM (ADMIN)')
+                    ->html('
+                        <center><img width="300" height="150" src="https://lincoln.edu.my/wp-content/uploads/2021/06/cropped-logoLincoln.png" /></center>
+                        <h2>Congratulations!</h2>
+                        <p>Welcome!</p>
+                        <p>You were successfully added as a Teacher on the SPM SPS Platform.</p>
+                        <p>You can now login and start creating and reviewing SPM Questions.</p>
+
+                        <p style="padding-top:10px;">All the best<p>
+                        <div style="padding-top:10px;"></div>
+                        <h4>Your Login info :</h4>
+                        <p style=" color:blue;">Email:'.$request->email.'</p>
+                        <p style=" color:blue;">Password:'.$request->password.'</p>
+
+                        <p style="padding-top:20px;">SSPS Support</p>
+                    ');
+
+                $mailer->send($email);
             return redirect('/admin/dashboard/users')->with('success','User Added Successfully');
         }else{
             return redirect('/admin/dashboard/users')->with('fail','Adding New User Fail');
