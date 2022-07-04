@@ -5,9 +5,9 @@
    <script>window.location.href="{{route('auth.login')}}"</script>
 @endif
 <div class="container-fluid mt-3">
+<form hx-get="/dashboard/question" hx-trigger='click' hx-target="#respone">
    <div class="row">
        <div class="col-md-4">
-        <form hx-get="/dashboard/question" hx-trigger='click' hx-target="#respone">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
               <label class="input-group-text bg-red-400 text-white" for="inputGroupSelect01">Select Year</label>
@@ -25,11 +25,21 @@
             </select>
           </div>
           <input type="hidden" name="subject" value="{{$subjectdetails->subjectname}}" />
-        </form>
+       </div>
+       <div class="col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text bg-red-400 text-white" for="inputGroupSelect02">Select Question Type</label>
+            </div>
+            <select name="qtype" class="custom-select  shadow-none" id="inputGroupSelect02" >
+              <option value="mcq">MCQ</option>
+              <option value="essay">ESSAY</option>
+            </select>
+          </div>
        </div>
        <div class="col-md-4"></div>
-       <div class="col-md-4"></div>
    </div>
+</form>
    <hr class="my-1" />
    <div class="d-flex justify-content-center">
         @if (Session::get('alert'))
