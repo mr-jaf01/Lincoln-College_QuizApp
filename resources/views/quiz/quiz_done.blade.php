@@ -12,37 +12,37 @@
                 <div class="card-body">
                  <div class="row">
                    <div class="col-md-12">
-                       @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) < 70)
-                       <div class="d-flex flex-column align-items-center mb-1"><span class="font-weight-bold text-green-600" style="font-size: 150px;">&#128532;</span>  <span style="font-size: 17px;" class="alert alert-danger">Ooops! Please try Again! - FAIL</span> <span style="font-size: 20px;">Total Point Score:{{get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy'])}}</span> <span>{{ get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year']))}}%</span></div>
+                       @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) < 70)
+                       <div class="d-flex flex-column align-items-center mb-1"><span class="font-weight-bold text-green-600" style="font-size: 150px;">&#128532;</span>  <span style="font-size: 17px;" class="alert alert-danger">Ooops! Please try Again! - FAIL</span> <span style="font-size: 20px;">Total Point Score:{{get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode'])}}</span> <span>{{ get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode']))}}%</span></div>
                        @endif
 
-                       @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) >= 70)
-                       <div class="d-flex flex-column align-items-center mb-1"><span class="font-weight-bold text-green-600" style="font-size: 150px;">&#128525;</span>  <span style="font-size: 17px;" class="alert alert-success">CONGRATULATIONS! - PASSED</span> <span class="alert alert-success white-text">Total Point Score:{{get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy'])}}</span> <span>{{ get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) }}%</span></div>
+                       @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) >= 70)
+                       <div class="d-flex flex-column align-items-center mb-1"><span class="font-weight-bold text-green-600" style="font-size: 150px;">&#128525;</span>  <span style="font-size: 17px;" class="alert alert-success">CONGRATULATIONS! - PASSED</span> <span class="alert alert-success white-text">Total Point Score:{{get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode'])}}</span> <span>{{ get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) }}%</span></div>
                        @endif
                    </div>
                  </div>
                  <hr class="my-1" />
 
-                 {{sendEmail(getparentEmail($_GET['answerBy'])->parentemail, $_GET['subject'], $_GET['year'],get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy']), get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) )}}
-                 @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) < 70 )
-                 {{performance($_GET['answerBy'],$_GET['subject'], $_GET['year'], get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])), 'fail')}}
+                 {{sendEmail(getparentEmail($_GET['answerBy'])->parentemail, $_GET['subject'], $_GET['year'],get_sum($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) )}}
+                 @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) < 70 )
+                 {{performance($_GET['answerBy'],$_GET['subject'], $_GET['year'], get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) ,$_GET['qmode'], 'fail')}}
                  @endif
 
 
 
-                 @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) >= 70)
-                 {{performance($_GET['answerBy'],$_GET['subject'], $_GET['year'], get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])), 'pass')}}
+                 @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) >= 70)
+                 {{performance($_GET['answerBy'],$_GET['subject'], $_GET['year'], get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) ,$_GET['qmode'], 'pass')}}
                  @endif
 
 
 
                  <div class="row">
-                    <div class="col-md-4 alert alert-secondary"><p><i class="bi bi-question-circle"></i> Total Number of Questions : <span class="">{{numberofquestions($_GET['subject'], $_GET['year'])}}</span></p></div>
-                    <div class="col-md-4 alert alert-danger"><p><i class="bi bi-x-circle"></i> Number of Fail Answers: <span class="font-weight-bold text-red-600">{{Number_of_failAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'])}}</span></p></div>
-                    <div class="col-md-4 alert alert-success"><p><i class="bi bi-check-circle"></i> Number of Correct Answers :<span class="font-weight-bold text-green-600">{{Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'])}}</span></p></div>
+                    <div class="col-md-4 alert alert-secondary"><p><i class="bi bi-question-circle"></i> Total Number of Questions : <span class="">{{numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])}}</span></p></div>
+                    <div class="col-md-4 alert alert-danger"><p><i class="bi bi-x-circle"></i> Number of Fail Answers: <span class="font-weight-bold text-red-600">{{Number_of_failAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode'])}}</span></p></div>
+                    <div class="col-md-4 alert alert-success"><p><i class="bi bi-check-circle"></i> Number of Correct Answers :<span class="font-weight-bold text-green-600">{{Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode'])}}</span></p></div>
                  </div>
                  <hr class="my-1" />
-                       @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy']), numberofquestions($_GET['subject'], $_GET['year'])) < 70)
+                       @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) < 70)
                        <div class="row p-5">
                         You are Recommended to Retake the Quiz
                         <a href="{{route('dashboard')}}" class="btn bg-red-500 p-2 text-white w-full" style="border-radius: 19px;">Retake Quiz</a>

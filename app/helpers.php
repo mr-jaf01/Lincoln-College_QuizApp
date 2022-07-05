@@ -75,8 +75,8 @@ function getsubjectID($subjectname){
  *
  * @return A collection of questions
  */
-function getallquestion($subject, $year){
-    return DB::table('questions')->inRandomOrder('id')->where('subject_id',$subject)->where('year',$year)->paginate(1);
+function getallquestion($subject, $year, $qmode){
+    return DB::table('questions')->inRandomOrder('id')->where('subject_id',$subject)->where('year',$year)->where('qmode',$qmode)->paginate(1);
 }
 
 
@@ -88,8 +88,8 @@ function getallquestion($subject, $year){
  *
  * @return The number of questions in the database for a given subject and year.
  */
-function numberofquestions($subject,$year){
-    $query = DB::table('questions')->where('subject_id',$subject)->where('year',$year)->get();
+function numberofquestions($subject,$year,$qmode){
+    $query = DB::table('questions')->where('subject_id',$subject)->where('year',$year)->where('qmode',$qmode)->get();
     return $query->count();
 }
 
@@ -103,8 +103,8 @@ function numberofquestions($subject,$year){
  *
  * @return The number of answered questions
  */
-function number_of_answered_questions($subject,$year,$answered_by){
-    $getcount = DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$answered_by)->get();
+function number_of_answered_questions($subject,$year,$answered_by, $qmode){
+    $getcount = DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$answered_by)->where('qmode',$qmode)->get();
     $totalnum = $getcount->count();
     return $totalnum;
 }
@@ -151,8 +151,8 @@ function getCorrectAns($qtionID,$subject,$year){
  * @param subject_id The id of the subject you want to get the questions from.
  * @param year the year of the quiz
  */
-function quiz_history($user_id,$subject_id,$year){
-    $check_update = history::where('user_id',$user_id)->where('subject_id',$subject_id)->where('year',$year)->count();
+function quiz_history($user_id,$subject_id,$year,$qmode){
+    $check_update = history::where('user_id',$user_id)->where('subject_id',$subject_id)->where('year',$year)->where('qmode',$qmode)->count();
     if($check_update > 0){
 
     }else{
@@ -160,6 +160,7 @@ function quiz_history($user_id,$subject_id,$year){
         $save_quiz->user_id = $user_id;
         $save_quiz->subject_id = $subject_id;
         $save_quiz->year = $year;
+        $save_quiz->qmode = $qmode;
         $save_quiz->save();
     }
 }
@@ -191,14 +192,14 @@ function get_quiz_history($user_id){
  *  variable, the year is equal to the  variable, and the answer_by is equal to the
  *  variable.
  */
-function get_sum($subject, $year, $userid){
-    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->sum('score');
+function get_sum($subject, $year, $userid,$qmode){
+    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->where('qmode',$qmode)->sum('score');
 }
 
 
 
-function Number_of_failAnswer($subject,$year,$userid){
-    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->where('score',0)->count();
+function Number_of_failAnswer($subject,$year,$userid,$qmode){
+    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('qmode',$qmode)->where('answer_by',$userid)->where('score',0)->count();
 }
 
 /**
@@ -210,8 +211,8 @@ function Number_of_failAnswer($subject,$year,$userid){
  *
  * @return The number of correct answers for a particular subject, year and userid.
  */
-function Number_of_correctAnswer($subject,$year,$userid){
-    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('answer_by',$userid)->where('score',1)->count();
+function Number_of_correctAnswer($subject,$year,$userid,$qmode){
+    return DB::table('answers')->where('subject_id',$subject)->where('year',$year)->where('qmode',$qmode)->where('answer_by',$userid)->where('score',1)->count();
 }
 
 
@@ -225,8 +226,8 @@ function Number_of_correctAnswer($subject,$year,$userid){
  * @param per percentage
  * @param status 1 = Pass, 2 = Fail, 3 = Absent
  */
-function performance($userid,$subject,$year,$per,$status){
-    $check_exit = performance::where('user_id',$userid)->where('subject_id',$subject)->where('year',$year)->update(['percentage'=>$per,'status'=>$status]);
+function performance($userid,$subject,$year,$per, $qmode, $status){
+    $check_exit = performance::where('user_id',$userid)->where('subject_id',$subject)->where('year',$year)->where('qmode',$qmode)->update(['percentage'=>$per,'status'=>$status]);
     if($check_exit){
     }else{
         $save_performance = new performance();
@@ -234,6 +235,7 @@ function performance($userid,$subject,$year,$per,$status){
         $save_performance->subject_id = $subject;
         $save_performance->year = $year;
         $save_performance->percentage = $per;
+        $save_performance->qmode = $qmode;
         $save_performance->status = $status;
         $save_performance->save();
     }
@@ -249,8 +251,8 @@ function performance($userid,$subject,$year,$per,$status){
  *
  * @return A single row from the performance table.
  */
-function get_performance($userid,$subject,$year){
-    return performance::where('user_id',$userid)->where('subject_id',$subject)->where('year',$year)->first();
+function get_performance($userid,$subject,$year,$qmode){
+    return performance::where('user_id',$userid)->where('subject_id',$subject)->where('year',$year)->where('qmode',$qmode)->first();
 }
 
 

@@ -18,6 +18,7 @@ class CreateHistoriesTable extends Migration
             $table->String('user_id');
             $table->String('subject_id');
             $table->String('year');
+            $table->String('qmode');
             $table->timestamps();
         });
     }

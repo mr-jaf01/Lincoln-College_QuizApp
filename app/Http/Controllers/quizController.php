@@ -17,12 +17,12 @@ class quizController extends Controller
      * @param year The year of the question paper
      */
    /**/
-    public function start($subject, $year){
-        $all_question = getallquestion($subject, $year);
+    public function start($subject, $year, $qmode){
+        $all_question = getallquestion($subject, $year, $qmode);
         if(count($all_question) <= 0){
             return back()->with('alert','No Available Questions, Please Select other Subject or Select diffrent Year');
         }else{
-            quiz_history(Session::get('studentid'),$subject,$year);
+            quiz_history(Session::get('studentid'),$subject,$year, $qmode);
             return view('quiz.start',compact('all_question'));
         }
 

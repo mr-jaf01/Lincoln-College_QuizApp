@@ -50,7 +50,7 @@ foreach(getsubject() as $key=>$value){
 }
 
 //dashboard start quiz route
-Route::get('/dashboard/quiz/{subject}/{year}',[QuizContro::class, 'start'])->name('dashboard.quiz');
+Route::get('/dashboard/quiz/{subject}/{year}/{qmode}',[QuizContro::class, 'start'])->name('dashboard.quiz');
 Route::get('/check_answer',[QuizContro::class, 'check_answer'])->name('check_answer');
 Route::post('/save_answer',[QuizContro::class, 'save_answer'])->name('save_answer');
 Route::get('/quizDone',[QuizContro::class,'quizDone'])->name('quizdone');

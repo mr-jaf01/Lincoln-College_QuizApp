@@ -56,12 +56,12 @@ class subjectController extends Controller
     //subject details function to panel blade view
     public function qdetails(Request $request){
         $subject = $request->subject;
-        $qtype = $request->qtype;
+        $qmode = $request->qmode;
         $year = $request->year;
-        $all_question = getallquestion($subject, $year);
-        $totalnumberofquestion = numberofquestions($subject,$year);
-        $totalnumber_unanswered = max(numberofquestions($subject,$year) - number_of_answered_questions($subject,$year,Session::get('studentid')),0);
-        $totalnumber_answer = number_of_answered_questions($subject,$year,Session::get('studentid'));
-        return view('subject.respone_panel', compact('subject', 'qtype', 'year','totalnumberofquestion','totalnumber_unanswered','totalnumber_answer'));;
+        $all_question = getallquestion($subject, $year, $qmode);
+        $totalnumberofquestion = numberofquestions($subject,$year,$qmode);
+        $totalnumber_unanswered = max(numberofquestions($subject,$year,$qmode) - number_of_answered_questions($subject,$year,Session::get('studentid'), $qmode),0);
+        $totalnumber_answer = number_of_answered_questions($subject,$year,Session::get('studentid'),$qmode);
+        return view('subject.respone_panel', compact('subject', 'qmode', 'year','totalnumberofquestion','totalnumber_unanswered','totalnumber_answer'));;
     }
 }

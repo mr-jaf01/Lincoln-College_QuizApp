@@ -31,7 +31,7 @@
             <div class="input-group-prepend">
               <label class="input-group-text bg-red-400 text-white" for="inputGroupSelect02">Select Question Type</label>
             </div>
-            <select name="qtype" class="custom-select  shadow-none" id="inputGroupSelect02" >
+            <select name="qmode" class="custom-select  shadow-none" id="inputGroupSelect02" >
               <option value="mcq">MCQ</option>
               <option value="essay">ESSAY</option>
             </select>

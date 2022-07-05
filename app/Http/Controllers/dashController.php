@@ -96,7 +96,7 @@ class dashController extends Controller
    }
 
    function remove_history(Request $request){
-        history::where('user_id',$request->userid)->where('subject_id',$request->subject)->where('year',$request->year)->delete();
+        history::where('user_id',$request->userid)->where('subject_id',$request->subject)->where('year',$request->year)->where('qmode',$request->qmode)->delete();
         return back()->with('success','Quiz Remove Successfully');
    }
 }

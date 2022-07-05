@@ -19,6 +19,7 @@ class CreatePerformancesTable extends Migration
             $table->String('subject_id');
             $table->String('year');
             $table->String('percentage');
+            $table->String('qmode');
             $table->String('status');
             $table->timestamps();
         });
