@@ -3,6 +3,13 @@
 @section('content')
 <div class="container-fluid mt-3">
     <div class="row justify-content-center d-flex">
+        @if (Session::get('success'))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                </div>
+            </div>
+         @endif
         <div class="col-md-12">
             <div class="card p-2" style="border-radius:19px;">
             @foreach ($all_question as $question)
@@ -18,6 +25,7 @@
                         <span class="rounded btn btn-success text-white">{{ $question->subject_id }} {{ $question->year }} - Question {{$_GET['page']}}</span>
                     @endif
                 </h5>
+
                 <div class="card-body animate__animated animate__fadeInRight">
                     <h5 class="card-title">
                     {!! html_entity_decode( $question->qtions, ENT_QUOTES, 'UTF-8') !!}
@@ -75,6 +83,7 @@
                     </div>
                     <hr class="my-1" />
                 </div>
+
                 <input type="hidden" name="qtion" value="{{$question->id}}" />
                 <input type="hidden" name="answer_by" value="{{Session::get('studentid')}}" />
                 <input type="hidden" name="subject" value="{{$question->subject_id}}" />
@@ -206,7 +215,7 @@
                 <div class="d-flex flex-row justify-content-between mt-4">
                     <p></p>
                     <p>
-                        <a href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"></i> Ask for Help</a>
+                        <a data-toggle="modal" data-target="#exampleModal" href="#" class="btn btn-danger text-white animate__animated animate__fadeInLeft" style="border-radius:19px;"><i class="bi bi-chat-dots"></i> Ask for Help</a>
                         @if(isset($_GET['page']))
                             @if(numberofquestions($question->subject_id, $question->year, $question->qmode, ) == $_GET['page'])
                                 <a href="/quizDone?subject={{$question->subject_id}}&year={{$question->year}}&answerBy={{Session::get('studentid')}}&qmode={{$question->qmode}}" class="btn btn-primary" style="border-radius:19px;">Quiz Done</a>
@@ -219,19 +228,59 @@
     </div>
 </div>
 
+<!--- send email for support --->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Support Center</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/chat-support" method="POST">
+                    @csrf
+                <div class="modal-body">
+                    <label for="name">Your Name</label>
+                    <input type="text" required name="name" id="name" class="form-control">
+
+                    <br>
+
+
+                    <label for="email">Your Email</label>
+                    <input type="email" required name="email" id="email" class="form-control" placeholder="example@domain.com">
+                    <br>
+
+
+                    <label for="message">Message / Question</label>
+                    <textarea required name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700" style="border-radius: 19px;" value="Send Message">
+                </div>
+            </form>
+              </div>
+
+    </div>
+  </div>
+
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modalmyimg">
 
   <!-- The Close Button -->
-  <span class="close">&times;</span>
+  <span class="closemyimg">&times;</span>
 
   <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01">
+  <img class="modal-contentmyimg" id="img01">
 
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
 </div>
+
 <style>
     /* Style the Image Used to Trigger the Modal */
     #myImg {
@@ -243,7 +292,7 @@
     #myImg:hover {opacity: 0.7;}
 
     /* The Modal (background) */
-    .modal {
+    .modalmyimg {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -258,7 +307,7 @@
     }
 
     /* Modal Content (Image) */
-    .modal-content {
+    .modal-contentmyimg {
     margin: auto;
     display: block;
     width: 80%;
@@ -278,7 +327,7 @@
     }
 
     /* Add Animation - Zoom in the Modal */
-    .modal-content, #caption {
+    .modal-contentmyimg, #caption {
     animation-name: zoom;
     animation-duration: 0.6s;
     }
@@ -289,7 +338,7 @@
     }
 
     /* The Close Button */
-    .close {
+    .closemyimg {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -299,8 +348,8 @@
     transition: 0.3s;
     }
 
-    .close:hover,
-    .close:focus {
+    .closemyimg:hover,
+    .closemyimg:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
@@ -308,12 +357,14 @@
 
     /* 100% Image Width on Smaller Screens */
     @media only screen and (max-width: 700px){
-    .modal-content {
+    .modal-contentmyimg {
         width: 100%;
     }
     }
     </style>
+
 <script>
+
     var modal = document.getElementById("myModal");
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
@@ -343,6 +394,7 @@
     <script src="{{asset('client/js/config.js')}}"></script>
     <script src="{{asset('client/js/apps.js')}}"></script>
     <!--<script>tinymce.init({ selector:'textarea' });</script>-->
+
 <script>
         tinymce.init({selector:'.editor'})
 </script>

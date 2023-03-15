@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController as Auth;
 use App\Http\Controllers\dashController as Dashboard;
 use App\Http\Controllers\subjectController as Subject;
@@ -12,6 +13,7 @@ use App\Http\Controllers\admin\QuestionController as QuestionController;
 use App\Http\Controllers\admin\UserController as UserController;
 use App\Http\Controllers\admin\StudentController as StudentController;
 use App\Http\Controllers\admin\SpmController as SpmController;
+use App\Http\Controllers\admin\chatSupportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,12 @@ Route::get('/upload', function(){
     return view('upload');
 });
 Route::post('/upload',[QuizContro::class,'uploadimage']);
+
+
+//chat Support Route
+Route::post('/chat-support', [QuizContro::class, 'chatSupportEmail']);
+
+
 
 
 
@@ -117,3 +125,11 @@ Route::get('admin/dashboard/spm/delete/{id}', [SpmController::class, 'delete'])-
 Route::get('admin/dashboard/answer/essay', [EssayController::class, 'getEssayAnswer'])->name('admin.dashboard.answer.essay');
 Route::get('admin/dashboard/answer/essay/answer/{id}',[EssayController::class, 'getsingleAnswer']);
 Route::post('admin/dashboard/remark/save', [EssayController::class, 'saveRemark'])->name('save.remark');
+
+
+//admin support center Route
+
+Route::get('admin/dashboard/chat-support-center', [chatSupportController::class, 'chatSupportPage']);
+Route::get('admin/dashboard/chat-support-center/reply', [chatSupportController::class, 'chatReplyPage']);
+Route::post('admin/dashboard/chat-support-center/reply', [chatSupportController::class, 'sendreplytoEmail']);
+

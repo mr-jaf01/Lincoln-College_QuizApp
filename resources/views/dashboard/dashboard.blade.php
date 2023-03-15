@@ -16,8 +16,8 @@
             <div class="col-md-6 mb-3">
                 <div class="card p-1" style="border-radius: 19px;">
                     <div class="card-header d-flex flex justify-content-between" style="border-radius: 19px">
-                    <p class="rounded btn btn-success text-white">{{$quiz->subject_id}} - {{$quiz->year}} Quiz {{Str::upper($quiz->qmode)}}</p>
-                    <a href="{{route('dashboard.history.remove')}}?userid={{Session::get('studentid')}}&subject={{$quiz->subject_id}}&year={{$quiz->year}}&qmode={{$quiz->qmode}}" class="text-red-500"><i class="bi bi-x-circle text-red-500"></i></a>
+                        <p class="rounded btn btn-success text-white">{{$quiz->subject_id}} - {{$quiz->year}} Quiz {{Str::upper($quiz->qmode)}}</p>
+                        <a href="{{route('dashboard.history.remove')}}?userid={{Session::get('studentid')}}&subject={{$quiz->subject_id}}&year={{$quiz->year}}&qmode={{$quiz->qmode}}" class="text-red-500"><i class="bi bi-x-circle text-red-500"></i></a>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -69,17 +69,57 @@
 
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modalimg">
 
     <!-- The Close Button -->
-    <span class="close">&times;</span>
+    <span class="closemodalimg">&times;</span>
 
     <!-- Modal Content (The Image) -->
-    <img class="modal-content" id="img01">
+    <img class="modal-contentmodalimg" id="img01">
 
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
 </div>
+
+<!--- send email for support --->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Support Center</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/chat-support" method="POST">
+                    @csrf
+                <div class="modal-body">
+                    <label for="name">Your Name</label>
+                    <input type="text" required name="name" id="name" class="form-control">
+
+                    <br>
+
+
+                    <label for="email">Your Email</label>
+                    <input type="email" required name="email" id="email" class="form-control" placeholder="example@domain.com">
+                    <br>
+
+
+                    <label for="message">Message / Question</label>
+                    <textarea required name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <input type="submit" class="btn bg-red-500 p-2 text-white btn-sm hover:bg-red-700" style="border-radius: 19px;" value="Send Message">
+                </div>
+            </form>
+              </div>
+
+    </div>
+  </div>
+
 <style>
       /* Style the Image Used to Trigger the Modal */
       #myImg {
@@ -91,7 +131,7 @@
       #myImg:hover {opacity: 0.7;}
 
       /* The Modal (background) */
-      .modal {
+      .modalimg {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
       z-index: 1; /* Sit on top */
@@ -106,7 +146,7 @@
       }
 
       /* Modal Content (Image) */
-      .modal-content {
+      .modal-contentmodalimg {
       margin: auto;
       display: block;
       width: 80%;
@@ -126,7 +166,7 @@
       }
 
       /* Add Animation - Zoom in the Modal */
-      .modal-content, #caption {
+      .modal-contentmodalimg, #caption {
       animation-name: zoom;
       animation-duration: 0.6s;
       }
@@ -137,7 +177,7 @@
       }
 
       /* The Close Button */
-      .close {
+      .closemodalimg {
       position: absolute;
       top: 15px;
       right: 35px;
@@ -147,8 +187,8 @@
       transition: 0.3s;
       }
 
-      .close:hover,
-      .close:focus {
+      .closemodalimg:hover,
+      .closemodalimg:focus {
       color: #bbb;
       text-decoration: none;
       cursor: pointer;
@@ -156,11 +196,12 @@
 
       /* 100% Image Width on Smaller Screens */
       @media only screen and (max-width: 700px){
-      .modal-content {
+      .modal-contentmodalimg {
           width: 100%;
       }
       }
 </style>
+
 <script>
       var modal = document.getElementById("myModal");
 

@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\chatSupport;
 use App\Models\answers;
-use Session;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
+
+
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
+
 
 class quizController extends Controller
 {
@@ -137,5 +145,27 @@ class quizController extends Controller
             $qimages[] = $filename;
         }
         return back()->with('images',json_encode($qimages));
+    }
+
+
+    public function  chatSupportEmail(Request $request)
+    {
+        try {
+
+            $newchat = new chatSupport();
+            $newchat->name = $request->name;
+            $newchat->email = $request->email;
+            $newchat->message = $request->message;
+            $newchat->replied = "no";
+            if($newchat->save()){
+                return Back()->with('success', 'Thank you for your Message we will get back you soon!');
+            }
+
+        } catch (\Throwable $th) {
+
+            return Back()->with('error', 'Ops!! Something went wrong. Unable to send your Message. Please Try again!');
+        }
+
+
     }
 }

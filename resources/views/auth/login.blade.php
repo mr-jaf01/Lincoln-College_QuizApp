@@ -9,11 +9,11 @@
     <div class="col-md-6 animate__animated animate__fadeInLeft" >
           <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-md space-y-8">
-              <div>
+              <!--<div>
                 <p>Language<span id="google_translate_element"></span></p>
-                <!--<img class="mx-auto" src="{{ asset('linlogo.png') }}" width="250" height="250" alt="linlogo">-->
+
                 <h4 class="mt-1 text-center text-red-600"> <b>SPM STUDENT PREPARATION SYSTEM</b></h4>
-              </div>
+              </div>-->
               <div>
                 <center>
                 @if(Session::get('success'))
@@ -43,6 +43,8 @@
                   <div class="flex items-center">
                     <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                     <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
+
+
                   </div>
 
                   <div class="text-sm">

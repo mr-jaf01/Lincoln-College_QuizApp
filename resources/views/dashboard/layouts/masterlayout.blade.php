@@ -109,17 +109,17 @@
                     <span class="ml-3 item-text font-weight-bold">Support Center</span>
                     </a>
                     <ul class="collapse list-unstyled pl-4 w-100" id="support">
-                    <a class="nav-link pl-3" href="#"><span class="ml-1">Chat</span></a>
+                    <a data-toggle="modal" data-target="#exampleModal" class="nav-link pl-3" href="#"><span class="ml-1">Chat</span></a>
                     <a class="nav-link pl-3" href="#"><span class="ml-1">FAQ</span></a>
                     </ul>
                 </li>
 
                <li class="nav-item dropdown">
-                <a href="#" class="nav-link">
+                <!--<a href="#" class="nav-link">
                 <span class="ml-3 item-text font-weight-bold">
                     <p id="google_translate_element"  class="w-full"></p>
                 </span>
-                </a>
+                </a>-->
                 </li>
                     <img src="{{asset('bannerranking.png')}}" alt="" class="img-fluid animate__animated animate__fadeInUp"/>
                 <li>

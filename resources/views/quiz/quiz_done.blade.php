@@ -9,6 +9,7 @@
                 <div class="card-header" style="border-radius: 19px;">
                     Quiz Result
                 </div>
+
                 <div class="card-body">
                  <div class="row">
                    <div class="col-md-12">
@@ -42,15 +43,72 @@
                     <div class="col-md-4 alert alert-success"><p><i class="bi bi-check-circle"></i> Number of Correct Answers :<span class="font-weight-bold text-green-600">{{Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode'])}}</span></p></div>
                  </div>
                  <hr class="my-1" />
+
+                 <div class="row py-5">
+                    @foreach (answerPreview(request('answerBy'), request('subject'), request('qmode'), request('year')) as $ansPreview)
+
+                    <div class="card-body animate__animated animate__fadeInRight">
+                        <div class="flex flex-row justify-between">
+                            <span class="rounded btn btn-success text-white my-2">{{ getQtionById($ansPreview->qtion_id)->subject_id }} {{ getQtionById($ansPreview->qtion_id)->year }} - Question </span>
+                            <span>
+                                @if ($ansPreview->score == 1)
+                                    <i class="bi bi-check-circle text-green-500 text-2xl"></i>
+                                @else
+                                    <i class="bi bi-x-circle text-red-500 text-2xl"></i>
+                                @endif
+                            </span>
+                        </div>
+
+                        <h5 class="card-title">
+                        {!! html_entity_decode( getQtionById($ansPreview->qtion_id)->qtions, ENT_QUOTES, 'UTF-8') !!}
+                        </h5>
+
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexRadioDefault5">
+                                {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt1, ENT_QUOTES, 'UTF-8') !!}
+                            </label>
+                          </div>
+                        <hr class="my-1" />
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexRadioDefault5">
+                                {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt2, ENT_QUOTES, 'UTF-8') !!}
+                            </label>
+                          </div>
+                        <hr class="my-1" />
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexRadioDefault5">
+                                {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt3, ENT_QUOTES, 'UTF-8') !!}
+                            </label>
+                          </div>
+                        <hr class="my-1" />
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexRadioDefault5">
+                                {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt4, ENT_QUOTES, 'UTF-8') !!}
+                            </label>
+                          </div>
+                        <hr class="my-1" />
+                        <div class="form-check">
+                          <label class="form-check-label" for="flexRadioDefault5">
+                              {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt5, ENT_QUOTES, 'UTF-8') !!}
+                          </label>
+                        </div>
+                        <hr class="my-1" />
+                    </div>
+
+                    @endforeach
+                 </div>
+                 <hr class="my-1" />
                        @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) < 70)
-                       <div class="row p-5">
-                        You are Recommended to Retake the Quiz
-                        <a href="{{route('dashboard')}}" class="btn bg-red-500 p-2 text-white w-full" style="border-radius: 19px;">Retake Quiz</a>
+                        <div class="row p-5">
+                            You are Recommended to Retake the Quiz
+                            <a href="{{route('dashboard')}}" class="btn bg-red-500 p-2 text-white w-full" style="border-radius: 19px;">Retake Quiz</a>
                         </div>
                        @endif
                  <hr class="my-1" />
                  <div class="row">
-                    <center><a href="{{route('dashboard')}}" class="btn bg-red-500 p-2 text-white  hover:bg-red-700 w-full" style="border-radius: 19px;">Dashboard</a></center>
+
+                    <a href="{{route('dashboard')}}" class="btn bg-red-500 p-2 text-white  hover:bg-red-700" style="border-radius: 19px;">Dashboard</a>
+
                  </div>
                 </div>
               </div>

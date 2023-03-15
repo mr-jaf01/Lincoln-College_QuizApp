@@ -152,23 +152,27 @@
                     </ul>
                   </li>
                   <li class="nav-item dropdown">
+                    <a href="#ads" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="bi bi-person"></i>
+                      <span class="ml-3 item-text font-weight-bold">Ads</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="ads">
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">Post Ads</span></a>
+                      <a class="nav-link pl-3" href="#"><span class="ml-1">Manage Ads</span></a>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
                         <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                         <i class="bi bi-info-square"></i>
                         <span class="ml-3 item-text font-weight-bold">Support Center</span>
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="support">
-                        <a class="nav-link pl-3" href="#"><span class="ml-1">Chat</span></a>
-                        <a class="nav-link pl-3" href="#"><span class="ml-1">FAQ</span></a>
+                        <a href="/admin/dashboard/chat-support-center" class="nav-link pl-3" href="#"><span class="ml-1">Chat</span></a>
+                        <a class="nav-link pl-3" target="_blank" href="https://webmail.1690.tk/roundcube/?_task=mail&_mbox=INBOX"><span class="ml-1">Mail Inbox</span></a>
                         </ul>
                   </li>
 
-                   <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">
-                    <span class="ml-3 item-text font-weight-bold">
-                        <p id="google_translate_element"  class="w-full"></p>
-                    </span>
-                    </a>
-                    </li>
+
               </ul>
             </nav>
           </aside>

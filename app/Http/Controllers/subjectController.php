@@ -46,12 +46,18 @@ class subjectController extends Controller
             $subjectdetails = getsubjectID("Physics");
             return view('subject.panel', compact('subjectdetails'));
 
-
+        }else if($route == "Sejarah"){
+            $subjectdetails = getsubjectID("Sejarah");
+            return view('subject.panel', compact('subjectdetails'));
+        }else if($route == "Bahasa-Melayu"){
+            $subjectdetails = getsubjectID("Bahasa-Melayu");
+            return view('subject.panel', compact('subjectdetails'));
         }else{
             return "No Content for this Subject";
         }
 
     }
+
 
     //subject details function to panel blade view
     public function qdetails(Request $request){

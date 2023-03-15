@@ -31,6 +31,7 @@
                     </h5>
                     <div class="card-body">
                       <div class="table-responsive text-nowrap">
+
                         <table class="table table-bordered small" id="myTable">
                           <thead>
                             <tr>
@@ -52,7 +53,8 @@
                                 <td>{{$question->subject_id}}</td>
                                 <td>{{$question->year}}</td>
                                 <td>{{$question->qmode}}</td>
-                                    <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <td>
+                                        <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="text-muted sr-only">Action</span>
                                       </button>
                                       <div class="dropdown-menu dropdown-menu-right">

@@ -397,3 +397,26 @@ function getspmprogram(){
 function getQtion($qtion_id){
     return questions::find($qtion_id);
 }
+
+function getSubject_year($subject_id)
+{
+    $years = questions::select('year')->where('subject_id', $subject_id)->distinct()->get();
+
+    $uniqueYears = [];
+
+    foreach ($years as $year) {
+        $uniqueYears[] = $year->year;
+    }
+
+    return $uniqueYears;
+}
+
+function answerPreview($answered_by, $subject_id, $qmode, $year)
+{
+    return answers::where('answer_by', $answered_by)->where('subject_id', $subject_id)->where('qmode', $qmode)->where('year', $year)->get();
+}
+
+function getQtionById($qtion_id)
+{
+    return questions::where('id', $qtion_id)->first();
+}

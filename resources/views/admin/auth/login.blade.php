@@ -59,14 +59,11 @@
           <!-- Register -->
           <div class="card">
             <div class="card-body">
-                <p>
-                    Language<span id="google_translate_element"></span>
-                </p>
-                <hr class="my-1" />
+
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="/admin/auth/login" class="app-brand-link gap-2">
-                  <span><img src="{{ asset('linlogo.png')}}"/></span>
+                  <!--<span><img src="{{ asset('linlogo.png')}}"/></span>-->
                   <span class="app-brand-text demo text-body fw-bolder"></span>
                 </a>
               </div>
