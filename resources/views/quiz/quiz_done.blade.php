@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.masterlayout')
-@section('tittle', 'Quiz start')
+@section('tittle', 'Quiz Done')
 @section('content')
 
 <div class="container-fluid card mt-2" style="border-radius: 19px; height:100%;">
@@ -50,13 +50,11 @@
                     <div class="card-body animate__animated animate__fadeInRight">
                         <div class="flex flex-row justify-between">
                             <span class="rounded btn btn-success text-white my-2">{{ getQtionById($ansPreview->qtion_id)->subject_id }} {{ getQtionById($ansPreview->qtion_id)->year }} - Question </span>
-                            <span>
-                                @if ($ansPreview->score == 1)
-                                    <i class="bi bi-check-circle text-green-500 text-2xl"></i>
-                                @else
-                                    <i class="bi bi-x-circle text-red-500 text-2xl"></i>
-                                @endif
-                            </span>
+                            @if ($ansPreview->score == 1)
+                                <i class="bi bi-check-circle text-green-500 text-2xl"></i>
+                            @else
+                                <i class="bi bi-x-circle text-red-500 text-2xl"></i>
+                            @endif
                         </div>
 
                         <h5 class="card-title">
@@ -64,39 +62,53 @@
                         </h5>
 
                         <div class="form-check">
-                            <label class="form-check-label" for="flexRadioDefault5">
+
+                            <label class="form-check-label w-full {{ $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt1 ? 'alert alert-success' :  ($ansPreview->qtion_ans != getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt1 ? 'alert alert-danger' : '')  }}" for="flexRadioDefault5">
                                 {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt1, ENT_QUOTES, 'UTF-8') !!}
                             </label>
-                          </div>
+
+                        </div>
                         <hr class="my-1" />
+
+
                         <div class="form-check">
-                            <label class="form-check-label" for="flexRadioDefault5">
+                            <label class="form-check-label w-full {{ $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt2 ? 'alert alert-success'  : ($ansPreview->qtion_ans != getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt2 ? 'alert alert-danger' : '')}}" for="flexRadioDefault5">
                                 {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt2, ENT_QUOTES, 'UTF-8') !!}
                             </label>
-                          </div>
+                        </div>
                         <hr class="my-1" />
+
+
+
                         <div class="form-check">
-                            <label class="form-check-label" for="flexRadioDefault5">
+                            <label class="form-check-label w-full  {{ $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt3 ? 'alert alert-success'  : ($ansPreview->qtion_ans != getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt3 ? 'alert alert-danger' : '')}}" for="flexRadioDefault5">
                                 {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt3, ENT_QUOTES, 'UTF-8') !!}
                             </label>
-                          </div>
+                        </div>
                         <hr class="my-1" />
+
+
+
                         <div class="form-check">
-                            <label class="form-check-label" for="flexRadioDefault5">
+                            <label class="form-check-label w-full  {{ $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt4 ? 'alert alert-success'  : ($ansPreview->qtion_ans != getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt4 ? 'alert alert-danger' : '')}}" for="flexRadioDefault5">
                                 {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt4, ENT_QUOTES, 'UTF-8') !!}
                             </label>
-                          </div>
+                        </div>
                         <hr class="my-1" />
+
+
                         <div class="form-check">
-                          <label class="form-check-label" for="flexRadioDefault5">
+                          <label class="form-check-label w-full  {{ $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt5 ? 'alert alert-success'  : ($ansPreview->qtion_ans != getQtionById($ansPreview->qtion_id)->correct_opt && $ansPreview->qtion_ans == getQtionById($ansPreview->qtion_id)->opt5 ? 'alert alert-danger' : '')}}" for="flexRadioDefault5">
                               {!! html_entity_decode(getQtionById($ansPreview->qtion_id)->opt5, ENT_QUOTES, 'UTF-8') !!}
                           </label>
                         </div>
                         <hr class="my-1" />
+
                     </div>
 
                     @endforeach
                  </div>
+
                  <hr class="my-1" />
                        @if (get_percentage(Number_of_correctAnswer($_GET['subject'], $_GET['year'], $_GET['answerBy'],$_GET['qmode']), numberofquestions($_GET['subject'], $_GET['year'],$_GET['qmode'])) < 70)
                         <div class="row p-5">
